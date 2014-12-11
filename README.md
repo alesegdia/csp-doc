@@ -1,2 +1,2 @@
 
-## Constraint Satisfaction Problem documentation
+# CSP docs.
