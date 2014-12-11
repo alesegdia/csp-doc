@@ -3,8 +3,8 @@
 
 ## Useful links
 
-* http://en.wikipedia.org/wiki/Constraint\_satisfaction
-* http://artint.info/html/ArtInt\_72.html
+* http://en.wikipedia.org/wiki/Constraint_satisfaction
+* http://artint.info/html/ArtInt_72.html
 
 ## Useful docs
 
