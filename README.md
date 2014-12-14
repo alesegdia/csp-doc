@@ -1,4 +1,12 @@
 
+# Final University Project
+
+## Authoring
+
+* Gonzalo A. Aranda Corral (1st mentor)
+* Daniel Márquez Quintanilla (2nd mentor, http://www.thegamekitchen.com/)
+* Alejandro Seguí Díaz (student)
+
 # CSP docs.
 
 ## Useful links
