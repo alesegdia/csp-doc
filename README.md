@@ -1,5 +1,5 @@
 
-# Final university project about CSP applied to dungeon generation
+# University project about CSP applied to dungeon generation
 
 ## Authoring
 
