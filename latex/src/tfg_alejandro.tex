@@ -1,0 +1,116 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%                                                                 							%%
+%%		Trabajo Fin de GRADO		                       				%%
+%%		TITULO 																			%%
+%%		AUTOR												%%
+%%                                                                 							%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%  Include con la definicion de estilos por el usuario
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input definl
+
+%%  Paqueteria necesaria de fabrica
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{hyperref}
+\usepackage{palatino}
+\usepackage[dvips]{graphicx} 	  % para importar combinados latex
+\usepackage{color}          		      % para importar dibujos coloreados
+\usepackage{rotating}        		  % para usar \begin{sideways} que rota tabla 90 grados 
+\usepackage{epsfig}          		  % para rotar figuras de Xfig  poniendo % \begin{sideways} 
+\usepackage{amsmath}         	  % para usar matrix y pmatrix environment
+\usepackage{stmaryrd}        		  % para usar la \bigsqcap
+\usepackage{verbatim}        		  % para poner salidas de pantallas
+\usepackage{listings}       	 	  % para imprimir codigo fuente
+\usepackage{shortvrb}				  % 
+\usepackage{url}						  % 
+\usepackage{subfigure}			  % 
+
+  
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  Configuracion de paquetes
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand\lstlistingname{Listado}                   %  default is Listing
+%\renewcommand\lstlistlistingname{\'Indice de listados}  %  default is Listings 
+%\renewcommand\thelstlisting{\thechapter .\arabic{lstlisting}} % captionstyle
+
+
+\lstset{
+  language=Java,
+  basicstyle=\small,
+  keywordstyle=\bfseries,
+  showstringspaces=false,
+  numbers=left, 
+  numberstyle=\tiny, 
+  stepnumber=1, 
+  numbersep=5pt,
+  frame=single}
+
+
+%%  Configuraciones varias
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\corregir}{\color{blue}}  	 	% pintar en color azul
+\setlength{\parskip}{2ex}              			% despues del parrafo, doble linea
+
+
+% Para que no aparezcan las cabeceras de las páginas que están en blanco
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\makeatletter 
+\def\cleardoublepage{\clearpage\if@twoside \ifodd\c@page\else
+  \hbox{} 
+  \thispagestyle{empty} 
+  \newpage
+  \if@twocolumn\hbox{}\newpage\fi\fi\fi} 
+\makeatother
+
+%%  Cortes de palabras especiales
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hyphenation{
+ejem-plo Algo-ritmo
+}
+
+
+%\includeonly{titulo, prologo,intro,capitulo1}
+
+
+\begin{document} 
+
+%%  Titulo e Indices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
+\include{intro/titulo}
+\clearpage
+\pagestyle{plain}
+\tableofcontents
+\clearpage
+\listoffigures
+
+%%  Contenido del trabajo
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{arabic}
+\pagestyle{fancy}
+
+%\include{intro/prologo}
+\include{intro/intro}
+\include{cap1/capitulo1}   % 
+\include{cap2/capitulo2}   % 
+\include{cap3/capitulo3}   % 
+\include{biblio/bibliografia}
+
+%%  Apendices
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\appendix
+%\include{apendice}  % Puedo poner la ontología OSMV y la arquitectura de OW
+
+%%  Bibliografia
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\addcontentsline{toc}{chapter}{Bibliografía}
+\bibliographystyle{alpha}
+\bibliography{biblio/bibliografia.tex}
+
+\end{document}
+
