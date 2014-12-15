@@ -46,6 +46,7 @@ public class MyGdxGame extends ApplicationAdapter {
 		cfg.thres = 0.5f;
 		tilemap = randgen.Generate( cfg );
 		tilemap.Debug();
+		tilemap = Tilemap.LoadFromFile("mapa.txt");
 		shaperenderer = new ShapeRenderer();
 		shaperenderer.setAutoShapeType(true);
 		rectmaprenderer = new RectMapRenderer( tilemap );
