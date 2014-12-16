@@ -16,11 +16,11 @@ public class Tilemap extends Matrix2D<Integer> {
 	
 	public void Debug()
 	{
-		for( int i = 0; i < this.rows; i++ )
+		for( int i = 0; i < this.cols; i++ )
 		{
-			for( int j = 0; j < this.cols; j++ )
+			for( int j = 0; j < this.rows; j++ )
 			{
-				System.out.print( Get(i,j) );
+				System.out.print( Get(j,Height()-i-1) );
 			}
 			System.out.println();
 		}
@@ -48,6 +48,7 @@ public class Tilemap extends Matrix2D<Integer> {
 				tm.Set(i, scanner.nextInt());
 				i++;
 			}
+			scanner.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

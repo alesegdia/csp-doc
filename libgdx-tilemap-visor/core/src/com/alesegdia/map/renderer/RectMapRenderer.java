@@ -7,8 +7,8 @@ import com.badlogic.gdx.graphics.glutils.ShapeRenderer.ShapeType;
 
 public class RectMapRenderer extends IMapRenderer {
 
-	private int tileWidth = 20;
-	private int tileHeight = 20;
+	private int tileWidth = 10;
+	private int tileHeight = 10;
 	
 	public RectMapRenderer(Tilemap tilemap) {
 		super(tilemap);
