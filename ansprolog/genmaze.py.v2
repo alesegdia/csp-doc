@@ -1,24 +1,12 @@
 
 import re
-import sys
-
-print(len(sys.argv))
-
-def_mapa = ""
-if len(sys.argv) < 2:
-    def_mapa = raw_input("Introduce la cadena de definicion del mapa:\n")
-else:
-    def_mapa = sys.argv[1]
 
 def create_map(dim, fill=' '):
     return [[' ' for x in range(dim)] for x in range(dim)]
 
-def get_tokens(mapstr):
-    r = re.compile(r'((parent|dim)\(((-?\d+,)*-?\d+|-?\d+)\))')
-    return [ s for s in mapstr.split() if r.match(s) ]
+def_mapa = raw_input("Introduce la cadena de definicion del mapa:\n")
 
-tokens = get_tokens( def_mapa )
-print(tokens)
+tokens = def_mapa.split()
 some_parent = False
 
 r = re.compile(r'dim\((\d)\)')
@@ -62,7 +50,6 @@ def raster(amap):
             if mapa[x][y] == ' ':
                 ret[x][y] = '*'
     return ret
-
 
 rast = raster(mapa)
 for x in range(1,dim-2):
