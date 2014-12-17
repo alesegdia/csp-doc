@@ -1,0 +1,77 @@
+
+import re
+
+
+dim = 2 + int(raw_input("Introduce la talla (el mapa se supone cuadrado): "))
+def_mapa = raw_input("Introduce la cadena de definicion del mapa:\n")
+
+
+tokens = def_mapa.split()
+some_parent = False
+
+r = re.compile(r'dim\((\d)\)')
+i = 0
+
+for p in tokens:
+    m = r.match(p)
+    if not m:
+        break
+    else:
+        i = i + 1
+        dim = int(m.groups()[0])
+
+dim = dim + 2
+tokens = tokens[i:]
+mapa = [[0 for x in range(dim)] for x in range(dim)]
+
+r = re.compile(r'parent\((-?\d),(-?\d),(-?\d),(-?\d)\)')
+
+for p in tokens:
+    print(p)
+    a = r.match(p).groups()
+    m = [ int(x) for x in a ]
+    mapa[m[0] + m[2]][m[1] + m[3]] = 1
+
+for x in range(dim):
+    string = ""
+    for y in range(dim):
+        string += str(mapa[x][y]) + " "
+    print(string)
+
+fichero = raw_input("Introduce un nombre de fichero o deja en blanco para descartar: ")
+
+if fichero != "":
+    f = open(fichero, "w")
+    f.write(str(dim) + " " + str(dim) + " ")
+    for x in range(dim):
+        for y in range(dim):
+            f.write(str(mapa[x][y]) + " ")
+
+def prettify(somemap):
+    dim2 = dim * 2
+    othermap = [[' ' for x in range(dim2)] for x in range(dim2)]
+    for x in range(1,dim-1):
+        for y in range(1,dim-1):
+            othermap[x*2][y*2] = 'O'
+            if somemap[x+1][y] == 1:
+                othermap[x*2+1][y*2] = '*'
+
+            if somemap[x-1][y] == 1:
+                othermap[x*2-1][y*2] = '*'
+
+            if somemap[x][y+1] == 1:
+                othermap[x*2][y*2+1] = '*'
+
+            if somemap[x][y-1] == 1:
+                othermap[x][y*2-1] = '*'
+    return othermap
+
+
+tmap = prettify(mapa)
+
+for x in range(dim*2):
+    string = ""
+    for y in range(dim*2):
+        string += str(tmap[x][y]) + " "
+    print(string)
+
