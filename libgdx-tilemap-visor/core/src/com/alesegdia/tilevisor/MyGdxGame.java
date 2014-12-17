@@ -25,9 +25,14 @@ public class MyGdxGame extends ApplicationAdapter {
 	RectMapRenderer rectmaprenderer;
 	SpriteBatch batch;
 	Texture img;
-	Tilemap tilemap;
+	Tilemap tilemap = null;
 	Camera cam;
 	private int iter = 0;
+	
+	public MyGdxGame(Tilemap tm)
+	{
+		tilemap = tm;
+	}
 	
 	@Override
 	public void create () {
@@ -40,28 +45,32 @@ public class MyGdxGame extends ApplicationAdapter {
 		cam.position.set(cam.viewportWidth / 2f, cam.viewportHeight / 2f, 0);
 		cam.update();
 
-		BSPMapGenerator bspgen = new BSPMapGenerator();
-		BSPMapGenerator.Config cfg1 = bspgen.new Config();
-		cfg1.width = 200;
-		cfg1.height = 200;
-		cfg1.seed = 0xDEADBEEF;
-		cfg1.num_iterations = 5;
-		
-		
-		RandomMapGenerator randgen = new RandomMapGenerator();
-		RandomMapGenerator.Config cfg = randgen.new Config();
-		cfg.width = 10;
-		cfg.height = 10;
-		cfg.thres = 0.5f;
-		tilemap = randgen.Generate( cfg );
-		tilemap = Tilemap.LoadFromFile("mapa.txt");
-		//tilemap = bspgen.Generate(cfg1);
-		tilemap.Debug();
-		RegenBSP();
+		if( tilemap == null )
+		{
+			BSPMapGenerator bspgen = new BSPMapGenerator();
+			BSPMapGenerator.Config cfg1 = bspgen.new Config();
+			cfg1.width = 200;
+			cfg1.height = 200;
+			cfg1.seed = 0xDEADBEEF;
+			cfg1.num_iterations = 5;
+			
+			
+			RandomMapGenerator randgen = new RandomMapGenerator();
+			RandomMapGenerator.Config cfg = randgen.new Config();
+			cfg.width = 10;
+			cfg.height = 10;
+			cfg.thres = 0.5f;
+			tilemap = randgen.Generate( cfg );
+			//tilemap = bspgen.Generate(cfg1);
+			tilemap.Debug();
+			RegenBSP();
+		}
 
 		shaperenderer = new ShapeRenderer();
 		shaperenderer.setAutoShapeType(true);
 		rectmaprenderer = new RectMapRenderer( tilemap );
+		//tilemap = Tilemap.LoadFromFile("mapa.txt");
+
 	}
 
 	@Override

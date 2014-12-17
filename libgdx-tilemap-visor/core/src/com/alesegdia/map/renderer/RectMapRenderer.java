@@ -9,7 +9,7 @@ public class RectMapRenderer extends IMapRenderer {
 
 	private int tileWidth = 10;
 	private int tileHeight = 10;
-	
+
 	public RectMapRenderer(Tilemap tilemap) {
 		super(tilemap);
 	}
