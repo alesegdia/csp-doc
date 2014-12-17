@@ -2,13 +2,16 @@
 import re
 import sys
 
-print(len(sys.argv))
+# print(len(sys.argv))
 
 def_mapa = ""
 if len(sys.argv) < 2:
     def_mapa = raw_input("Introduce la cadena de definicion del mapa:\n")
 else:
     def_mapa = sys.argv[1]
+    def_lines = def_mapa.splitlines()
+    if len(def_lines) > 1:
+        def_mapa = def_mapa.splitlines()[-2]
 
 def create_map(dim, fill=' '):
     return [[' ' for x in range(dim)] for x in range(dim)]
@@ -18,7 +21,7 @@ def get_tokens(mapstr):
     return [ s for s in mapstr.split() if r.match(s) ]
 
 tokens = get_tokens( def_mapa )
-print(tokens)
+# print(tokens)
 some_parent = False
 
 r = re.compile(r'dim\((\d)\)')
@@ -43,16 +46,18 @@ for x in range(0,dim,2):
 
 r = re.compile(r'parent\((-?\d),(-?\d),(-?\d),(-?\d)\)')
 
+print tokens
 for p in tokens:
-    print(p)
-    a = r.match(p).groups()
-    m = [ int(x) for x in a ]
-    mapa[ m[0] * 2 + m[2] ] [ m[1]*2 + m[3]] = '*'
+    # print(p)
+    a = r.match(p)
+    if a:
+        m = [ int(x) for x in a.groups() ]
+        mapa[ m[0] * 2 + m[2] ] [ m[1]*2 + m[3]] = '*'
 
 for x in range(1,dim-2):
     string = ""
     for y in range(1,dim-2):
-        string += str(mapa[x][y]) + " "
+        string += str(mapa[y][x]) + " "
     print(string)
 
 def raster(amap):
@@ -68,7 +73,7 @@ rast = raster(mapa)
 for x in range(1,dim-2):
     string = ""
     for y in range(1,dim-2):
-        string += str(rast[x][y]) + " "
+        string += str(rast[y][x]) + " "
     print(string)
 
 
