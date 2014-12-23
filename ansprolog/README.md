@@ -28,3 +28,10 @@ Basic usage is:
 ```./lp2maze.sh <PATH-TO-PYTHON-SCRIPT> <SEED> <LIST-OF-LOGIC-SCRIPTS>```
 
 You can also view an usage example at ``example.sh`` script.
+
+To use the LibGDX visualizer, you first need to build **tilevisor**. There is an utility
+script ``build-tilevisor.sh`` for that at its folder, but will probably only work with
+Unix like environments because of the gradlew script it uses. You can probably workaround
+that for your operating system. More info at https://github.com/libgdx/libgdx/wiki/Gradle-on-the-Commandline.
+
+
