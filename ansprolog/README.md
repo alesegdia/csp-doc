@@ -10,7 +10,8 @@ representation.
 
 	* ``genmaze.py`` early and very tied to representation version of map visualizer
 
-	* ``parfacter.py`` more generic (but still tied) visualizer
+	* ``parfacter.py`` more generic (but still tied) visualizer, trying to focus on
+	fact decomposition and interpretation.
 
 Both scripts follow the same call format:
 
