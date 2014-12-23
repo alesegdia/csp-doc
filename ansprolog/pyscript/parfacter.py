@@ -4,6 +4,7 @@ import sys
 
 print(sys.argv[1])
 parsestr = str()
+
 if len(sys.argv) < 2:
     parsestr = raw_input("Introduce cadena:\n")
 else:
@@ -84,6 +85,19 @@ def build_map1(parsestr):
     rast = raster(mapa, dim)
     debug_map(mapa, dim)
     debug_map(rast, dim, start=1, end=dim-2)
+    map_to_file(rast, dim, "sample.txt")
+
+def map_to_file(pmap, dim, outfile):
+    ofile = open(outfile, 'w')
+    sdim = str(dim)
+    ofile.write(sdim + " " + sdim + " ")
+    for x in range(0, dim):
+        for y in range(0, dim):
+            if pmap[x][y] == ' ':
+                ofile.write(str(0) + " ")
+            else:
+                ofile.write(str(1) + " ")
+    ofile.close()
 
 build_map1(parsestr)
 
