@@ -12,3 +12,18 @@ representation.
 
 	* ``parfacter.py`` more generic (but still tied) visualizer
 
+Both scripts follow the same call format:
+
+```python script.py "<LOGIC-PROGRAM-OUTPUT>"```
+
+* ``lp2maze.sh`` glue to facilitate integration between ``clingo`` and
+python scripts.
+
+**You should modify the script in order to run it so that
+the clingo variable points to your desired clingo executable!!**
+
+Basic usage is:
+
+```./lp2maze.sh <PATH-TO-PYTHON-SCRIPT> <SEED> <LIST-OF-LOGIC-SCRIPTS>```
+
+You can also view an usage example at ``example.sh`` script.
