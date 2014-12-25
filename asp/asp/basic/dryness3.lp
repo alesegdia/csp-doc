@@ -6,7 +6,18 @@ wet :- sprinkler(A), turned(A, on), near(A, me).
 % if it's dry, it's not wet
 dry :- not wet.
 
-% there is a sprinkler, it's turned on but it's not near me, it should be dry
+% a sprinkler can't be turned on while it's raining man
+:- sprinkler(A), rain.
+
+% a sprinkler can only be on and off
+validstate(on).
+validstate(off).
+:- turned(A,B), not validstate(B).
+
+% a sprinkler must be in a valid state
+:- sprinkler(A), not validstate(B), turned(A,B).
+
 sprinkler(s).
 turned(s,on).
--near(s,me).
+near(s,me).
+
