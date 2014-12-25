@@ -1,5 +1,5 @@
 
-# comentario
+% comentario
 {rain, sprinkler}.
 wet :- rain.
 wet :- sprinkler.
