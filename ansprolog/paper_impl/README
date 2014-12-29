@@ -11,7 +11,7 @@ The 'ext' directory contains some custom extensions:
 
 * level-reach.lp the basic rules for ensuring the core elements of the level are connected.
 
-* The python scripts are used for generating partial levels, the output are a list of facts, and then let the solver complete it.
+* The python scripts are used for generating partial levels (the output are a list of facts) and then let the solver complete it.
 
 ./asp_level_gen.py < test.in
 (it'll generate a a.out.lp with the partial map initialization)
@@ -42,4 +42,4 @@ For testing it (the command is a little long) write:
 (suppose our cwd is paper_impl)
 > [path/to/]clingo exercises/level-core.lp level-style.lp exercises/level-style.lp exercises/level-lava-style.lp ext/level-reach.lp exercises/level-sim.lp exercises/playability-checker.lp --reify [--rand-freq=1] | clingo - ../metasp/meta{,D,O,C}.lp -l | clasp
 
-* For the exercise 4 just generate a partial solution using the script from ext and add this partial initialization to one of the previous exercises
+* For the exercise 4 just generate a partial solution using the script from ext. Then add this partial initialization to one of the previous exercises
