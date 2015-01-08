@@ -1,0 +1,45 @@
+This folder contains all the examples that appears in the PCG Book, chapter 8 'ASP with applications to mazes and levels'
+
+Use the python scripts provided for visualization, for example
+
+> [path/to/]clingo maze-core.lp [--rand-freq=1] > a.out
+> ./ascii-maze-render.py < a.out
+
+(NOTE: the visualization scripts assumes there's only one solution in the given input. )
+
+The 'ext' directory contains some custom extensions:
+
+* level-reach.lp the basic rules for ensuring the core elements of the level are connected.
+
+* The python scripts are used for generating partial levels (the output are a list of facts) and then let the solver complete it.
+
+./asp_level_gen.py < test.in
+(it'll generate a a.out.lp with the partial map initialization)
+Then you can use, for example:
+> [path/to/]clingo level-core.lp level-style.lp level-sim.lp a.out.lp
+
+* level-symmetry.lp is just an experiment for trying to make a level that looks like symmetric (d'uh)
+
+The 'exercises' contains the exercises of the chapter
+
+* The exercise 2 is solved using the level-style.lp with a rule that constraints the minimum path to be less than a distance. In order to test it:
+(let's assume our cwd is paper_impl)
+> [path/to/]clingo level-core.lp level-style.lp exercises/level-style.lp [ext/level-reach.lp] [... feel free to add more of the scripts]
+
+* Exercise 3 and 5 are solved using the scripts (in the exercises dir) level-core.lp level-style.lp level-lava-style.lp level-sim.lp and playability-checker.lp
+
+- level-core.lp is basically the same one used in the paper but with the lava and boots definition
+
+- level-style.lp ensures there's no path between start and finish shorter than a constant.
+
+- level-lava-style.lp defines the number of lava tiles and boots must have the solution.
+
+- level-sim.lp ensures there's a reachable pair of boots before pass through the lava. In other words, you can't pass through the lava without boots.
+
+- playability-checker.lp this script use metasp for ensuring that you must cross at least one tile of lava before reach the exit. In other words, there's no path between start and exit which avoids the lava.
+
+For testing it (the command is a little long) write:
+(suppose our cwd is paper_impl)
+> [path/to/]clingo exercises/level-core.lp level-style.lp exercises/level-style.lp exercises/level-lava-style.lp ext/level-reach.lp exercises/level-sim.lp exercises/playability-checker.lp --reify [--rand-freq=1] | clingo - ../metasp/meta{,D,O,C}.lp -l | clasp
+
+* For the exercise 4 just generate a partial solution using the script from ext. Then add this partial initialization to one of the previous exercises

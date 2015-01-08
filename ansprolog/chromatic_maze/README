@@ -1,0 +1,5 @@
+Chromatic Maze implementation from the paper 'Answer Set Programming for Procedural Content Generation: A Design Space Approach'
+
+Two python scripts are provided with the AnsProlog program, one to visualize the maze, the other one to visualize the solution.
+
+
