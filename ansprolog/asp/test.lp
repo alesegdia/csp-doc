@@ -2,9 +2,6 @@
 #const width = 10.
 dim(1..width).
 
-%tile(0,1) :- figura(c1).
-%tile(0,2) :- figura(c1).
-
 % define ELE figure type
 5 { tile(l,F,X,Y),
 	tile(l,F,X+1,Y),
@@ -35,6 +32,3 @@ exist_cuadrados(N-1) :- exist_cuadrados(N), N != 1.
 
 exist_eles(7).
 exist_cuadrados(3).
-% ele(ele1,0,0).
-% ele(ele2,1,1).
-% cuadrado(cuad1,1,1).
