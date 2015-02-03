@@ -43,12 +43,12 @@ connected(FT1, FN1, FT2, FN2) :-
 	figure(FT1, FN1),
 	tile(FT1, FN1, X1, Y1),
 	tile(FT2, FN2, X2, Y2),
-	FT1 != FT2, FN1 != FN2,
+	FN1 != FN2,
 	adj(X1, Y1, X2, Y2).
 
 :- figure(F1, N1),
 	figure(F2, N2),
-	F1 != F2, N1 != N2,
+	N1 != N2,
 	not connected(F1, N1, F2, N2).
 
 
@@ -56,13 +56,13 @@ connected(FT1, FN1, FT2, FN2) :-
 	figure(FT1, FN1),
 	figure(FT2, FN2),
 	figure(FT3, FN3),
-	FT1 != FT2, FN1 != FN2,
-	FT3 != FT1, FN3 != FN1,
-	FT3 != FT2, FN3 != FN2,
+	(FT1,FN1) != (FT2, FN2),
+	(FT3,FN3) != (FT1, FN1),
+	(FT3,FN3) != (FT2, FN2),
 	connected(FT1, FN1, FT3, FN3),
 	connected(FT2, FN2, FT3, FN3).
 
 
-exist_eles(2).
-exist_cuadrados(2).
+exist_eles(6).
+exist_cuadrados(4).
 
