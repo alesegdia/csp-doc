@@ -3,7 +3,7 @@ import re
 
 def build_data(programstr):
     programdata = {}
-    r = re.compile(r'([a-z]+)\(([\-a-zA-Z,\(\)0-9]+)\)')
+    r = re.compile(r'([a-zA-Z_]+)\(([\-a-zA-Z,\(\)0-9]+)\)')
     for fact in programstr.split():
         gs = r.match(fact).groups()
         predicate = gs[0]
