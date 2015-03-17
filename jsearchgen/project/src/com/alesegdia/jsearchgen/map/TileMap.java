@@ -1,7 +1,15 @@
 package com.alesegdia.jsearchgen.map;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import com.alesegdia.jsearchgen.util.FileUtil;
 import com.alesegdia.jsearchgen.util.Matrix2D;
 
 public class TileMap extends Matrix2D<Integer> {
@@ -17,6 +25,32 @@ public class TileMap extends Matrix2D<Integer> {
 	
 	public TileMap(List<Integer> data, int cols, int rows) {
 		super(data, cols, rows);
+	}
+	
+	public TileMap(String path_to_json_file)
+	{
+		super();
+		List<Integer> data = new ArrayList<Integer>();
+		try {
+			JSONObject obj = new JSONObject( FileUtil.readFileContents(path_to_json_file, Charset.defaultCharset() ));
+			JSONArray size = obj.getJSONArray("size");
+			int cols = (int) size.get(0);
+			int rows = (int) size.get(1);
+			JSONArray ext_data = obj.getJSONArray("data");
+			for( int i = 0; i < ext_data.length(); i++ )
+			{
+				int val = TileType.ConvertFromString(ext_data.getString(i));
+				data.add(val);
+			}
+			super.CreateFromData(data, rows, cols);
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 
 	int CapCoord( int coord, int max )

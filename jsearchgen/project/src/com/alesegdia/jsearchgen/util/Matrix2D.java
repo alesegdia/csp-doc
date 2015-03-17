@@ -28,9 +28,18 @@ public class Matrix2D <T> {
 	
 	public Matrix2D( List<T> data, int rows, int cols )
 	{
+		this.CreateFromData(data, rows, cols);
+	}
+	
+	public void CreateFromData(List<T> data, int rows, int cols) {
 		this.data = new ArrayList<T>(data);
 		this.rows = rows;
 		this.cols = cols;
+	}
+
+
+	public Matrix2D() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public T Get( int row, int col )
@@ -60,5 +69,6 @@ public class Matrix2D <T> {
 			data.set(i, val);
 		}
 	}
+
 
 }

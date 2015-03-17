@@ -26,6 +26,11 @@ public class Test_TileMap {
 		output.Apply(mini, -1, -1);
 		output.Apply(mini, 13, 27);
 		output.Render();
+		
+		@SuppressWarnings("unused")
+		TileMap teme = new TileMap("jsondata.json");
+		br();
+		teme.Render();
 	}
 
 }
