@@ -1,21 +1,22 @@
 package com.alesegdia.jsearchgen.representation.grid;
 
+import com.alesegdia.jsearchgen.map.TileMap;
+import com.alesegdia.jsearchgen.map.TileType;
 import com.alesegdia.jsearchgen.representation.IRoom;
 import com.alesegdia.jsearchgen.representation.ISolution;
 
 public class GridSolution implements ISolution {
 
-	private int[] grid;
-	private enum TileType {
-		WALL, // muro
-		DOOR, // puerta
-		FREE, // hueco libre
-		USED  // hueco libre perteneciente a una habitación
-	}
+	TileMap tilemap;
 	
 	GridSolution( int rows, int cols )
 	{
-		grid = new int[rows * cols];
+		tilemap = new TileMap(rows, cols, TileType.FREE);
+	}
+	
+	GridSolution( GridSolution other )
+	{
+		tilemap = new TileMap(other.tilemap);
 	}
 
 	@Override
