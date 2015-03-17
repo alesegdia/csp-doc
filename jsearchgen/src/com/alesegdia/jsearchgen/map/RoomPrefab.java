@@ -3,13 +3,14 @@ package com.alesegdia.jsearchgen.map;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.alesegdia.jsearchgen.map.Door.Type;
 import com.alesegdia.jsearchgen.util.Vec2;
 
 public class RoomPrefab {
 	
 	class PotentialDoorEntry {
 		public Vec2 localPosition = new Vec2(0,0);
-		public Door.Type doorType;
+		public Door.Type type;
 	}
 
 	public TileMap map;
@@ -54,7 +55,7 @@ public class RoomPrefab {
 				if( check_horizontal )
 				{
 					PotentialDoorEntry pde = new PotentialDoorEntry();
-					pde.doorType = Door.Type.HORIZONTAL;
+					pde.type = Door.Type.HORIZONTAL;
 					pde.localPosition.x = c;
 					pde.localPosition.y = r;
 					potentialDoors.add(pde);
@@ -62,7 +63,7 @@ public class RoomPrefab {
 				else if( check_vertical )
 				{
 					PotentialDoorEntry pde = new PotentialDoorEntry();
-					pde.doorType = Door.Type.VERTICAL;
+					pde.type = Door.Type.VERTICAL;
 					pde.localPosition.x = c;
 					pde.localPosition.y = r;
 					potentialDoors.add(pde);

@@ -1,7 +1,10 @@
 package com.alesegdia.jsearchgen.map;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import com.alesegdia.jsearchgen.util.RNG;
 
 /**
  * Glue between the physical map representation of a Room and its Door(s).
@@ -9,7 +12,7 @@ import java.util.List;
 public class RoomInstance {
 
 	List<Door> doors = new LinkedList<Door>();
-	TileMap map;
+	RoomPrefab prefab;
 	
 	/** Holds the map. Doesn't need to copy since this map won't change,
 	 * we will place doors by adding them properly to the list
@@ -17,33 +20,36 @@ public class RoomInstance {
 	 */
 	public RoomInstance(RoomPrefab prefab)
 	{
-		this.map = prefab.map;
+		this.prefab = prefab;
 	}
 	
-	/** Adds a door to this room
+	/** Adds a door to this room. Not accessible from the outside.
 	 * @param x relative to room x coordinate
 	 * @param y relative to room y coordinate 
 	 */
-	public void AddDoor( int x, int y )
+	private void AddDoor( int x, int y, Door.Type type )
 	{
 		Door door = new Door();
 		door.owner = this;
 		door.roomIndex = doors.size();
 		door.localPosition.Set(x,y);
+		door.type = type;
 	}
 	
-	public void GenerateRandomDoors(int num_doors)
+	/** Note that this may be a heavy function for CPU performance
+	 * @param rng RNG class object used for random generation
+	 * @param num_doors number of doors to be generated
+	 */
+	public void GenerateRandomDoors(RNG rng, int num_doors)
 	{
-		while(num_doors > 0)
+		List<RoomPrefab.PotentialDoorEntry> possible_doors = new ArrayList<RoomPrefab.PotentialDoorEntry>(this.prefab.potentialDoors);
+		while(num_doors > 0 && possible_doors.size() > 0)
 		{
-			// cache wall tiles at TileMap?
-			for( int row = 0; row < this.map.rows; row++ )
-			{
-				for( int col = 0; col < this.map.cols; col++ )
-				{
-					
-				}
-			}
+			int selected = rng.nextInt(possible_doors.size());
+			RoomPrefab.PotentialDoorEntry pde = possible_doors.get(selected);
+			this.AddDoor(pde.localPosition.x, pde.localPosition.y, pde.type);
+			possible_doors.remove(selected);
+			num_doors--;
 		}
 	}
 	
