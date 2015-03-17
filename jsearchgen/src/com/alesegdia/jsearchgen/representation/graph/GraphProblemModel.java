@@ -4,7 +4,7 @@ import com.alesegdia.jsearchgen.representation.IProblemModel;
 import com.alesegdia.jsearchgen.representation.IRoom;
 import com.alesegdia.jsearchgen.representation.ISolution;
 
-public class GraphModel implements IProblemModel {
+public class GraphProblemModel implements IProblemModel {
 
 	@Override
 	public ISolution CreateEmptySolution() {

@@ -4,7 +4,7 @@ import com.alesegdia.jsearchgen.representation.IProblemModel;
 import com.alesegdia.jsearchgen.representation.IRoom;
 import com.alesegdia.jsearchgen.representation.ISolution;
 
-public class GridModel implements IProblemModel {
+public class GridProblemModel implements IProblemModel {
 	
 	private static final int SOLUTION_WIDTH = 64;
 	private static final int SOLUTION_HEIGHT = 64;
