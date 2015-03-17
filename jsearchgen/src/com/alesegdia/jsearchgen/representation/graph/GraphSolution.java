@@ -1,12 +1,12 @@
 package com.alesegdia.jsearchgen.representation.graph;
 
-import com.alesegdia.jsearchgen.map.Room;
+import com.alesegdia.jsearchgen.map.RoomInstance;
 import com.alesegdia.jsearchgen.representation.ISolution;
 
 public class GraphSolution implements ISolution {
 
 	@Override
-	public boolean IsPossibleAddition(Room room) {
+	public boolean IsPossibleAddition(RoomInstance room) {
 		// TODO Auto-generated method stub
 		return false;
 	}

@@ -7,7 +7,8 @@ import java.util.List;
 public class Matrix2D <T> {
 	
 	protected ArrayList<T> data = null;
-	protected int cols, rows;
+	public int cols;
+	public int rows;
 	
 	public Matrix2D( int rows, int cols, T def )
 	{

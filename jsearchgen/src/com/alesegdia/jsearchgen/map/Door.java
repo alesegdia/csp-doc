@@ -4,6 +4,11 @@ import com.alesegdia.jsearchgen.util.Vec2;
 
 public class Door {
 
+	public enum Type {
+		HORIZONTAL,
+		VERTICAL
+	}
+	
 	static int nextRoomID = 0;
 	
 	public Door() {
@@ -11,10 +16,11 @@ public class Door {
 		this.localPosition = new Vec2(0,0);
 	}
 	
-	public Room connectedTo;
-	public Room owner;
+	public RoomInstance connectedTo;
+	public RoomInstance owner;
 	public int roomIndex;				// index in room doors array
 	public Vec2 localPosition;	// relative position to room
 	int id;						// unique id
+	Type type;
 	
 }

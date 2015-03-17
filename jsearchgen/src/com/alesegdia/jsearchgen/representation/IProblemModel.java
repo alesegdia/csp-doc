@@ -1,13 +1,13 @@
 package com.alesegdia.jsearchgen.representation;
 
-import com.alesegdia.jsearchgen.map.Room;
+import com.alesegdia.jsearchgen.map.RoomInstance;
 
 public interface IProblemModel {
 	
 	public ISolution CreateEmptySolution();
 	
-	public Room CreateEmptyRoom();
+	public RoomInstance CreateEmptyRoom();
 	
-	public void AttachRoomToSolution(Room selected_room, ISolution partial_solution);
+	public void AttachRoomToSolution(RoomInstance selected_room, ISolution partial_solution);
 
 }

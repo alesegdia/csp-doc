@@ -1,6 +1,6 @@
 package com.alesegdia.jsearchgen.representation.grid;
 
-import com.alesegdia.jsearchgen.map.Room;
+import com.alesegdia.jsearchgen.map.RoomInstance;
 import com.alesegdia.jsearchgen.map.TileMap;
 import com.alesegdia.jsearchgen.map.TileType;
 import com.alesegdia.jsearchgen.representation.ISolution;
@@ -20,7 +20,7 @@ public class GridSolution implements ISolution {
 	}
 
 	@Override
-	public boolean IsPossibleAddition(Room room) {
+	public boolean IsPossibleAddition(RoomInstance room) {
 		// TODO Auto-generated method stub
 		return false;
 	}
