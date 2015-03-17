@@ -2,6 +2,7 @@ package com.alesegdia.jsearchgen.util;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Matrix2D <T> {
 	
@@ -10,18 +11,25 @@ public class Matrix2D <T> {
 	
 	public Matrix2D( int rows, int cols, T def )
 	{
-		data = new ArrayList<T>();
-		data.ensureCapacity(rows * cols);
-		Collections.fill(data, def);
+		this.data = new ArrayList<T>();
+		for( int i = 0; i < rows*cols; i++ ) { this.data.add(i, def); }
 		this.rows = rows;
 		this.cols = cols;
+		System.out.println("YAY!");
 	}
 	
 	public Matrix2D( Matrix2D<T> other )
 	{
-		data = new ArrayList<T>(other.data);
+		this.data = new ArrayList<T>(other.data);
 		this.rows = other.rows;
 		this.cols = other.cols;
+	}
+	
+	public Matrix2D( List<T> data, int rows, int cols )
+	{
+		this.data = new ArrayList<T>(data);
+		this.rows = rows;
+		this.cols = cols;
 	}
 
 	public T Get( int row, int col )
@@ -31,7 +39,7 @@ public class Matrix2D <T> {
 	
 	public int GetPos( int row, int col )
 	{
-		return row * this.rows + col;
+		return row * this.cols + col;
 	}
 	
 	public void Set( int row, int col, T val )
