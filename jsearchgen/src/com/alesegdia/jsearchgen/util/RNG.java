@@ -2,28 +2,16 @@ package com.alesegdia.jsearchgen.util;
 
 import java.util.Random;
 
-public class RNG {
+public class RNG extends Random {
 
-	Random rng = new Random();
-	
-	public void setSeed( long seed )
+	public RNG()
 	{
-		rng.setSeed(seed);
+		super();
 	}
 	
-	public int nextInt()
+	public int nextInt( int min, int max )
 	{
-		return rng.nextInt();
-	}
-	
-	public int nextInt( int top )
-	{
-		return rng.nextInt(top);
-	}
-	
-	public int nextInt( int bot, int top )
-	{
-		return rng.nextInt( top - bot ) + bot;
+		return nextInt( (max - min) + 1 ) + min;
 	}
 	
 }
