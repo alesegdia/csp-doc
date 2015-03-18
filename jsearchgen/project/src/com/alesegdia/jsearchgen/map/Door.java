@@ -23,4 +23,9 @@ public class Door {
 	int id;						// unique id
 	Type type;
 	
+	public String toString()
+	{
+		return localPosition.toString();
+	}
+	
 }
