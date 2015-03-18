@@ -21,11 +21,15 @@ public class Door {
 	public int roomIndex;				// index in room doors array
 	public Vec2 localPosition;	// relative position to room
 	int id;						// unique id
-	Type type;
+	public Type type;
 	
 	public String toString()
 	{
 		return localPosition.toString();
+	}
+
+	public Vec2 GetGlobalPosition() {
+		return this.localPosition.Add(this.owner.globalPosition);
 	}
 	
 }
