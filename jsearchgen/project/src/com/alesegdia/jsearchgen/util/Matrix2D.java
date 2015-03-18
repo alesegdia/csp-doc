@@ -37,8 +37,7 @@ public class Matrix2D <T> {
 		this.cols = cols;
 	}
 
-
-	public Matrix2D() {
+	protected Matrix2D() {
 		// TODO Auto-generated constructor stub
 	}
 

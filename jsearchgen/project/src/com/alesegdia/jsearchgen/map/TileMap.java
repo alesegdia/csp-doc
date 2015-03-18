@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -51,6 +50,42 @@ public class TileMap extends Matrix2D<Integer> {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	public boolean CollideWith(TileMap other, int top, int left)
+	{
+		int this_top = CapCoord(top, this.rows);
+		int this_left = CapCoord(left, this.cols);
+		int this_bot = CapCoord(top + other.rows, this.rows);
+		int this_right = CapCoord(left + other.cols, this.cols);
+		
+		int that_top = 0;
+		int that_left = 0;
+		if( top < 0 ) that_top = -top;
+		int that_bot = this_bot - this_top + that_top;
+		if( left < 0 ) that_left = -left;
+		int that_right = this_right - this_left + that_left;
+
+		int this_row, that_row, this_col, that_col;
+		boolean collide = false;
+		
+		for( this_row = this_top, that_row = that_top;
+			 this_row < this_bot && that_row < that_bot && !collide;
+			 this_row++, that_row++ )
+		{
+			for( this_col = this_left, that_col = that_left;
+				 this_col < this_right && that_col < that_right && !collide;
+				 this_col++, that_col++ )
+			{
+				int src = other.Get(that_row,  that_col);
+				int dst = this.Get(this_row, this_col);
+				if( src != TileType.FREE && dst != TileType.FREE )
+				{
+					collide = true;
+				}
+			}
+		}
+		return collide;
 	}
 
 	int CapCoord( int coord, int max )

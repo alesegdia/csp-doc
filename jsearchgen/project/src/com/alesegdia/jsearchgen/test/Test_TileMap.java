@@ -13,9 +13,9 @@ public class Test_TileMap {
 
 	public static void main(String[] args) {
 
-		Integer[] map_data = new Integer[] { 2, 1, 1, 1,
-											 1, 1, 1, 0,
-											 1, 0, 1, 1 };
+		Integer[] map_data = new Integer[] { 1, 1, 1, 1,
+											 1, 0, 0, 1,
+											 1, 0, 0, 0 };
 		List<Integer> data = Arrays.asList(map_data);
 		TileMap mini = new TileMap(data, 3, 4);
 		TileMap output = new TileMap(15,30,0);
@@ -31,6 +31,10 @@ public class Test_TileMap {
 		TileMap teme = new TileMap("jsondata.json");
 		br();
 		teme.Render();
+		br();
+		mini.Render();
+		br();
+		System.out.println(teme.CollideWith(mini, 0, 0));
 	}
 
 }
