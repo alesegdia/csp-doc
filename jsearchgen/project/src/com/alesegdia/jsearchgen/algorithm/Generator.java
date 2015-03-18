@@ -53,9 +53,18 @@ public class Generator {
 
 		while( !remaining_rooms.isEmpty() )
 		{
-			RoomInstance selected_room = SelectRandomFeasibleRoom( remaining_rooms, partial_solution );
-			remaining_rooms.remove(selected_room);
-			problem_model.AttachRoomToSolution( selected_room, partial_solution );
+			RoomInstance selected_room = problem_model.InsertFeasibleRoom( remaining_rooms, partial_solution );
+			if( selected_room == null )
+			{
+				System.err.println("ERROR: can't build a complete solution from this partial solution and this list of remaining rooms: ");
+				partial_solution.Render();
+				System.exit(1);
+			}
+			else
+			{
+				remaining_rooms.remove(selected_room);
+				problem_model.AttachRoomToSolution( selected_room, partial_solution );
+			}
 		}
 		
 		return partial_solution;

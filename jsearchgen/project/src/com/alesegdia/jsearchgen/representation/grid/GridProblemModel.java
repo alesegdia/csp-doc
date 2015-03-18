@@ -1,5 +1,7 @@
 package com.alesegdia.jsearchgen.representation.grid;
 
+import java.util.List;
+
 import com.alesegdia.jsearchgen.map.RoomInstance;
 import com.alesegdia.jsearchgen.representation.IProblemModel;
 import com.alesegdia.jsearchgen.representation.ISolution;
@@ -17,15 +19,15 @@ public class GridProblemModel implements IProblemModel {
 	}
 
 	@Override
-	public RoomInstance CreateEmptyRoom() {
-		// TODO Auto-generated method stub
-		return null;
+	public void AttachRoomToSolution(RoomInstance selected_room, ISolution partial_solution) {
+				
 	}
 
 	@Override
-	public void AttachRoomToSolution(RoomInstance selected_room, ISolution partial_solution) {
+	public RoomInstance InsertFeasibleRoom(List<RoomInstance> remaining_rooms,
+			ISolution partial_solution) {
 		// TODO Auto-generated method stub
-		
+		return null;
 	}
 
 }
