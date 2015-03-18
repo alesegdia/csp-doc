@@ -5,14 +5,16 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.util.RNG;
+import com.alesegdia.jsearchgen.util.Vec2;
 
 /**
- * Glue between the physical map representation of a Room and its Door(s).
+ * Glue between the physical map representation of a Room, Door(s) and the position it has.
  */
 public class RoomInstance {
 
 	public List<Door> doors = new LinkedList<Door>();
 	public RoomPrefab prefab;
+	public Vec2 globalPosition;
 	
 	/** Holds the map. Doesn't need to copy since this map won't change,
 	 * we will place doors by adding them properly to the list
