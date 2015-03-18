@@ -4,9 +4,12 @@ import java.util.Random;
 
 public class RNG extends Random {
 
+	public static RNG rng;
+	
 	public RNG()
 	{
 		super();
+		rng = this;
 	}
 	
 	public int nextInt( int min, int max )

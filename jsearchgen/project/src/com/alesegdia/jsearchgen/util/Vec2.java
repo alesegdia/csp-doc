@@ -14,4 +14,9 @@ public class Vec2 {
 	public int x;
 	public int y;
 	
+	public String toString()
+	{
+		return "(" + this.x + "," + this.y + ")";
+	}
+	
 }
