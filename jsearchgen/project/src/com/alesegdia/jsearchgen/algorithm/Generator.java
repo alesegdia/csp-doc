@@ -32,6 +32,7 @@ public class Generator {
 		return clone;
 	}
 	
+	/*
 	RoomInstance SelectRandomFeasibleRoom( List<RoomInstance> possible_rooms, ISolution partial_solution )
 	{
 		List<RoomInstance> feasible_rooms = new ArrayList<RoomInstance>();
@@ -45,25 +46,20 @@ public class Generator {
 		RoomInstance selected = feasible_rooms.get(room_index);
 		return selected;
 	}
+	*/
 	
 	public ISolution Generate( List<RoomInstance> initial_room_list, IProblemModel problem_model )
 	{
-		List<RoomInstance> remaining_rooms = CloneRoomList(initial_room_list);
-		ISolution partial_solution = problem_model.CreateEmptySolution();
+		ISolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
 
-		while( !remaining_rooms.isEmpty() )
+		while( partial_solution.IsComplete() )
 		{
-			RoomInstance selected_room = problem_model.InsertFeasibleRoom( remaining_rooms, partial_solution );
+			RoomInstance selected_room = problem_model.InsertRandomFeasibleRoom( partial_solution );
 			if( selected_room == null )
 			{
 				System.err.println("ERROR: can't build a complete solution from this partial solution and this list of remaining rooms: ");
 				partial_solution.Render();
 				System.exit(1);
-			}
-			else
-			{
-				remaining_rooms.remove(selected_room);
-				problem_model.AttachRoomToSolution( selected_room, partial_solution );
 			}
 		}
 		
