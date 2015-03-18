@@ -11,8 +11,8 @@ import com.alesegdia.jsearchgen.util.RNG;
  */
 public class RoomInstance {
 
-	List<Door> doors = new LinkedList<Door>();
-	RoomPrefab prefab;
+	public List<Door> doors = new LinkedList<Door>();
+	public RoomPrefab prefab;
 	
 	/** Holds the map. Doesn't need to copy since this map won't change,
 	 * we will place doors by adding them properly to the list
@@ -34,6 +34,7 @@ public class RoomInstance {
 		door.roomIndex = doors.size();
 		door.localPosition.Set(x,y);
 		door.type = type;
+		this.doors.add(door);
 	}
 	
 	/** Note that this may be a heavy function for CPU performance
