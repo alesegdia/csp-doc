@@ -18,5 +18,9 @@ public class Vec2 {
 	{
 		return "(" + this.x + "," + this.y + ")";
 	}
+
+	public Vec2 Add(Vec2 globalPosition) {
+		return new Vec2( this.x + globalPosition.x, this.y + globalPosition.y );
+	}
 	
 }
