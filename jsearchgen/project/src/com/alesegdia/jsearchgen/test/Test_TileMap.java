@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.map.TileMap;
+import com.alesegdia.jsearchgen.map.canvas.MapRenderer;
 
 public class Test_TileMap {
 	
@@ -35,6 +36,8 @@ public class Test_TileMap {
 		mini.Render();
 		br();
 		System.out.println(teme.CollideWith(mini, 0, 0));
+		MapRenderer mr = new MapRenderer(mini);
+		mr.Show();
 	}
 
 }
