@@ -14,7 +14,7 @@ public class RoomInstance {
 
 	public List<Door> doors = new LinkedList<Door>();
 	public RoomPrefab prefab;
-	public Vec2 globalPosition;
+	public Vec2 globalPosition = new Vec2(0,0);
 	
 	/** Holds the map. Doesn't need to copy since this map won't change,
 	 * we will place doors by adding them properly to the list

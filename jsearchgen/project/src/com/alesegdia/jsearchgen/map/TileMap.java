@@ -3,7 +3,9 @@ package com.alesegdia.jsearchgen.map;
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,6 +15,14 @@ import com.alesegdia.jsearchgen.util.Matrix2D;
 
 public class TileMap extends Matrix2D<Integer> {
 
+	public static TileMap CreateTilemap(Integer[] map_data, int rows, int cols )
+	{
+		List<Integer> data = Arrays.asList(map_data);
+		TileMap tm = new TileMap(data, rows, cols);
+		return tm;
+	}
+
+	
 	public TileMap(int rows, int cols, int def) {
 		super(rows, cols, def);
 		// TODO Auto-generated constructor stub

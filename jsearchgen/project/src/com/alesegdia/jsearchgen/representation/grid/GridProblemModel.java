@@ -20,19 +20,24 @@ public class GridProblemModel implements IProblemModel {
 
 	@Override
 	public RoomInstance InsertRandomFeasibleRoom(ISolution partial_solution) {
-		GridSolution gs = (GridSolution) partial_solution;
+		GridSolution gs = ((GridSolution) partial_solution);
 		gs.AttachRandomFeasibleRoom();
 		return null;
 	}
 
 	@Override
 	public ISolution CreateFirstSolution(List<RoomInstance> remaining_rooms) {
-		// TODO Auto-generated method stub
 		GridSolution gs = new GridSolution( SOLUTION_WIDTH, SOLUTION_HEIGHT );
-		int room_index = RNG.rng.nextInt(0, remaining_rooms.size());
-		RoomInstance selected = remaining_rooms.get(room_index);
-		remaining_rooms.remove(selected);
-		gs.AttachRoom(selected, 32, 32);
+		try {
+			int room_index = RNG.rng.nextInt(0, remaining_rooms.size()-1);
+			System.out.println("room_index: " + room_index);
+			RoomInstance selected = remaining_rooms.get(room_index);
+			remaining_rooms.remove(selected);
+			gs.AttachRoom(selected, 32, 32);
+			gs.remaining_rooms = remaining_rooms;
+		} catch(IndexOutOfBoundsException e) {
+			System.err.println("remaining_rooms list empty!");
+		}
 		return gs;
 	}
 
