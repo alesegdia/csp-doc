@@ -137,7 +137,7 @@ public class GridSolution implements ISolution {
 				if( door_this.owner.prefab.map.Get(this_global.y+1, this_global.x) == TileType.FREE )
 				{
 					// desplazar abajo door_other y comprobar mapa
-					Vec2 tmp = new Vec2(this_global.x, this_global.y+1);
+					Vec2 tmp = new Vec2(this_global.x,this_global.y+1);
 					if( this.tilemap.CollideWith(door_other.owner.prefab.map, tmp.x, tmp.y) )
 					{
 						pos = tmp;

@@ -65,4 +65,14 @@ public class RoomInstance {
 		doors.get(door_index).connectedTo = connected_to;
 	}
 	
+	public TileMap CreateTileMapWithDoors( )
+	{
+		TileMap tm = new TileMap(this.prefab.map);
+		
+		for( Door door : doors )
+		{
+			tm.Set(door.localPosition.y, door.localPosition.x, TileType.DOOR);
+		}
+		return tm;
+	}
 }

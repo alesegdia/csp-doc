@@ -15,7 +15,6 @@ public class Door {
 		this.id = nextRoomID++;
 		this.localPosition = new Vec2(0,0);
 	}
-	
 	public RoomInstance connectedTo;
 	public RoomInstance owner;
 	public int roomIndex;				// index in room doors array

@@ -76,4 +76,8 @@ public class RoomPrefab {
 		}
 	}
 
+	public TileMap GetTileMap() {
+		return map;
+	}
+
 }

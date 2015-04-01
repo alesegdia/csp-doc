@@ -48,7 +48,7 @@ public class TileMap extends Matrix2D<Integer> {
 			JSONArray ext_data = obj.getJSONArray("data");
 			for( int i = 0; i < ext_data.length(); i++ )
 			{
-				int val = TileType.ConvertFromString(ext_data.getString(i));
+				int val = ext_data.getInt(i);
 				data.add(val);
 			}
 			super.CreateFromData(data, rows, cols);

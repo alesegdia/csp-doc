@@ -16,7 +16,6 @@ public class Matrix2D <T> {
 		for( int i = 0; i < rows*cols; i++ ) { this.data.add(i, def); }
 		this.rows = rows;
 		this.cols = cols;
-		System.out.println("YAY!");
 	}
 	
 	public Matrix2D( Matrix2D<T> other )

@@ -68,7 +68,7 @@ public class MapRenderer extends JComponent {
 	
 	public void Show()
 	{
-		JFrame mainFrame = new JFrame("Graphics demo");
+		JFrame mainFrame = new JFrame("Map renderer");
 		mainFrame.getContentPane().add(this);
 		mainFrame.pack();
 		mainFrame.setVisible(true);

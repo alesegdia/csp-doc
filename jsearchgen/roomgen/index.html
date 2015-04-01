@@ -18,9 +18,10 @@
 
 		Select tile type: 
 		<select id="tile-selector" onchange="changeTile();">
-			<option selected value="wall">Wall</option>
-			<option value="free">Free</option>
-			<option value="used">Used</option>
+			<option selected value="1">Wall</option>
+			<option value="0">Free</option>
+			<option value="3">Used</option>
+			<option value="2">Door (Optional)</option>
 		</select>
 		<br />
 		<br />
@@ -136,7 +137,7 @@ var tryPlaceTileAtMouse = function()
 	if( xtile > 0 && xtile < current_map[0].length &&
 		ytile > 0 && ytile < current_map.length )
 	{
-		current_map[ytile][xtile] = selected_tile;
+		current_map[ytile][xtile] = parseInt(selected_tile);
 	}
 }
 
@@ -172,13 +173,16 @@ var render = function()
 			{
 				var tile = current_map[i][j];
 				switch( tile ) {
-					case "free":
+					case 0:
 						ctx.fillStyle = "rgb(128, 192, 255)";
 						break;
-					case "wall":
+					case 1:
 						ctx.fillStyle = "rgb(128, 64, 32)";
 						break;
-					case "used":
+					case 2:
+						ctx.fillStyle = "rgb(255, 128, 64)";
+						break;
+					case 3:
 						ctx.fillStyle = "rgb(64, 128, 64)";
 						break;
 				}
