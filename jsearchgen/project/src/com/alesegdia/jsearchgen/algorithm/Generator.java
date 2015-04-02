@@ -1,8 +1,6 @@
 package com.alesegdia.jsearchgen.algorithm;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -19,19 +17,19 @@ public class Generator {
 	public Generator ( long seed ) {
 		rng.setSeed(seed);
 	}
-	
+
 	public void SetStartRoomList(List<RoomInstance> room_list)
 	{
 		this.startRoomList = room_list;
 	}
-	
+
 	List<RoomInstance> CloneRoomList( List<RoomInstance> cloned )
 	{
 		List<RoomInstance> clone = new LinkedList<RoomInstance>();
 		Collections.copy(clone, cloned);
 		return clone;
 	}
-	
+
 	/*
 	RoomInstance SelectRandomFeasibleRoom( List<RoomInstance> possible_rooms, ISolution partial_solution )
 	{
@@ -47,7 +45,7 @@ public class Generator {
 		return selected;
 	}
 	*/
-	
+
 	public ISolution Generate( List<RoomInstance> initial_room_list, IProblemModel problem_model )
 	{
 		ISolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
@@ -62,7 +60,7 @@ public class Generator {
 				System.exit(1);
 			}
 		}
-		
+
 		return partial_solution;
 	}
 

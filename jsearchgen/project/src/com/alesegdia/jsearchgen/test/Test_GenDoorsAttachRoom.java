@@ -1,15 +1,10 @@
 package com.alesegdia.jsearchgen.test;
 
-import java.util.Arrays;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.algorithm.Generator;
 import com.alesegdia.jsearchgen.map.Prefabs;
 import com.alesegdia.jsearchgen.map.RoomInstance;
-import com.alesegdia.jsearchgen.map.RoomPrefab;
-import com.alesegdia.jsearchgen.map.TileMap;
 import com.alesegdia.jsearchgen.map.canvas.MapRenderer;
 import com.alesegdia.jsearchgen.representation.IProblemModel;
 import com.alesegdia.jsearchgen.representation.ISolution;
