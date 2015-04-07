@@ -8,5 +8,7 @@ public interface ISolution {
 
 	public boolean IsComplete();
 
+	public void RenderCanvas();
+
 
 }
