@@ -13,9 +13,11 @@ import com.alesegdia.jsearchgen.map.TileType;
 public class MapRenderer extends JComponent {
 	
 	private TileMap map;
+	private Dimension dimension;
 	
 	public MapRenderer(TileMap map)
 	{
+		this.dimension = new Dimension(map.cols * 10, map.rows * 10);
 		this.map = map;
 	}
 	
@@ -37,11 +39,10 @@ public class MapRenderer extends JComponent {
 				g.fillRect(i * 10, j * 10, 10, 10);
 			}
 		}
-
 	}
 
 	public Dimension getPreferredSize() {
-		return new Dimension(400, 400);
+		return this.dimension;
 	}
 
 	public Dimension getMinimumSize() {
