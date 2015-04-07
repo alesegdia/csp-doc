@@ -2,6 +2,7 @@ package com.alesegdia.jsearchgen.representation.grid;
 
 import java.util.List;
 
+import com.alesegdia.jsearchgen.map.Door;
 import com.alesegdia.jsearchgen.map.RoomInstance;
 import com.alesegdia.jsearchgen.representation.IProblemModel;
 import com.alesegdia.jsearchgen.representation.ISolution;
@@ -9,8 +10,8 @@ import com.alesegdia.jsearchgen.util.RNG;
 
 public class GridProblemModel implements IProblemModel {
 	
-	private static final int SOLUTION_WIDTH = 64;
-	private static final int SOLUTION_HEIGHT = 64;
+	private static final int SOLUTION_WIDTH = 1000;
+	private static final int SOLUTION_HEIGHT = 1000;
 	
 
 	@Override
@@ -19,10 +20,9 @@ public class GridProblemModel implements IProblemModel {
 	}
 
 	@Override
-	public RoomInstance InsertRandomFeasibleRoom(ISolution partial_solution) {
+	public boolean InsertRandomFeasibleRoom(ISolution partial_solution) {
 		GridSolution gs = ((GridSolution) partial_solution);
-		gs.AttachRandomFeasibleRoom();
-		return null;
+		return gs.AttachRandomFeasibleRoom();
 	}
 
 	@Override
