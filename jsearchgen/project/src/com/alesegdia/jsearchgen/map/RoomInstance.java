@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.alesegdia.jsearchgen.map.canvas.MapRenderer;
 import com.alesegdia.jsearchgen.util.RNG;
 import com.alesegdia.jsearchgen.util.Vec2;
 
@@ -15,6 +16,7 @@ public class RoomInstance {
 	public List<Door> doors = new LinkedList<Door>();
 	public RoomPrefab prefab;
 	public Vec2 globalPosition = new Vec2(0,0);
+	public String name;
 	
 	/** Holds the map. Doesn't need to copy since this map won't change,
 	 * we will place doors by adding them properly to the list
@@ -25,21 +27,22 @@ public class RoomInstance {
 		this.prefab = prefab;
 	}
 	
-	/** Adds a door to this room. Not accessible from the outside.
+	/** Adds a door to this room. Just for internal purposes.
 	 * @param x relative to room x coordinate
 	 * @param y relative to room y coordinate 
 	 */
 	private void AddDoor( int x, int y, Door.Type type )
 	{
 		Door door = new Door();
-		door.owner = this;
+		door.ri_owner = this;
 		door.roomIndex = doors.size();
 		door.localPosition.Set(x,y);
 		door.type = type;
 		this.doors.add(door);
 	}
-	
+
 	/** Note that this may be a heavy function for CPU performance
+	 * 	because of list handling.
 	 * @param rng RNG class object used for random generation
 	 * @param num_doors number of doors to be generated
 	 */
@@ -74,5 +77,9 @@ public class RoomInstance {
 			tm.Set(door.localPosition.y, door.localPosition.x, TileType.DOOR);
 		}
 		return tm;
+	}
+
+	public void RenderCanvas() {
+		(new MapRenderer(this.CreateTileMapWithDoors())).Show();
 	}
 }
