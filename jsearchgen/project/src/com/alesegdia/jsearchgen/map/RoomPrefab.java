@@ -48,18 +48,24 @@ public class RoomPrefab {
 				boolean check_horizontal =
 						map.Get(r, c) == TileType.WALL &&
 						map.Get(r, c+1) == TileType.WALL &&
-						map.Get(r, c-1) == TileType.WALL;
+						map.Get(r, c-1) == TileType.WALL &&
+						((map.Get(r+1, c) == TileType.FREE && map.Get(r-1, c) == TileType.USED) ||
+						 (map.Get(r+1, c) == TileType.USED && map.Get(r-1, c) == TileType.FREE));
+
 				
 				boolean check_vertical =
 						map.Get(r, c) == TileType.WALL &&
 						map.Get(r+1, c) == TileType.WALL &&
-						map.Get(r-1, c) == TileType.WALL;
+						map.Get(r-1, c) == TileType.WALL &&
+						((map.Get(r, c+1) == TileType.FREE && map.Get(r, c-1) == TileType.USED) ||
+						 (map.Get(r, c+1) == TileType.USED && map.Get(r, c-1) == TileType.FREE));
+
 				
 				// VERTICAL AND HORIZONTAL ARE EXCLUSIVE. A DOOR CAN'T BE OF BOTH TYPES
 				if( check_horizontal )
 				{
 					PotentialDoorEntry pde = new PotentialDoorEntry();
-					pde.type = Door.Type.HORIZONTAL;
+					pde.type = Door.Type.VERTICAL;
 					pde.localPosition.x = c;
 					pde.localPosition.y = r;
 					potentialDoors.add(pde);
@@ -67,7 +73,7 @@ public class RoomPrefab {
 				else if( check_vertical )
 				{
 					PotentialDoorEntry pde = new PotentialDoorEntry();
-					pde.type = Door.Type.VERTICAL;
+					pde.type = Door.Type.HORIZONTAL;
 					pde.localPosition.x = c;
 					pde.localPosition.y = r;
 					potentialDoors.add(pde);
