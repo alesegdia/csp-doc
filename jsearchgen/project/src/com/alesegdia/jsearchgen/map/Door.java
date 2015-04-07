@@ -16,7 +16,7 @@ public class Door {
 		this.localPosition = new Vec2(0,0);
 	}
 	public RoomInstance connectedTo;
-	public RoomInstance owner;
+	public RoomInstance ri_owner;
 	public int roomIndex;				// index in room doors array
 	public Vec2 localPosition;	// relative position to room
 	int id;						// unique id
@@ -24,11 +24,11 @@ public class Door {
 	
 	public String toString()
 	{
-		return localPosition.toString();
+		return "[ local: " + localPosition.toString() + ", global: " + this.GetGlobalPosition().toString() + " ]";
 	}
 
 	public Vec2 GetGlobalPosition() {
-		return this.localPosition.Add(this.owner.globalPosition);
+		return this.localPosition.Add(this.ri_owner.globalPosition);
 	}
 	
 }
