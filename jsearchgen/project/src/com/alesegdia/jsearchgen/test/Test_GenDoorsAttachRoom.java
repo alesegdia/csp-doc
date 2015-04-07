@@ -33,15 +33,17 @@ public class Test_GenDoorsAttachRoom {
 		room1.GenerateRandomDoors(RNG.rng, 3);
 		room2.GenerateRandomDoors(RNG.rng, 2);
 		room3.GenerateRandomDoors(RNG.rng, 2);
-		
-		MapRenderer mr = new MapRenderer(room1.CreateTileMapWithDoors());
-		mr.Show();
+
+		//(new MapRenderer(room1.CreateTileMapWithDoors())).Show();
+		//(new MapRenderer(room2.CreateTileMapWithDoors())).Show();
+		//(new MapRenderer(room3.CreateTileMapWithDoors())).Show();
+
 		/**
 		 * ATTACH ROOM TO SOLUTION TEST
 		 */
 		GridSolution gs = new GridSolution(15,30);
 		gs.AttachRoom(room1, 0, 0);
-		System.out.println(Prefabs.room0.potentialDoors);
+		System.out.println("room0 potential doors: " + Prefabs.room0.potentialDoors);
 
 		List<RoomInstance> initial_rooms = new LinkedList<RoomInstance>();
 		initial_rooms.add(room1);
@@ -50,6 +52,8 @@ public class Test_GenDoorsAttachRoom {
 		
 		IProblemModel prob = new GridProblemModel();
 		ISolution sol = prob.CreateFirstSolution(initial_rooms);
+		(new MapRenderer(((GridSolution)sol).tilemap)).Show();
+
 		//prob.InsertRandomFeasibleRoom(sol);
 		sol.Render();
 		
