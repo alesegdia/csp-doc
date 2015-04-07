@@ -30,6 +30,7 @@ public class Test_GenDoorsAttachRoom {
 		/**
 		 * GENERATE RANDOM DOORS
 		 */
+		RNG.rng.setSeed(1234);
 		room1.GenerateRandomDoors(RNG.rng, 3);
 		room2.GenerateRandomDoors(RNG.rng, 2);
 		room3.GenerateRandomDoors(RNG.rng, 2);
@@ -51,12 +52,18 @@ public class Test_GenDoorsAttachRoom {
 		initial_rooms.add(room3);
 		
 		IProblemModel prob = new GridProblemModel();
-		ISolution sol = prob.CreateFirstSolution(initial_rooms);
+		ISolution sol = prob.CreateFirstSolution(initial_rooms); // en 32,32
+		GridSolution gese = ((GridSolution)sol);
+		int lx, ly;
+		lx = 19;
+		ly = 25;
+		System.out.println(gese.tilemap.CollideWith(room1.prefab.GetTileMap(), ly, lx));
+		gese.tilemap.Apply(room1.prefab.GetTileMap(), ly,lx);
 		(new MapRenderer(((GridSolution)sol).tilemap)).Show();
 
+		//gese.RenderCanvas();
 		//prob.InsertRandomFeasibleRoom(sol);
-		sol.Render();
-		
+		//sol.Render();
 	}
 
 }

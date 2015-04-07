@@ -16,8 +16,8 @@ public class Test_TileMap {
 	public static void main(String[] args) {
 
 		Integer[] map_data = new Integer[] { 1, 1, 1, 1,
-											 1, 0, 0, 1,
-											 1, 0, 0, 0 };
+											 1, 3, 3, 1,
+											 1, 1, 1, 1 };
 
 		List<Integer> data = Arrays.asList(map_data);
 		TileMap mini = new TileMap(data, 3, 4);
@@ -37,11 +37,14 @@ public class Test_TileMap {
 		mini.Render();
 		br();
 		System.out.println(Prefabs.room0.GetTileMap().CollideWith(mini, 0, 0));
+		System.out.println(Prefabs.room0.GetTileMap().CollideWith(mini, 9, 0));
+		Prefabs.room0.GetTileMap().Apply(mini, 1, 9);
 		// *****************************************
 		
 		// GRAPHICAL DEBUG *************************
 		MapRenderer mr = new MapRenderer(Prefabs.room0.GetTileMap());
 		mr.Show();
+		(new MapRenderer(mini)).Show();
 		// *****************************************
 	}
 
