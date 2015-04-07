@@ -10,6 +10,6 @@ public interface IProblemModel {
 	
 	public void AttachRoomToSolution(RoomInstance selected_room, ISolution partial_solution);
 
-	public RoomInstance InsertRandomFeasibleRoom(ISolution partial_solution);
+	public boolean InsertRandomFeasibleRoom(ISolution partial_solution);
 
 }
