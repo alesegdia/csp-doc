@@ -30,36 +30,34 @@ public class Generator {
 		return clone;
 	}
 
-	/*
-	RoomInstance SelectRandomFeasibleRoom( List<RoomInstance> possible_rooms, ISolution partial_solution )
-	{
-		List<RoomInstance> feasible_rooms = new ArrayList<RoomInstance>();
-		for( Iterator<RoomInstance> it = possible_rooms.iterator(); it.hasNext(); )
-		{
-			RoomInstance room = it.next();
-			if( partial_solution.IsPossibleAddition(room) )
-				feasible_rooms.add(room);
-		}
-		int room_index = rng.nextInt(feasible_rooms.size());
-		RoomInstance selected = feasible_rooms.get(room_index);
-		return selected;
-	}
-	*/
+//	RoomInstance SelectRandomFeasibleRoom( List<RoomInstance> possible_rooms, ISolution partial_solution )
+//	{
+//		List<RoomInstance> feasible_rooms = new ArrayList<RoomInstance>();
+//		for( Iterator<RoomInstance> it = possible_rooms.iterator(); it.hasNext(); )
+//		{
+//			RoomInstance room = it.next();
+//			if( partial_solution.IsPossibleAddition(room) )
+//				feasible_rooms.add(room);
+//		}
+//		int room_index = rng.nextInt(feasible_rooms.size());
+//		RoomInstance selected = feasible_rooms.get(room_index);
+//		return selected;
+//	}
 
 	public ISolution Generate( List<RoomInstance> initial_room_list, IProblemModel problem_model )
 	{
 		ISolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
-
-		while( partial_solution.IsComplete() )
+		
+		System.out.println("start loop");
+		while( !partial_solution.IsComplete() )
 		{
-			RoomInstance selected_room = problem_model.InsertRandomFeasibleRoom( partial_solution );
-			if( selected_room == null )
+			if( !problem_model.InsertRandomFeasibleRoom( partial_solution ) )
 			{
 				System.err.println("ERROR: can't build a complete solution from this partial solution and this list of remaining rooms: ");
-				partial_solution.Render();
-				System.exit(1);
+				break;
 			}
 		}
+		System.out.println("end loop");
 
 		return partial_solution;
 	}
