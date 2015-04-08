@@ -45,11 +45,12 @@ public class GridSolution implements ISolution {
 		this.tilemap.Apply(room.prefab.map, y, x);
 		room.globalPosition.x = x;
 		room.globalPosition.y = y;
-		for(Door door : room.doors)
-		{
-			System.out.println(door);
-			System.out.println(door.ri_owner.globalPosition);
-		}
+//		for(Door door : room.doors)
+//		{
+//			System.out.println("Door: " + door);
+//			System.out.println("Door global pos: " + door.GetGlobalPosition());
+//			System.out.println("Room global pos: " + door.ri_owner.globalPosition);
+//		}
 		opened.addAll(room.doors);
 		added_rooms.add(room);
 	}
