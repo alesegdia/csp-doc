@@ -22,7 +22,9 @@ public final class Prefabs {
 		room2.name = "room2";
 		room3.name = "room3";
 		
-		room1.RenderCanvas();
+		//room1.RenderCanvas();
+		//room2.RenderCanvas();
+		//room3.RenderCanvas();
 		List<RoomInstance> initial_rooms = new LinkedList<RoomInstance>();
 		initial_rooms.add(room1);
 		initial_rooms.add(room2);

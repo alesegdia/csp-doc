@@ -58,7 +58,7 @@ public class Test_GenDoorsAttachRoom {
 		lx = 19;
 		ly = 25;
 		System.out.println(gese.tilemap.CollideWith(room1.prefab.GetTileMap(), ly, lx));
-		gese.tilemap.Apply(room1.prefab.GetTileMap(), ly,lx);
+		gese.tilemap.Apply(room1.prefab.GetTileMap(), ly, lx);
 		(new MapRenderer(((GridSolution)sol).tilemap)).Show();
 
 		//gese.RenderCanvas();
