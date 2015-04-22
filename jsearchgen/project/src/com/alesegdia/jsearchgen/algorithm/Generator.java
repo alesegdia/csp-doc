@@ -47,7 +47,8 @@ public class Generator {
 	public ISolution Generate( List<RoomInstance> initial_room_list, IProblemModel problem_model )
 	{
 		ISolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
-		
+
+		partial_solution.RenderCanvas();
 		System.out.println("start loop");
 		while( !partial_solution.IsComplete() )
 		{
@@ -56,6 +57,7 @@ public class Generator {
 				System.err.println("ERROR: can't build a complete solution from this partial solution and this list of remaining rooms: ");
 				break;
 			}
+			partial_solution.RenderCanvas();
 		}
 		System.out.println("end loop");
 
