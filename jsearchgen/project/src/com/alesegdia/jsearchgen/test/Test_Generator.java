@@ -9,8 +9,11 @@ public class Test_Generator {
 
 	public static void main(String[] args) {
 		
-		Generator generator = new Generator(0xFACEFEED);
+		Generator generator;
+		generator = new Generator(0xDEADBEEF);
+		generator = new Generator(0x12345678);
+		generator = new Generator(0x38483453);
 		ISolution final_solution = generator.Generate(Prefabs.GenerateSampleRoomList(), new GridProblemModel());
-		final_solution.RenderCanvas();
+
 	}
 }

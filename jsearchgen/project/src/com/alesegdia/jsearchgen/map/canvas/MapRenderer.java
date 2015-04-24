@@ -19,6 +19,7 @@ public class MapRenderer extends JComponent {
 	{
 		this.dimension = new Dimension(map.cols * 10, map.rows * 10);
 		this.map = map;
+		map.Render();
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -32,6 +33,8 @@ public class MapRenderer extends JComponent {
 				{
 				case TileType.FREE:	c = Color.white; 		break;
 				case TileType.DOOR: c = Color.yellow; 		break;
+				case TileType.DOORL: c = Color.cyan; 		break;
+				case TileType.DOORH: c = Color.magenta;		break;
 				case TileType.USED: c = Color.lightGray; 	break;
 				case TileType.WALL: c = Color.green; 		break;
 				}

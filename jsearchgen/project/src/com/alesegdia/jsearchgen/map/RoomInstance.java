@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.alesegdia.jsearchgen.map.RoomPrefab.PotentialDoorEntry;
 import com.alesegdia.jsearchgen.map.canvas.MapRenderer;
 import com.alesegdia.jsearchgen.util.RNG;
 import com.alesegdia.jsearchgen.util.Vec2;
@@ -31,7 +32,7 @@ public class RoomInstance {
 	 * @param x relative to room x coordinate
 	 * @param y relative to room y coordinate 
 	 */
-	private void AddDoor( int x, int y, Door.Type type )
+	public void AddDoor( int x, int y, Door.Type type )
 	{
 		Door door = new Door();
 		door.ri_owner = this;
@@ -71,11 +72,16 @@ public class RoomInstance {
 	public TileMap CreateTileMapWithDoors( )
 	{
 		TileMap tm = new TileMap(this.prefab.map);
-		
+
 		for( Door door : doors )
 		{
-			tm.Set(door.localPosition.y, door.localPosition.x, TileType.DOOR);
+			if( door.type == Door.Type.HORIZONTAL) {
+				tm.Set(door.localPosition.y, door.localPosition.x, TileType.DOORL);
+			} else {
+				tm.Set(door.localPosition.y, door.localPosition.x, TileType.DOORH);
+			}
 		}
+		
 		return tm;
 	}
 

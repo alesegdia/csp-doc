@@ -17,9 +17,9 @@ public final class Prefabs {
 		RoomInstance room2 = new RoomInstance(Prefabs.room0);
 		RoomInstance room3 = new RoomInstance(Prefabs.room1);
 		//RNG.rng.setSeed(234252);
-		room1.GenerateRandomDoors(RNG.rng, 2);
-		room2.GenerateRandomDoors(RNG.rng, 2);
-		room3.GenerateRandomDoors(RNG.rng, 2);
+		room1.GenerateRandomDoors(RNG.rng, 10);
+		room2.GenerateRandomDoors(RNG.rng, 10);
+		room3.GenerateRandomDoors(RNG.rng, 10);
 		room1.name = "room1";
 		room2.name = "room2";
 		room3.name = "room3";

@@ -65,7 +65,7 @@ public class RoomPrefab {
 				if( check_horizontal )
 				{
 					PotentialDoorEntry pde = new PotentialDoorEntry();
-					pde.type = Door.Type.VERTICAL;
+					pde.type = Door.Type.HORIZONTAL;
 					pde.localPosition.x = c;
 					pde.localPosition.y = r;
 					potentialDoors.add(pde);
@@ -73,7 +73,7 @@ public class RoomPrefab {
 				else if( check_vertical )
 				{
 					PotentialDoorEntry pde = new PotentialDoorEntry();
-					pde.type = Door.Type.HORIZONTAL;
+					pde.type = Door.Type.VERTICAL;
 					pde.localPosition.x = c;
 					pde.localPosition.y = r;
 					potentialDoors.add(pde);
