@@ -84,19 +84,21 @@ public class GridSolution implements ISolution {
 		
 		if( !feasible_doors.isEmpty() )
 		{
-			System.out.println("FEASIBLE DOORS: " + feasible_doors);
 			int door_index = RNG.rng.nextInt(feasible_doors.size());
 			FeasibleDoorEntry fde = feasible_doors.get(door_index);
 			Door door = fde.other_door;
 			this.AttachRoom(fde.other_door.ri_owner, fde.relativeToSolutionMap.x, fde.relativeToSolutionMap.y);
-			System.out.println("Room name: " + door.ri_owner.name);
-			System.out.println("Other door: " + fde.other_door);
-			System.out.println("This door: " + fde.this_door);
+			Connect(fde.other_door, fde.this_door);
 			this.tilemap.Set(door.GetGlobalPosition().y, door.GetGlobalPosition().x, 2);
 			this.remaining_rooms.remove(door.ri_owner);
 			return true;
 		}
 		else return false;
+	}
+
+	private void Connect(Door other_door, Door this_door) {
+		other_door.connectedTo 	= this_door.ri_owner;
+		this_door.connectedTo 	= other_door.ri_owner;
 	}
 
 	/**
@@ -160,63 +162,6 @@ public class GridSolution implements ISolution {
 		return pos;
 	}
 	
-	/*
-	private Vec2 IsPossibleDoorCombination(Door door_other, Door door_this) {
-		Vec2 pos = null;
-		if( door_other.type == door_this.type )
-		{
-			// we can move door_other but not door_this
-			Vec2 this_global = door_this.GetGlobalPosition();
-			System.out.println("IsPosDorCom: " + this_global);
-			if( door_other.type == Door.Type.VERTICAL )
-			{
-				System.out.println("ver: " + door_other + ", " + door_this);
-				// desplazar other izq. o der.
-				if( this.tilemap.Get(this_global.x, this_global.y+1) == TileType.FREE )
-				{
-					// desplazar a la derecha door_other y comprobar mapa
-					Vec2 tmp = new Vec2(this_global.x, this_global.y+1);
-					if( !this.tilemap.CollideWith(door_other.ri_owner.prefab.map, tmp.x, tmp.y) )
-					{
-						pos = tmp;
-					}
-				}
-				else if( this.tilemap.Get(this_global.x, this_global.y-1) == TileType.FREE )
-				{
-					// desplazar a la izquierda door_other y comprobar mapa
-					Vec2 tmp = new Vec2(this_global.x, this_global.y-1);
-					if( !this.tilemap.CollideWith(door_other.ri_owner.prefab.map, tmp.x, tmp.y) )
-					{
-						pos = tmp;
-					}
-				}
-			}
-			else if( door_other.type == Door.Type.HORIZONTAL )
-			{
-				// desplazar other arr. o aba.
-				if( this.tilemap.Get(this_global.x+1, this_global.y) == TileType.FREE )
-				{
-					// desplazar abajo door_other y comprobar mapa
-					Vec2 tmp = new Vec2(this_global.x+1,this_global.y);
-					if( !this.tilemap.CollideWith(door_other.ri_owner.prefab.map, tmp.x, tmp.y) )
-					{
-						pos = tmp;
-					}
-				}
-				else if( this.tilemap.Get(this_global.x-1, this_global.y) == TileType.FREE )
-				{
-					// desplazar arriba door_other y comprobar mapa
-					Vec2 tmp = new Vec2(this_global.x-1, this_global.y);
-					if( !this.tilemap.CollideWith(door_other.ri_owner.prefab.map, tmp.x, tmp.y) )
-					{
-						pos = tmp;
-					}
-				}
-			}
-		}
-		return pos;
-	}*/
-
 	@Override
 	public void RenderCanvas() {
 		(new MapRenderer(new TileMap(this.CreateTileMapWithDoors()))).Show();
@@ -243,7 +188,6 @@ public class GridSolution implements ISolution {
 			}
 		}
 
-		//for( PotentialDoorEntry pde : this.prefab.potentialDoors )
 		return tm;
 	}
 
