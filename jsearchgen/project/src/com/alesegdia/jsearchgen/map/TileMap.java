@@ -64,6 +64,8 @@ public class TileMap extends Matrix2D<Integer> {
 	
 	public boolean CollideWith(TileMap other, int top, int left)
 	{
+		if( top < 0 || top + other.rows > this.rows ||
+			left < 0 || left + other.cols > this.cols ) return true;
 		int this_top = CapCoord(top, this.rows);
 		int this_left = CapCoord(left, this.cols);
 		int this_bot = CapCoord(top + other.rows, this.rows);
