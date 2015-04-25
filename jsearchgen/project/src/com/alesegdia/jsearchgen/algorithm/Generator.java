@@ -49,7 +49,6 @@ public class Generator {
 		ISolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
 
 		partial_solution.RenderCanvas();
-		System.out.println("start loop");
 		while( !partial_solution.IsComplete() )
 		{
 			if( !problem_model.InsertRandomFeasibleRoom( partial_solution ) )
@@ -57,9 +56,8 @@ public class Generator {
 				System.err.println("ERROR: can't build a complete solution from this partial solution and this list of remaining rooms: ");
 				break;
 			}
-			partial_solution.RenderCanvas();
+			//partial_solution.RenderCanvas();
 		}
-		System.out.println("end loop");
 
 		return partial_solution;
 	}
