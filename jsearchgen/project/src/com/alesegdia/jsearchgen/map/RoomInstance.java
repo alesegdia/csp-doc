@@ -66,7 +66,7 @@ public class RoomInstance {
 	 */
 	public void ConnectDoorByIndex( int door_index, RoomInstance connected_to )
 	{
-		doors.get(door_index).connectedTo = connected_to;
+		doors.get(door_index).connected_room = connected_to;
 	}
 	
 	public TileMap CreateTileMapWithDoors( )

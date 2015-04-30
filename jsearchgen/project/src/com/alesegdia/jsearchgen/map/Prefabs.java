@@ -43,4 +43,23 @@ public final class Prefabs {
 		return initial_rooms;
 	}
 	
+	public static List<RoomInstance> GenerateALot()
+	{
+		List<RoomInstance> ret = new LinkedList<RoomInstance>();
+		ret.addAll(GenerateSet(Prefabs.room1, 10));
+		ret.addAll(GenerateSet(Prefabs.room0, 10));
+		return ret;
+	}
+	
+	public static List<RoomInstance> GenerateSet( RoomPrefab prefab, int n )
+	{
+		List<RoomInstance> retlist = new LinkedList<RoomInstance>();
+		for( int i = 0; i < n; i++ )
+		{
+			RoomInstance ri = new RoomInstance(prefab);
+			ri.GenerateRandomDoors(RNG.rng, 10);
+			retlist.add(ri);
+		}
+		return retlist;
+	}
 }

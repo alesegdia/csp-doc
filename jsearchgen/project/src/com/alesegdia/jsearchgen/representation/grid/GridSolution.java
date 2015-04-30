@@ -97,8 +97,10 @@ public class GridSolution implements ISolution {
 	}
 
 	private void Connect(Door other_door, Door this_door) {
-		other_door.connectedTo 	= this_door.ri_owner;
-		this_door.connectedTo 	= other_door.ri_owner;
+		other_door.connected_room 	= this_door.ri_owner;
+		this_door.connected_room 	= other_door.ri_owner;
+		other_door.connected_door = this_door;
+		this_door.connected_door = other_door;
 	}
 
 	/**
@@ -175,10 +177,13 @@ public class GridSolution implements ISolution {
 		{
 			if( door.type == Door.Type.HORIZONTAL) {
 				tm.Set(door.GetGlobalPosition().y, door.GetGlobalPosition().x, TileType.DOOR);
+				tm.Set(door.connected_door.GetGlobalPosition().y, door.connected_door.GetGlobalPosition().x, TileType.DOOR);
 			} else {
 				tm.Set(door.GetGlobalPosition().y, door.GetGlobalPosition().x, TileType.DOOR);
+				tm.Set(door.connected_door.GetGlobalPosition().y, door.connected_door.GetGlobalPosition().x, TileType.DOOR);
 			}
 		}
+		/*
 		for( Door door : this.opened )
 		{
 			if( door.type == Door.Type.HORIZONTAL) {
@@ -187,6 +192,7 @@ public class GridSolution implements ISolution {
 				tm.Set(door.GetGlobalPosition().y, door.GetGlobalPosition().x, TileType.DOORH);
 			}
 		}
+		*/
 
 		return tm;
 	}

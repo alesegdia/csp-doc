@@ -9,12 +9,12 @@ import com.alesegdia.jsearchgen.representation.IProblemModel;
 import com.alesegdia.jsearchgen.representation.ISolution;
 import com.alesegdia.jsearchgen.util.RNG;
 
-public class Generator {
+public class RandomGenerator {
 
 	List<RoomInstance> startRoomList = new LinkedList<RoomInstance>();
 	RNG rng = new RNG();
 
-	public Generator ( long seed ) {
+	public RandomGenerator ( long seed ) {
 		rng.setSeed(seed);
 	}
 
