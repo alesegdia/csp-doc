@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.map.canvas;
+package com.alesegdia.jsearchgen.map;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -6,9 +6,6 @@ import java.awt.Graphics;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
-
-import com.alesegdia.jsearchgen.map.TileMap;
-import com.alesegdia.jsearchgen.map.TileType;
 
 public class MapRenderer extends JComponent {
 	

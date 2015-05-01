@@ -1,6 +1,6 @@
-package com.alesegdia.jsearchgen.representation;
+package com.alesegdia.jsearchgen.model;
 
-import com.alesegdia.jsearchgen.map.RoomInstance;
+import com.alesegdia.jsearchgen.room.RoomInstance;
 
 public interface ISolution {
 

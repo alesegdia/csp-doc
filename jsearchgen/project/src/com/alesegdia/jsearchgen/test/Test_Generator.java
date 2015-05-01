@@ -1,9 +1,9 @@
 package com.alesegdia.jsearchgen.test;
 
-import com.alesegdia.jsearchgen.algorithm.RandomGenerator;
-import com.alesegdia.jsearchgen.map.Prefabs;
-import com.alesegdia.jsearchgen.representation.ISolution;
-import com.alesegdia.jsearchgen.representation.grid.GridProblemModel;
+import com.alesegdia.jsearchgen.generator.RandomGenerator;
+import com.alesegdia.jsearchgen.model.GraphGridProblemModel;
+import com.alesegdia.jsearchgen.model.ISolution;
+import com.alesegdia.jsearchgen.room.Prefabs;
 import com.alesegdia.jsearchgen.util.RNG;
 
 public class Test_Generator {
@@ -16,7 +16,7 @@ public class Test_Generator {
 		RNG.rng.setSeed(0x38483453);
 		RNG.rng.setSeed(0x23847235);
 		RNG.rng.setSeed(0xFEDEFACE);
-		ISolution final_solution = generator.Generate(Prefabs.GenerateALot(), new GridProblemModel());
+		ISolution final_solution = generator.Generate(Prefabs.GenerateALot(), new GraphGridProblemModel());
 		final_solution.RenderCanvas();
 	}
 }

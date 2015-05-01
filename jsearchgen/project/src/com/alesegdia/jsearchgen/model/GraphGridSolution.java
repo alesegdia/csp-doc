@@ -1,15 +1,14 @@
-package com.alesegdia.jsearchgen.representation.grid;
+package com.alesegdia.jsearchgen.model;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.Door;
-import com.alesegdia.jsearchgen.map.RoomInstance;
+import com.alesegdia.jsearchgen.map.MapRenderer;
 import com.alesegdia.jsearchgen.map.TileMap;
 import com.alesegdia.jsearchgen.map.TileType;
-import com.alesegdia.jsearchgen.map.canvas.MapRenderer;
-import com.alesegdia.jsearchgen.representation.ISolution;
+import com.alesegdia.jsearchgen.room.Door;
+import com.alesegdia.jsearchgen.room.RoomInstance;
 import com.alesegdia.jsearchgen.util.RNG;
 import com.alesegdia.jsearchgen.util.Vec2;
 
@@ -18,7 +17,7 @@ import com.alesegdia.jsearchgen.util.Vec2;
  * and a TileMap representing 
  *
  */
-public class GridSolution implements ISolution {
+public class GraphGridSolution implements ISolution {
 
 	/**
 	 * TileMap representing the entire map as a Matrix2D, with proper rooms placed
@@ -29,12 +28,12 @@ public class GridSolution implements ISolution {
 	public List<RoomInstance> remaining_rooms = new LinkedList<RoomInstance>();
 	public List<RoomInstance> added_rooms = new LinkedList<RoomInstance>();
 	
-	public GridSolution( int rows, int cols )
+	public GraphGridSolution( int rows, int cols )
 	{
 		tilemap = new TileMap(rows, cols, TileType.FREE);
 	}
 	
-	GridSolution( GridSolution other )
+	GraphGridSolution( GraphGridSolution other )
 	{
 		tilemap = new TileMap(other.tilemap);
 	}

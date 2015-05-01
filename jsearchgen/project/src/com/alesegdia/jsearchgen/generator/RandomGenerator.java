@@ -1,12 +1,12 @@
-package com.alesegdia.jsearchgen.algorithm;
+package com.alesegdia.jsearchgen.generator;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.RoomInstance;
-import com.alesegdia.jsearchgen.representation.IProblemModel;
-import com.alesegdia.jsearchgen.representation.ISolution;
+import com.alesegdia.jsearchgen.model.IProblemModel;
+import com.alesegdia.jsearchgen.model.ISolution;
+import com.alesegdia.jsearchgen.room.RoomInstance;
 import com.alesegdia.jsearchgen.util.RNG;
 
 public class RandomGenerator {

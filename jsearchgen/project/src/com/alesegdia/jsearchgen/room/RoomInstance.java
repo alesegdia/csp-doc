@@ -1,11 +1,13 @@
-package com.alesegdia.jsearchgen.map;
+package com.alesegdia.jsearchgen.room;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.RoomPrefab.PotentialDoorEntry;
-import com.alesegdia.jsearchgen.map.canvas.MapRenderer;
+import com.alesegdia.jsearchgen.map.MapRenderer;
+import com.alesegdia.jsearchgen.map.TileMap;
+import com.alesegdia.jsearchgen.map.TileType;
+import com.alesegdia.jsearchgen.room.RoomPrefab.PotentialDoorEntry;
 import com.alesegdia.jsearchgen.util.RNG;
 import com.alesegdia.jsearchgen.util.Vec2;
 
