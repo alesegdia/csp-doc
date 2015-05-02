@@ -44,12 +44,6 @@ public class GraphGridSolution implements ISolution {
 		this.tilemap.Apply(room.prefab.map, r, c);
 		room.globalPosition.x = c;
 		room.globalPosition.y = r;
-//		for(Door door : room.doors)
-//		{
-//			System.out.println("Door: " + door);
-//			System.out.println("Door global pos: " + door.GetGlobalPosition());
-//			System.out.println("Room global pos: " + door.ri_owner.globalPosition);
-//		}
 		opened.addAll(room.doors);
 		added_rooms.add(room);
 	}
@@ -128,7 +122,7 @@ public class GraphGridSolution implements ISolution {
 	}
 	
 	static boolean first = false;
-	private Vec2 checkThis(Door door_other, Door door_this, int dr, int dc, Door.Type doortype)
+	private Vec2 CheckInsert(Door door_other, Door door_this, int dr, int dc, Door.Type doortype)
 	{
 		if( door_other.type == door_this.type )
 		{
@@ -142,7 +136,6 @@ public class GraphGridSolution implements ISolution {
 					{
 							TileMap tm = new TileMap(this.tilemap);
 						tm.Apply(door_other.ri_owner.prefab.map, tmp.y, tmp.x);
-						//(new MapRenderer(tm)).Show();
 
 						return tmp;
 					}
@@ -155,10 +148,10 @@ public class GraphGridSolution implements ISolution {
 	private Vec2 IsPossibleDoorCombination(Door door_other, Door door_this) {
 		Vec2 pos = null;
 		
-						  pos = checkThis(door_other, door_this,   1,   0,   Door.Type.HORIZONTAL);
-		if( pos == null ) pos = checkThis(door_other, door_this,  -1,   0,   Door.Type.HORIZONTAL);
-		if( pos == null ) pos = checkThis(door_other, door_this,   0,   1,   Door.Type.VERTICAL);
-		if( pos == null ) pos = checkThis(door_other, door_this,   0,  -1,   Door.Type.VERTICAL);
+						  pos = CheckInsert(door_other, door_this,   1,   0,   Door.Type.HORIZONTAL);
+		if( pos == null ) pos = CheckInsert(door_other, door_this,  -1,   0,   Door.Type.HORIZONTAL);
+		if( pos == null ) pos = CheckInsert(door_other, door_this,   0,   1,   Door.Type.VERTICAL);
+		if( pos == null ) pos = CheckInsert(door_other, door_this,   0,  -1,   Door.Type.VERTICAL);
 
 		return pos;
 	}

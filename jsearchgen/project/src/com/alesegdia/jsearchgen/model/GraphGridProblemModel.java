@@ -2,8 +2,6 @@ package com.alesegdia.jsearchgen.model;
 
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.TileMap;
-import com.alesegdia.jsearchgen.map.TileType;
 import com.alesegdia.jsearchgen.room.RoomInstance;
 import com.alesegdia.jsearchgen.util.RNG;
 
