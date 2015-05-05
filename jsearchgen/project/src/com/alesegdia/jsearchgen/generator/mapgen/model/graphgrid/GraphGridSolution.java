@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.generator.mapgen.model;
+package com.alesegdia.jsearchgen.generator.mapgen.model.graphgrid;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -8,9 +8,11 @@ import com.alesegdia.jsearchgen.core.map.MapRenderer;
 import com.alesegdia.jsearchgen.core.map.TileMap;
 import com.alesegdia.jsearchgen.core.map.TileType;
 import com.alesegdia.jsearchgen.core.map.room.Door;
+import com.alesegdia.jsearchgen.core.map.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.core.util.Vec2;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
 
 /**
  * Class that will represent a solution as a list of rooms inside,
@@ -60,15 +62,10 @@ public class GraphGridSolution implements IMapGenSolution {
 		return remaining_rooms.isEmpty();
 	}
 	
-	class FeasibleDoorEntry {
-		Door other_door;
-		Vec2 relativeToSolutionMap;
-		public Door this_door;
-	}
 
 	public boolean AttachRandomFeasibleRoom() {
 		// extract feasible doors for each room
-		List<FeasibleDoorEntry> feasible_doors = new LinkedList<FeasibleDoorEntry>();
+		List<DoorPairEntry> feasible_doors = new LinkedList<DoorPairEntry>();
 		for( Iterator<RoomInstance> it = remaining_rooms.iterator(); it.hasNext(); )
 		{
 			RoomInstance room = it.next();
@@ -78,7 +75,7 @@ public class GraphGridSolution implements IMapGenSolution {
 		if( !feasible_doors.isEmpty() )
 		{
 			int door_index = RNG.rng.nextInt(feasible_doors.size());
-			FeasibleDoorEntry fde = feasible_doors.get(door_index);
+			DoorPairEntry fde = feasible_doors.get(door_index);
 			Door door = fde.other_door;
 			this.AttachRoom(fde.other_door.ri_owner, fde.relativeToSolutionMap.x, fde.relativeToSolutionMap.y);
 			Connect(fde.other_door, fde.this_door);
@@ -99,8 +96,8 @@ public class GraphGridSolution implements IMapGenSolution {
 	/**
 	 * Check all other room doors against all opened doors in this solution.
 	 */
-	private List<FeasibleDoorEntry> GetFeasibleDoorsForRoom(RoomInstance room) {
-		List<FeasibleDoorEntry> feasible_entries = new LinkedList<FeasibleDoorEntry>();
+	private List<DoorPairEntry> GetFeasibleDoorsForRoom(RoomInstance room) {
+		List<DoorPairEntry> feasible_entries = new LinkedList<DoorPairEntry>();
 		for( Iterator<Door> it1 = room.doors.iterator(); it1.hasNext(); )
 		{
 			Door door_other = it1.next();
@@ -110,7 +107,7 @@ public class GraphGridSolution implements IMapGenSolution {
 				Vec2 relative_to_this_map = IsPossibleDoorCombination( door_other, door_this );
 				if( relative_to_this_map != null )
 				{
-					FeasibleDoorEntry fde = new FeasibleDoorEntry();
+					DoorPairEntry fde = new DoorPairEntry();
 					fde.relativeToSolutionMap = relative_to_this_map;
 					fde.other_door = door_other;
 					fde.this_door = door_this;
@@ -145,7 +142,7 @@ public class GraphGridSolution implements IMapGenSolution {
 		return null;
 	}
 	
-	private Vec2 IsPossibleDoorCombination(Door door_other, Door door_this) {
+	public Vec2 IsPossibleDoorCombination(Door door_other, Door door_this) {
 		Vec2 pos = null;
 		
 						  pos = CheckInsert(door_other, door_this,   1,   0,   Door.Type.HORIZONTAL);

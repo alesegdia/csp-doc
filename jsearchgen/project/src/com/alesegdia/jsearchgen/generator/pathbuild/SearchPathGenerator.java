@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenModel;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenResolver;
 import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
 
 public class SearchPathGenerator {
@@ -19,7 +19,7 @@ public class SearchPathGenerator {
 		this.startRoomList = room_list;
 	}
 	
-	public IMapGenSolution Generate( List<RoomInstance> initial_room_list, IMapGenModel problem_model ) {
+	public IMapGenSolution Generate( List<RoomInstance> initial_room_list, IMapGenResolver problem_model ) {
 		IMapGenSolution partial = problem_model.CreateFirstSolution(initial_room_list);
 		return null;
 	}

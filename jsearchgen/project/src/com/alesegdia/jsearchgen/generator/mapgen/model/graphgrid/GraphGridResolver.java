@@ -1,11 +1,13 @@
-package com.alesegdia.jsearchgen.generator.mapgen.model;
+package com.alesegdia.jsearchgen.generator.mapgen.model.graphgrid;
 
 import java.util.List;
 
 import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenResolver;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
 
-public class GraphGridModel implements IMapGenModel {
+public class GraphGridResolver implements IMapGenResolver {
 	
 	private static final int SOLUTION_WIDTH = 100;
 	private static final int SOLUTION_HEIGHT = 60;

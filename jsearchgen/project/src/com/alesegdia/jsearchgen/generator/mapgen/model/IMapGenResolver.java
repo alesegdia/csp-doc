@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 
-public interface IMapGenModel {
+public interface IMapGenResolver {
 	
 	public IMapGenSolution CreateFirstSolution(List<RoomInstance> remaining_rooms);
 	

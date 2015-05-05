@@ -6,7 +6,7 @@ import java.util.List;
 
 import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenModel;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenResolver;
 import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
 
 public class RandomRoomGenerator {
@@ -44,7 +44,7 @@ public class RandomRoomGenerator {
 //		return selected;
 //	}
 
-	public IMapGenSolution Generate( List<RoomInstance> initial_room_list, IMapGenModel problem_model )
+	public IMapGenSolution Generate( List<RoomInstance> initial_room_list, IMapGenResolver problem_model )
 	{
 		IMapGenSolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
 
