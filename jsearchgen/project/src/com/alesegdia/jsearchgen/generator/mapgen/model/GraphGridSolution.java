@@ -7,10 +7,10 @@ import java.util.List;
 import com.alesegdia.jsearchgen.core.map.MapRenderer;
 import com.alesegdia.jsearchgen.core.map.TileMap;
 import com.alesegdia.jsearchgen.core.map.TileType;
+import com.alesegdia.jsearchgen.core.map.room.Door;
+import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.core.util.Vec2;
-import com.alesegdia.jsearchgen.room.Door;
-import com.alesegdia.jsearchgen.room.RoomInstance;
 
 /**
  * Class that will represent a solution as a list of rooms inside,

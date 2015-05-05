@@ -1,10 +1,10 @@
 package com.alesegdia.jsearchgen.test;
 
+import com.alesegdia.jsearchgen.core.map.room.Prefabs;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.generator.mapgen.RandomRoomGenerator;
 import com.alesegdia.jsearchgen.generator.mapgen.model.GraphGridModel;
 import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
-import com.alesegdia.jsearchgen.room.Prefabs;
 
 public class Test_Generator {
 

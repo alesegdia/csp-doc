@@ -1,12 +1,12 @@
-package com.alesegdia.jsearchgen.room;
+package com.alesegdia.jsearchgen.core.map.room;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.core.map.TileMap;
 import com.alesegdia.jsearchgen.core.map.TileType;
+import com.alesegdia.jsearchgen.core.map.room.Door.Type;
 import com.alesegdia.jsearchgen.core.util.Vec2;
-import com.alesegdia.jsearchgen.room.Door.Type;
 
 public class RoomPrefab {
 	

@@ -2,8 +2,8 @@ package com.alesegdia.jsearchgen.generator.mapgen.model;
 
 import java.util.List;
 
+import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.room.RoomInstance;
 
 public class GraphGridModel implements IMapGenModel {
 	

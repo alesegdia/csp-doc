@@ -4,13 +4,13 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.core.map.MapRenderer;
+import com.alesegdia.jsearchgen.core.map.room.Prefabs;
+import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.generator.mapgen.model.GraphGridModel;
 import com.alesegdia.jsearchgen.generator.mapgen.model.GraphGridSolution;
 import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenModel;
 import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
-import com.alesegdia.jsearchgen.room.Prefabs;
-import com.alesegdia.jsearchgen.room.RoomInstance;
 
 public class Test_GenDoorsAttachRoom {
 	

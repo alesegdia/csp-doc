@@ -1,6 +1,6 @@
 package com.alesegdia.jsearchgen.generator.mapgen.model;
 
-import com.alesegdia.jsearchgen.room.RoomInstance;
+import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
 
 public interface IMapGenSolution {
 
