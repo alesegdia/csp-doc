@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.map;
+package com.alesegdia.jsearchgen.core.map;
 
 public class TileType {
 	public static final int WALL=1; // muro

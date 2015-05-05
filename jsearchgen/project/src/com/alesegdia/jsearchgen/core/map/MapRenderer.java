@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.map;
+package com.alesegdia.jsearchgen.core.map;
 
 import java.awt.Color;
 import java.awt.Dimension;

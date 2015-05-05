@@ -1,20 +1,20 @@
-package com.alesegdia.jsearchgen.generator;
+package com.alesegdia.jsearchgen.generator.mapgen;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.model.IProblemModel;
-import com.alesegdia.jsearchgen.model.ISolution;
+import com.alesegdia.jsearchgen.core.util.RNG;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenModel;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
 import com.alesegdia.jsearchgen.room.RoomInstance;
-import com.alesegdia.jsearchgen.util.RNG;
 
-public class RandomGenerator {
+public class RandomRoomGenerator {
 
 	List<RoomInstance> startRoomList = new LinkedList<RoomInstance>();
 	RNG rng = new RNG();
 
-	public RandomGenerator ( long seed ) {
+	public RandomRoomGenerator ( long seed ) {
 		rng.setSeed(seed);
 	}
 
@@ -44,9 +44,9 @@ public class RandomGenerator {
 //		return selected;
 //	}
 
-	public ISolution Generate( List<RoomInstance> initial_room_list, IProblemModel problem_model )
+	public IMapGenSolution Generate( List<RoomInstance> initial_room_list, IMapGenModel problem_model )
 	{
-		ISolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
+		IMapGenSolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
 
 		partial_solution.RenderCanvas();
 		while( !partial_solution.IsComplete() )

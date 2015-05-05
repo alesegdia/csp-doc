@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.MapRenderer;
-import com.alesegdia.jsearchgen.map.TileMap;
-import com.alesegdia.jsearchgen.map.TileType;
+import com.alesegdia.jsearchgen.core.map.MapRenderer;
+import com.alesegdia.jsearchgen.core.map.TileMap;
+import com.alesegdia.jsearchgen.core.map.TileType;
+import com.alesegdia.jsearchgen.core.util.RNG;
+import com.alesegdia.jsearchgen.core.util.Vec2;
 import com.alesegdia.jsearchgen.room.RoomPrefab.PotentialDoorEntry;
-import com.alesegdia.jsearchgen.util.RNG;
-import com.alesegdia.jsearchgen.util.Vec2;
 
 /**
  * Glue between the physical map representation of a Room, Door(s) and the position it has.

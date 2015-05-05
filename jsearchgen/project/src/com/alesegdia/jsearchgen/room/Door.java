@@ -1,6 +1,6 @@
 package com.alesegdia.jsearchgen.room;
 
-import com.alesegdia.jsearchgen.util.Vec2;
+import com.alesegdia.jsearchgen.core.util.Vec2;
 
 public class Door {
 

@@ -3,9 +3,9 @@ package com.alesegdia.jsearchgen.room;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.TileMap;
+import com.alesegdia.jsearchgen.core.map.TileMap;
+import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.room.Door.Type;
-import com.alesegdia.jsearchgen.util.RNG;
 
 public final class Prefabs {
 

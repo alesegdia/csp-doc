@@ -1,23 +1,23 @@
-package com.alesegdia.jsearchgen.model;
+package com.alesegdia.jsearchgen.generator.mapgen.model;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.MapRenderer;
-import com.alesegdia.jsearchgen.map.TileMap;
-import com.alesegdia.jsearchgen.map.TileType;
+import com.alesegdia.jsearchgen.core.map.MapRenderer;
+import com.alesegdia.jsearchgen.core.map.TileMap;
+import com.alesegdia.jsearchgen.core.map.TileType;
+import com.alesegdia.jsearchgen.core.util.RNG;
+import com.alesegdia.jsearchgen.core.util.Vec2;
 import com.alesegdia.jsearchgen.room.Door;
 import com.alesegdia.jsearchgen.room.RoomInstance;
-import com.alesegdia.jsearchgen.util.RNG;
-import com.alesegdia.jsearchgen.util.Vec2;
 
 /**
  * Class that will represent a solution as a list of rooms inside,
  * and a TileMap representing 
  *
  */
-public class GraphGridSolution implements ISolution {
+public class GraphGridSolution implements IMapGenSolution {
 
 	/**
 	 * TileMap representing the entire map as a Matrix2D, with proper rooms placed

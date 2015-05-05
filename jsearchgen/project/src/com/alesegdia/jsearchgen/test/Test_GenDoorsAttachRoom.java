@@ -3,14 +3,14 @@ package com.alesegdia.jsearchgen.test;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.MapRenderer;
-import com.alesegdia.jsearchgen.model.GraphGridProblemModel;
-import com.alesegdia.jsearchgen.model.GraphGridSolution;
-import com.alesegdia.jsearchgen.model.IProblemModel;
-import com.alesegdia.jsearchgen.model.ISolution;
+import com.alesegdia.jsearchgen.core.map.MapRenderer;
+import com.alesegdia.jsearchgen.core.util.RNG;
+import com.alesegdia.jsearchgen.generator.mapgen.model.GraphGridModel;
+import com.alesegdia.jsearchgen.generator.mapgen.model.GraphGridSolution;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenModel;
+import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
 import com.alesegdia.jsearchgen.room.Prefabs;
 import com.alesegdia.jsearchgen.room.RoomInstance;
-import com.alesegdia.jsearchgen.util.RNG;
 
 public class Test_GenDoorsAttachRoom {
 	
@@ -51,8 +51,8 @@ public class Test_GenDoorsAttachRoom {
 		initial_rooms.add(room2);
 		initial_rooms.add(room3);
 		
-		IProblemModel prob = new GraphGridProblemModel();
-		ISolution sol = prob.CreateFirstSolution(initial_rooms); // en 32,32
+		IMapGenModel prob = new GraphGridModel();
+		IMapGenSolution sol = prob.CreateFirstSolution(initial_rooms); // en 32,32
 		GraphGridSolution gese = ((GraphGridSolution)sol);
 		int lx, ly;
 		lx = 19;

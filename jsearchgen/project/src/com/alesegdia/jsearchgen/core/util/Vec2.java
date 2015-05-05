@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.util;
+package com.alesegdia.jsearchgen.core.util;
 
 public class Vec2 {
 

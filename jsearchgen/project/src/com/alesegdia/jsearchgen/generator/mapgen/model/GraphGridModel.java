@@ -1,29 +1,29 @@
-package com.alesegdia.jsearchgen.model;
+package com.alesegdia.jsearchgen.generator.mapgen.model;
 
 import java.util.List;
 
+import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.room.RoomInstance;
-import com.alesegdia.jsearchgen.util.RNG;
 
-public class GraphGridProblemModel implements IProblemModel {
+public class GraphGridModel implements IMapGenModel {
 	
 	private static final int SOLUTION_WIDTH = 100;
 	private static final int SOLUTION_HEIGHT = 60;
 	
 
 	@Override
-	public void AttachRoomToSolution(RoomInstance selected_room, ISolution partial_solution) {
+	public void AttachRoomToSolution(RoomInstance selected_room, IMapGenSolution partial_solution) {
 		
 	}
 	
 	@Override
-	public boolean InsertRandomFeasibleRoom(ISolution partial_solution) {
+	public boolean InsertRandomFeasibleRoom(IMapGenSolution partial_solution) {
 		GraphGridSolution gs = ((GraphGridSolution) partial_solution);
 		return gs.AttachRandomFeasibleRoom();
 	}
 
 	@Override
-	public ISolution CreateFirstSolution(List<RoomInstance> remaining_rooms) {
+	public IMapGenSolution CreateFirstSolution(List<RoomInstance> remaining_rooms) {
 		GraphGridSolution gs = new GraphGridSolution( SOLUTION_HEIGHT, SOLUTION_WIDTH );
 		try {
 			int room_index = RNG.rng.nextInt(0, remaining_rooms.size()-1);

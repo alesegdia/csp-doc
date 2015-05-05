@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.util;
+package com.alesegdia.jsearchgen.core.util;
 
 import java.util.ArrayList;
 import java.util.Collections;

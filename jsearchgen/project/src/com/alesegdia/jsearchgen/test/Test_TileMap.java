@@ -3,8 +3,8 @@ package com.alesegdia.jsearchgen.test;
 import java.util.Arrays;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.map.MapRenderer;
-import com.alesegdia.jsearchgen.map.TileMap;
+import com.alesegdia.jsearchgen.core.map.MapRenderer;
+import com.alesegdia.jsearchgen.core.map.TileMap;
 import com.alesegdia.jsearchgen.room.Prefabs;
 
 public class Test_TileMap {

@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.map;
+package com.alesegdia.jsearchgen.core.map;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
@@ -10,8 +10,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.alesegdia.jsearchgen.util.FileUtil;
-import com.alesegdia.jsearchgen.util.Matrix2D;
+import com.alesegdia.jsearchgen.core.util.FileUtil;
+import com.alesegdia.jsearchgen.core.util.Matrix2D;
 
 public class TileMap extends Matrix2D<Integer> {
 
