@@ -20,6 +20,7 @@ public class RoomInstance {
 	public RoomPrefab prefab;
 	public Vec2 globalPosition = new Vec2(0,0);
 	public String name;
+	public int id;
 	
 	/** Holds the map. Doesn't need to copy since this map won't change,
 	 * we will place doors by adding them properly to the list
