@@ -48,10 +48,10 @@ public class RoomGraphModel {
 		}
 	}
 	
-	private void AddOrCreateAndAdd(Door inner, Door outer, DoorPairEntry dpe) {
+	private void AppendLink(DoorPairEntry dpe) {
 		int id1, id2;
-		id1 = inner.connected_room.id;
-		id2 = outer.connected_room.id;
+		id1 = dpe.other_door.connected_room.id;
+		id2 = dpe.this_door.connected_room.id;
 		List<DoorPairEntry> dpe_list = possibleLinks.Get(id1, id2);
 		if( dpe_list == null ) {
 			dpe_list = new LinkedList<DoorPairEntry>();
@@ -67,7 +67,7 @@ public class RoomGraphModel {
 			dpe.other_door = door_inner;
 			dpe.this_door = door_outer;
 			dpe.relativeToSolutionMap = pos;
-			AddOrCreateAndAdd(door_inner, door_outer, dpe);
+			AppendLink(dpe);
 		}
 	}
 
