@@ -10,7 +10,7 @@ import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 import com.alesegdia.jsearchgen.core.util.Vec2;
 import com.alesegdia.jsearchgen.mapgen.model.graphgrid.GraphGridSolution;
 
-public class RoomGraphModel {
+public class MapGraphModel {
 
 	public List<RoomInstance> rooms;
 	public UpperMatrix2D<List<DoorPairEntry>> possibleLinks = null;
@@ -30,7 +30,7 @@ public class RoomGraphModel {
 		
 		// Computamos las potenciales combinaciones (quizá un subconjunto de ellas?)
 		for( RoomInstance roominstance_outer : graphgridsolution.added_rooms ) {
-			RoomGraphNode rgn = new RoomGraphNode();
+			MapGraphNode rgn = new MapGraphNode();
 			rgn.room = roominstance_outer;
 			for( RoomInstance roominstance_inner : graphgridsolution.added_rooms ) {
 				if( roominstance_outer != roominstance_inner ) {

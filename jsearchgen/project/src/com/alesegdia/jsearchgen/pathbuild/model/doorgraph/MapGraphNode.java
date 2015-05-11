@@ -5,10 +5,10 @@ import java.util.List;
 
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 
-public class RoomGraphNode {
+public class MapGraphNode {
 
 	public RoomInstance room;
-	public List<RoomGraphLink> links = new LinkedList<RoomGraphLink>();
+	public List<MapGraphLink> links = new LinkedList<MapGraphLink>();
 
 	
 }

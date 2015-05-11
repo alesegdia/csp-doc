@@ -1,5 +1,5 @@
 package com.alesegdia.jsearchgen.pathbuild.model.doorgraph;
 
-public class DoorGraphResolver {
+public class MapGraphLink {
 
 }
