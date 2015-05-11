@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.mapgen.model;
+package com.alesegdia.jsearchgen.mapgen;
 
 import java.util.List;
 

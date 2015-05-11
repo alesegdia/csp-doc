@@ -7,10 +7,10 @@ import com.alesegdia.jsearchgen.core.map.MapRenderer;
 import com.alesegdia.jsearchgen.core.room.Prefabs;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.mapgen.model.IMapGenResolver;
-import com.alesegdia.jsearchgen.mapgen.model.IMapGenSolution;
-import com.alesegdia.jsearchgen.mapgen.model.graphgrid.GraphGridResolver;
-import com.alesegdia.jsearchgen.mapgen.model.graphgrid.GraphGridSolution;
+import com.alesegdia.jsearchgen.mapgen.GraphGridResolver;
+import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
+import com.alesegdia.jsearchgen.mapgen.IMapGenResolver;
+import com.alesegdia.jsearchgen.mapgen.IMapGenSolution;
 
 public class Test_GenDoorsAttachRoom {
 	

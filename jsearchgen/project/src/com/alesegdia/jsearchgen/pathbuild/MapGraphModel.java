@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.pathbuild.model.doorgraph;
+package com.alesegdia.jsearchgen.pathbuild;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -8,7 +8,7 @@ import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 import com.alesegdia.jsearchgen.core.util.Vec2;
-import com.alesegdia.jsearchgen.mapgen.model.graphgrid.GraphGridSolution;
+import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
 
 public class MapGraphModel {
 

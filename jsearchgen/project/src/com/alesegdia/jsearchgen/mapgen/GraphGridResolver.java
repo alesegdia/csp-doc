@@ -1,11 +1,9 @@
-package com.alesegdia.jsearchgen.mapgen.model.graphgrid;
+package com.alesegdia.jsearchgen.mapgen;
 
 import java.util.List;
 
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.mapgen.model.IMapGenResolver;
-import com.alesegdia.jsearchgen.mapgen.model.IMapGenSolution;
 
 public class GraphGridResolver implements IMapGenResolver {
 	

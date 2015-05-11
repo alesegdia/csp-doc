@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.pathbuild.model.doorgraph;
+package com.alesegdia.jsearchgen.pathbuild;
 
 import java.util.List;
 

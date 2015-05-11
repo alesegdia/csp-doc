@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.mapgen.model.graphgrid;
+package com.alesegdia.jsearchgen.mapgen;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -12,7 +12,6 @@ import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.core.util.Vec2;
-import com.alesegdia.jsearchgen.mapgen.model.IMapGenSolution;
 
 /**
  * Class that will represent a solution as a list of rooms inside,
