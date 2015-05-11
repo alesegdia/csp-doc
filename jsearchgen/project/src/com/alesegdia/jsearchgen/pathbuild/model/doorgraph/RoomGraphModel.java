@@ -1,20 +1,22 @@
-package com.alesegdia.jsearchgen.generator.pathbuild.model.doorgraph;
+package com.alesegdia.jsearchgen.pathbuild.model.doorgraph;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.map.room.Door;
-import com.alesegdia.jsearchgen.core.map.room.DoorPairEntry;
-import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
+import com.alesegdia.jsearchgen.core.room.Door;
+import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
+import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 import com.alesegdia.jsearchgen.core.util.Vec2;
-import com.alesegdia.jsearchgen.generator.mapgen.model.graphgrid.GraphGridSolution;
+import com.alesegdia.jsearchgen.mapgen.model.graphgrid.GraphGridSolution;
 
 public class RoomGraphModel {
 
 	public List<RoomInstance> rooms;
 	public UpperMatrix2D<List<DoorPairEntry>> possibleLinks = null;
 
+	// cada habitación tiene un ID que se usará para identificarla de forma única
+	// y usarla como índice
 	public void BuildFromGraphGridSolution(GraphGridSolution graphgridsolution) {
 		
 		// Asignamos ID para cada habitación

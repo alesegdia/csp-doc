@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.alesegdia.jsearchgen.core.map.MapRenderer;
 import com.alesegdia.jsearchgen.core.map.TileMap;
-import com.alesegdia.jsearchgen.core.map.room.Prefabs;
+import com.alesegdia.jsearchgen.core.room.Prefabs;
 
 public class Test_TileMap {
 	

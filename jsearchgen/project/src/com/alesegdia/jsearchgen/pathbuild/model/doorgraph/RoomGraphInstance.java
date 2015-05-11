@@ -1,8 +1,8 @@
-package com.alesegdia.jsearchgen.generator.pathbuild.model.doorgraph;
+package com.alesegdia.jsearchgen.pathbuild.model.doorgraph;
 
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.map.room.DoorPairEntry;
+import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 
 public class RoomGraphInstance {

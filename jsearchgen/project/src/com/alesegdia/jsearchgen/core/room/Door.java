@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.core.map.room;
+package com.alesegdia.jsearchgen.core.room;
 
 import com.alesegdia.jsearchgen.core.util.Vec2;
 
@@ -15,6 +15,7 @@ public class Door {
 		this.id = nextRoomID++;
 		this.localPosition = new Vec2(0,0);
 	}
+
 	public RoomInstance connected_room;
 	public RoomInstance ri_owner;
 	public Door connected_door;

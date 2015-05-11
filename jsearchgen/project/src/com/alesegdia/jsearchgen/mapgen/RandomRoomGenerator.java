@@ -1,13 +1,13 @@
-package com.alesegdia.jsearchgen.generator.mapgen;
+package com.alesegdia.jsearchgen.mapgen;
 
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.map.room.RoomInstance;
+import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenResolver;
-import com.alesegdia.jsearchgen.generator.mapgen.model.IMapGenSolution;
+import com.alesegdia.jsearchgen.mapgen.model.IMapGenResolver;
+import com.alesegdia.jsearchgen.mapgen.model.IMapGenSolution;
 
 public class RandomRoomGenerator {
 
