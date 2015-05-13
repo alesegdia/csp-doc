@@ -7,8 +7,7 @@ public class UpperMatrix2D<T> extends Matrix2D<T> {
 		super(rows, cols, def);
 	}
 
-	@Override
-	public T Get( int row, int col ) {
+	public T GetUpper( int row, int col ) {
 		if( row > col ) {
 			return super.Get(col, row);
 		} else {
@@ -16,13 +15,21 @@ public class UpperMatrix2D<T> extends Matrix2D<T> {
 		}
 	}
 	
-	@Override
-	public void Set( int row, int col, T val ) {
+	public void SetUpper( int row, int col, T val ) {
 		if( row > col ) {
 			super.Set(col, row, val);
 		} else {
 			super.Set(row, col, val);
 		}
 	}
-	
+
+	public void Debug() {
+		for( int i = 0; i < cols; i++ ) {
+			for( int j = 0; j < rows; j++ ) {
+				System.out.print(super.Get(i,j));
+			}
+			System.out.println();
+		}
+	}
+
 }

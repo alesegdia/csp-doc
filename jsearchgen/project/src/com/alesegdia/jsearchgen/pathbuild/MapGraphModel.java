@@ -51,23 +51,17 @@ public class MapGraphModel {
 
 	private void AppendLink(DoorPairEntry dpe) {
 		int id1, id2;
-		id1 = dpe.other_door.connected_room.id;
-		id2 = dpe.this_door.connected_room.id;
-		List<DoorPairEntry> dpe_list = possibleLinks.Get(id1, id2);
+		id1 = dpe.other_door.ri_owner.id;
+		id2 = dpe.this_door.ri_owner.id;
+		List<DoorPairEntry> dpe_list = possibleLinks.GetUpper(id2, id1);
 		if( dpe_list == null ) {
 			dpe_list = new LinkedList<DoorPairEntry>();
-			possibleLinks.Set(id1, id2, dpe_list);
+			possibleLinks.SetUpper(id2, id1, dpe_list);
 		}
 		dpe_list.add(dpe);
 	}
 
 	private void HandleDoorVsDoor(GraphGridSolution graphgridsolution, Door door_inner, Door door_outer) {
-		if(
-				door_inner.connected_door == null ||
-				door_inner.connected_room == null ||
-				door_outer.connected_door == null ||
-				door_outer.connected_room == null ) return;
-
 		Vec2 pos = graphgridsolution.IsPossibleDoorCombination(door_inner, door_outer);
 		if( pos != null ) {
 			DoorPairEntry dpe = new DoorPairEntry();
@@ -83,9 +77,9 @@ public class MapGraphModel {
 			for( int j = 0; j < possibleLinks.rows; j++ ) {
 				List<DoorPairEntry> l = possibleLinks.Get(i, j);
 				if( l == null ) {
-					System.out.print("X");
+					System.out.print("· ");
 				} else {
-					System.out.print(l.size());
+					System.out.print(l.size() + " ");
 				}
 			}
 			System.out.println();
