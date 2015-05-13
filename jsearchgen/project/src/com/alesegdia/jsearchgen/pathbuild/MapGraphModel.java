@@ -6,6 +6,7 @@ import java.util.List;
 import com.alesegdia.jsearchgen.core.room.Door;
 import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
+import com.alesegdia.jsearchgen.core.util.Matrix2D;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 import com.alesegdia.jsearchgen.core.util.Vec2;
 import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
@@ -18,20 +19,18 @@ public class MapGraphModel {
 	// cada habitación tiene un ID que se usará para identificarla de forma única
 	// y usarla como índice
 	public void BuildFromGraphGridSolution(GraphGridSolution graphgridsolution) {
-		
+
 		// Asignamos ID para cada habitación
 		int i = 0;
 		for( RoomInstance roominstance : graphgridsolution.added_rooms ) {
 			roominstance.id = i;
 			i++;
 		}
-		
+
 		possibleLinks = new UpperMatrix2D<List<DoorPairEntry>>(i, i, null);
-		
+
 		// Computamos las potenciales combinaciones (quizá un subconjunto de ellas?)
 		for( RoomInstance roominstance_outer : graphgridsolution.added_rooms ) {
-			MapGraphNode rgn = new MapGraphNode();
-			rgn.room = roominstance_outer;
 			for( RoomInstance roominstance_inner : graphgridsolution.added_rooms ) {
 				if( roominstance_outer != roominstance_inner ) {
 					HandleRoomVsRoom(graphgridsolution, roominstance_outer, roominstance_inner);
@@ -49,7 +48,7 @@ public class MapGraphModel {
 			}
 		}
 	}
-	
+
 	private void AppendLink(DoorPairEntry dpe) {
 		int id1, id2;
 		id1 = dpe.other_door.connected_room.id;
@@ -63,6 +62,12 @@ public class MapGraphModel {
 	}
 
 	private void HandleDoorVsDoor(GraphGridSolution graphgridsolution, Door door_inner, Door door_outer) {
+		if(
+				door_inner.connected_door == null ||
+				door_inner.connected_room == null ||
+				door_outer.connected_door == null ||
+				door_outer.connected_room == null ) return;
+
 		Vec2 pos = graphgridsolution.IsPossibleDoorCombination(door_inner, door_outer);
 		if( pos != null ) {
 			DoorPairEntry dpe = new DoorPairEntry();
@@ -70,6 +75,20 @@ public class MapGraphModel {
 			dpe.this_door = door_outer;
 			dpe.relativeToSolutionMap = pos;
 			AppendLink(dpe);
+		}
+	}
+
+	public void Debug() {
+		for( int i = 0; i < possibleLinks.cols; i++ ) {
+			for( int j = 0; j < possibleLinks.rows; j++ ) {
+				List<DoorPairEntry> l = possibleLinks.Get(i, j);
+				if( l == null ) {
+					System.out.print("X");
+				} else {
+					System.out.print(l.size());
+				}
+			}
+			System.out.println();
 		}
 	}
 
