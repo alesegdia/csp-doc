@@ -26,7 +26,9 @@ public class Door {
 	
 	public String toString()
 	{
-		return "[ local: " + localPosition.toString() + ", global: " + this.GetGlobalPosition().toString() + " ]";
+		//return "[ local: " + localPosition.toString() + ", global: " + this.GetGlobalPosition().toString() + " ]";
+		//return "<room " + ri_owner.id + " pos " + GetGlobalPosition().toString() + ">";
+		return "<" + ri_owner.id + connected_door.ri_owner.id + ">";
 	}
 
 	public Vec2 GetGlobalPosition() {

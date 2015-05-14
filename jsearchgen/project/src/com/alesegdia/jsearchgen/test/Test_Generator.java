@@ -1,5 +1,6 @@
 package com.alesegdia.jsearchgen.test;
 
+import com.alesegdia.jsearchgen.core.map.GraphGridSolutionRenderer;
 import com.alesegdia.jsearchgen.core.room.Prefabs;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.mapgen.GraphGridResolver;
@@ -24,5 +25,7 @@ public class Test_Generator {
 		MapGraphModel mgm = new MapGraphModel();
 		mgm.BuildFromGraphGridSolution(((GraphGridSolution)final_solution));
 		mgm.Debug();
+		GraphGridSolutionRenderer ggsr = new GraphGridSolutionRenderer(((GraphGridSolution)final_solution));
+		ggsr.Show();
 	}
 }

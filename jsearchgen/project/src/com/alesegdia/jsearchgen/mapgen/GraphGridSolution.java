@@ -171,7 +171,6 @@ public class GraphGridSolution implements IMapGenSolution {
 				tm.Set(door.connected_door.GetGlobalPosition().y, door.connected_door.GetGlobalPosition().x, TileType.DOOR);
 			}
 		}
-		/*
 		for( Door door : this.opened )
 		{
 			if( door.type == Door.Type.HORIZONTAL) {
@@ -180,7 +179,6 @@ public class GraphGridSolution implements IMapGenSolution {
 				tm.Set(door.GetGlobalPosition().y, door.GetGlobalPosition().x, TileType.DOORH);
 			}
 		}
-		*/
 
 		return tm;
 	}

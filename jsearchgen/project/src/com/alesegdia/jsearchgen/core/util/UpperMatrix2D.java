@@ -8,18 +8,18 @@ public class UpperMatrix2D<T> extends Matrix2D<T> {
 	}
 
 	public T GetUpper( int row, int col ) {
-		if( row > col ) {
-			return super.Get(col, row);
-		} else {
+		if( row < col ) {
 			return super.Get(row, col);
+		} else {
+			return super.Get(col, row);
 		}
 	}
 	
 	public void SetUpper( int row, int col, T val ) {
-		if( row > col ) {
-			super.Set(col, row, val);
-		} else {
+		if( row < col ) {
 			super.Set(row, col, val);
+		} else {
+			super.Set(col, row, val);
 		}
 	}
 

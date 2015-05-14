@@ -53,6 +53,7 @@ public class MapGraphModel {
 		int id1, id2;
 		id1 = dpe.other_door.ri_owner.id;
 		id2 = dpe.this_door.ri_owner.id;
+
 		List<DoorPairEntry> dpe_list = possibleLinks.GetUpper(id2, id1);
 		if( dpe_list == null ) {
 			dpe_list = new LinkedList<DoorPairEntry>();
@@ -83,6 +84,22 @@ public class MapGraphModel {
 				}
 			}
 			System.out.println();
+		}
+
+		for( int i = 0; i < possibleLinks.cols; i++ ) {
+			System.out.print("room " + i + " connected with ");
+			int howMuch = 0;
+			for( int j = 0; j < possibleLinks.rows; j++ ) {
+				List<DoorPairEntry> l = possibleLinks.Get(i, j);
+				if( l != null )
+				{
+					howMuch++;
+					for( DoorPairEntry dpe : l ) {
+						System.out.print("[" + dpe.this_door + "," + dpe.other_door + "]  ,  ");
+					}
+				}
+			}
+			System.out.println("\ntotal: " + howMuch);
 		}
 	}
 
