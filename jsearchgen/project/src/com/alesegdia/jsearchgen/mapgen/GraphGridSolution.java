@@ -28,6 +28,7 @@ public class GraphGridSolution implements IMapGenSolution {
 	public List<Door> closed = new LinkedList<Door>();
 	public List<RoomInstance> remaining_rooms = new LinkedList<RoomInstance>();
 	public List<RoomInstance> added_rooms = new LinkedList<RoomInstance>();
+	public List<DoorPairEntry> added_dpes = new LinkedList<DoorPairEntry>();
 	
 	public GraphGridSolution( int rows, int cols )
 	{
@@ -80,6 +81,7 @@ public class GraphGridSolution implements IMapGenSolution {
 			Connect(fde.other_door, fde.this_door);
 			this.tilemap.Set(door.GetGlobalPosition().y, door.GetGlobalPosition().x, 2);
 			this.remaining_rooms.remove(door.ri_owner);
+			this.added_dpes.add(fde);
 			return true;
 		}
 		else return false;

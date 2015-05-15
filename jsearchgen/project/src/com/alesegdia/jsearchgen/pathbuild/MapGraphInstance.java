@@ -17,7 +17,7 @@ public class MapGraphInstance {
 		activeLinks = new UpperMatrix2D<BitSet>(sz, sz, null);
 		for( int i = 0; i < mgm.rooms.size(); i++ ) {
 			for( int j = i+1; j < mgm.rooms.size(); j++ ) {
-				List<DoorPairEntry> list = mgm.possibleLinks.Get(i, j);
+				List<DoorPairEntry> list = mgm.possibleLinksUpperMatrix.Get(i, j);
 				// si existen conexiones entre estas dos puertas
 				if( list != null ) {
 					BitSet bs = new BitSet(list.size());
