@@ -12,7 +12,6 @@ import com.alesegdia.jsearchgen.pathbuild.MapGraphModel;
 public class Test_Generator {
 
 	public static void main(String[] args) {
-		
 		RandomRoomGenerator generator;
 		generator = new RandomRoomGenerator(0xDEADBEEF);
 		RNG.rng.setSeed(0x12345678);
@@ -20,7 +19,6 @@ public class Test_Generator {
 		RNG.rng.setSeed(0x23847235);
 		RNG.rng.setSeed(0xFEDEFACE);
 		IMapGenSolution final_solution = generator.Generate(Prefabs.GenerateALot(), new GraphGridResolver());
-		final_solution.RenderCanvas();
 
 		MapGraphModel mgm = new MapGraphModel();
 		mgm.BuildFromGraphGridSolution(((GraphGridSolution)final_solution));

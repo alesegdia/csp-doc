@@ -23,7 +23,6 @@ public class GraphGridSolutionRenderer extends JComponent {
 		this.map = ggs.CreateTileMapWithDoors();
 
 		this.dimension = new Dimension(map.cols * 10, map.rows * 10);
-		map.Render();
 
 	}
 	
@@ -39,8 +38,8 @@ public class GraphGridSolutionRenderer extends JComponent {
 				Color c = Color.magenta;
 				switch( map.Get(j, i) )
 				{
-				case TileType.FREE:	c = Color.white; 			break;
-				case TileType.DOOR:	c = Color.yellow; 			break;
+				case TileType.FREE:	c = Color.white; 				break;
+				case TileType.DOOR:	c = Color.yellow; 				break;
 				case TileType.DOORL: 	c = Color.cyan; 			break;
 				case TileType.DOORH: 	c = Color.magenta;			break;
 				case TileType.USED: 	c = Color.lightGray; 		break;

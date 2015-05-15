@@ -16,7 +16,6 @@ public class MapRenderer extends JComponent {
 	{
 		this.dimension = new Dimension(map.cols * 10, map.rows * 10);
 		this.map = map;
-		map.Render();
 	}
 	
 	public void paintComponent(Graphics g) {

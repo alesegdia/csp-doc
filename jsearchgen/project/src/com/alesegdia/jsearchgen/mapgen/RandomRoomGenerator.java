@@ -28,25 +28,10 @@ public class RandomRoomGenerator {
 		return clone;
 	}
 
-//	RoomInstance SelectRandomFeasibleRoom( List<RoomInstance> possible_rooms, ISolution partial_solution )
-//	{
-//		List<RoomInstance> feasible_rooms = new ArrayList<RoomInstance>();
-//		for( Iterator<RoomInstance> it = possible_rooms.iterator(); it.hasNext(); )
-//		{
-//			RoomInstance room = it.next();
-//			if( partial_solution.IsPossibleAddition(room) )
-//				feasible_rooms.add(room);
-//		}
-//		int room_index = rng.nextInt(feasible_rooms.size());
-//		RoomInstance selected = feasible_rooms.get(room_index);
-//		return selected;
-//	}
-
 	public IMapGenSolution Generate( List<RoomInstance> initial_room_list, IMapGenResolver problem_model )
 	{
 		IMapGenSolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
 
-		partial_solution.RenderCanvas();
 		while( !partial_solution.IsComplete() )
 		{
 			if( !problem_model.InsertRandomFeasibleRoom( partial_solution ) )
@@ -54,7 +39,6 @@ public class RandomRoomGenerator {
 				System.err.println("ERROR: can't build a complete solution from this partial solution and this list of remaining rooms: ");
 				break;
 			}
-			//partial_solution.RenderCanvas();
 		}
 
 		return partial_solution;
