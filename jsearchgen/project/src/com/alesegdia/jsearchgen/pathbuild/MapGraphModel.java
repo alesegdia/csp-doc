@@ -9,7 +9,7 @@ import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 import com.alesegdia.jsearchgen.core.util.Vec2;
-import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
+import com.alesegdia.jsearchgen.proxy.IMapGenPathBuildProxy;
 
 public class MapGraphModel {
 
@@ -19,11 +19,11 @@ public class MapGraphModel {
 
 	// cada habitación tiene un ID que se usará para identificarla de forma única
 	// y usarla como índice
-	public void BuildFromGraphGridSolution(GraphGridSolution graphgridsolution) {
+	public void BuildFromGraphGridSolution(IMapGenPathBuildProxy dpp ) {
 
 		// Asignamos ID para cada habitación
 		int i = 0;
-		for( RoomInstance roominstance : graphgridsolution.added_rooms ) {
+		for( RoomInstance roominstance : dpp.GetRooms() ) {
 			roominstance.id = i;
 			possibleLinksPerRoom.add(new ArrayList<DoorPairEntry>());
 			i++;
@@ -32,13 +32,12 @@ public class MapGraphModel {
 
 		possibleLinksUpperMatrix = new UpperMatrix2D<List<DoorPairEntry>>(i, i, null);
 
-		for( DoorPairEntry dpe : graphgridsolution.added_dpes ) {
+		List<DoorPairEntry> dpes = dpp.GetDoorPairList();
+		for( DoorPairEntry dpe : dpes ) {
 			AppendLink(dpe);
 			possibleLinksPerRoom.get(dpe.other_door.ri_owner.id).add(dpe);
 			possibleLinksPerRoom.get(dpe.this_door.ri_owner.id).add(dpe);
 		}
-		
-		// Borrar duplicados en possibleLinks (mismas puertas)
 	}
 
 	private void AppendLink(DoorPairEntry dpe) {
