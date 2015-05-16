@@ -65,20 +65,21 @@ public class GraphGridSolution implements IMapGenSolution {
 
 
 	public boolean AttachRandomFeasibleRoom() {
+		// precompute if needed 
 		// extract feasible doors for each room
-		List<DoorPairEntry> feasible_doors = new LinkedList<DoorPairEntry>();
+		List<DoorPairEntry> feasible_door_pairs = new LinkedList<DoorPairEntry>();
 		for( Iterator<RoomInstance> it = remaining_rooms.iterator(); it.hasNext(); )
 		{
 			RoomInstance room = it.next();
 			List<DoorPairEntry> l = this.GetFeasibleDoorsForRoom(room);
-			feasible_doors.addAll(l);
+			feasible_door_pairs.addAll(l);
 			all_feasible_dpes.addAll(l);
 		}
 
-		if( !feasible_doors.isEmpty() )
+		if( !feasible_door_pairs.isEmpty() )
 		{
-			int door_index = RNG.rng.nextInt(feasible_doors.size());
-			DoorPairEntry fde = feasible_doors.get(door_index);
+			int door_index = RNG.rng.nextInt(feasible_door_pairs.size());
+			DoorPairEntry fde = feasible_door_pairs.get(door_index);
 			Door door = fde.other_door;
 			this.AttachRoom(fde.other_door.ri_owner, fde.relativeToSolutionMap.x, fde.relativeToSolutionMap.y);
 			Connect(fde.other_door, fde.this_door);

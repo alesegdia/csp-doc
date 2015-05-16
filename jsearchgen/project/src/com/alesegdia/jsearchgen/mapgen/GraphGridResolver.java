@@ -27,7 +27,6 @@ public class GraphGridResolver implements IMapGenResolver {
 		GraphGridSolution gs = new GraphGridSolution( SOLUTION_HEIGHT, SOLUTION_WIDTH );
 		try {
 			int room_index = RNG.rng.nextInt(0, remaining_rooms.size()-1);
-			//System.out.println("room_index: " + room_index);
 			RoomInstance selected = remaining_rooms.get(room_index);
 			remaining_rooms.remove(selected);
 			selected.globalPosition.Set(30, 10);
