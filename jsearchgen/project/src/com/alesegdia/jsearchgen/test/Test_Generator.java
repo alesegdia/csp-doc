@@ -8,7 +8,7 @@ import com.alesegdia.jsearchgen.core.room.Prefabs;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
 import com.alesegdia.jsearchgen.mapgen.IMapGenSolution;
-import com.alesegdia.jsearchgen.mapgen.RandomRoomResolver;
+import com.alesegdia.jsearchgen.mapgen.RandomRoomSolver;
 import com.alesegdia.jsearchgen.pathbuild.MapGraphInstance;
 import com.alesegdia.jsearchgen.pathbuild.MapGraphModel;
 import com.alesegdia.jsearchgen.proxy.GraphGridAllProxy;
@@ -18,8 +18,8 @@ import com.alesegdia.jsearchgen.proxy.IMapGenPathBuildProxy;
 public class Test_Generator {
 
 	public static void main(String[] args) {
-		RandomRoomResolver generator;
-		generator = new RandomRoomResolver(0xDEADBEEF);
+		RandomRoomSolver generator;
+		generator = new RandomRoomSolver(0xDEADBEEF);
 		RNG.rng.setSeed(0x12345678);
 		RNG.rng.setSeed(0x38483453);
 		RNG.rng.setSeed(0x23847235);

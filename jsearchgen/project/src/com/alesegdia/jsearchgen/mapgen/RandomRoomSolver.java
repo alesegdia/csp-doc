@@ -7,12 +7,12 @@ import java.util.List;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 
-public class RandomRoomResolver implements IMapGenResolver{
+public class RandomRoomSolver implements IMapGenSolver{
 
 	List<RoomInstance> startRoomList = new LinkedList<RoomInstance>();
 	RNG rng = new RNG();
 
-	public RandomRoomResolver ( long seed ) {
+	public RandomRoomSolver ( long seed ) {
 		rng.setSeed(seed);
 	}
 	

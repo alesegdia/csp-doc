@@ -8,9 +8,9 @@ import com.alesegdia.jsearchgen.core.room.Prefabs;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.IMapGenResolver;
+import com.alesegdia.jsearchgen.mapgen.IMapGenSolver;
 import com.alesegdia.jsearchgen.mapgen.IMapGenSolution;
-import com.alesegdia.jsearchgen.mapgen.RandomRoomResolver;
+import com.alesegdia.jsearchgen.mapgen.RandomRoomSolver;
 
 public class Test_GenDoorsAttachRoom {
 	
@@ -51,7 +51,7 @@ public class Test_GenDoorsAttachRoom {
 		initial_rooms.add(room2);
 		initial_rooms.add(room3);
 		
-		IMapGenResolver prob = new RandomRoomResolver(0);
+		IMapGenSolver prob = new RandomRoomSolver(0);
 		IMapGenSolution sol = prob.CreateFirstSolution(initial_rooms); // en 32,32
 		GraphGridSolution gese = ((GraphGridSolution)sol);
 		int lx, ly;
