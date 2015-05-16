@@ -7,11 +7,11 @@ import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.mapgen.IMapGenResolver;
 import com.alesegdia.jsearchgen.mapgen.IMapGenSolution;
 
-public class SearchPathGenerator {
+public class SearchPathResolver {
 	RNG rng = new RNG();
 	private List<RoomInstance> startRoomList;
 
-	public SearchPathGenerator(long seed) {
+	public SearchPathResolver(long seed) {
 		rng.setSeed(seed);
 	}
 	
