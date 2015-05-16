@@ -9,7 +9,6 @@ public class GraphGridResolver implements IMapGenResolver {
 	
 	private static final int SOLUTION_WIDTH = 100;
 	private static final int SOLUTION_HEIGHT = 60;
-	
 
 	@Override
 	public void AttachRoomToSolution(RoomInstance selected_room, IMapGenSolution partial_solution) {

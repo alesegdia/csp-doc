@@ -1,12 +1,16 @@
 package com.alesegdia.jsearchgen.test;
 
+import java.util.BitSet;
+
 import com.alesegdia.jsearchgen.core.map.GraphGridSolutionRenderer;
+import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.Prefabs;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.mapgen.GraphGridResolver;
 import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
 import com.alesegdia.jsearchgen.mapgen.IMapGenSolution;
 import com.alesegdia.jsearchgen.mapgen.RandomRoomGenerator;
+import com.alesegdia.jsearchgen.pathbuild.MapGraphInstance;
 import com.alesegdia.jsearchgen.pathbuild.MapGraphModel;
 import com.alesegdia.jsearchgen.proxy.GraphGridAllProxy;
 import com.alesegdia.jsearchgen.proxy.GraphGridSimpleProxy;
@@ -29,5 +33,7 @@ public class Test_Generator {
 		mgm.Debug();
 		GraphGridSolutionRenderer ggsr = new GraphGridSolutionRenderer(((GraphGridSolution)final_solution));
 		ggsr.Show();
+		MapGraphInstance mgi = mgm.CreateCleanInstance();
+		mgi.Debug();
 	}
 }

@@ -9,6 +9,6 @@ public class DoorPairEntry {
 	
 	@Override
 	public String toString() {
-		return "[" + other_door.ri_owner.id + " (" + other_door.GetGlobalPosition() + "), " + this_door.ri_owner.id + " (" + this_door.GetGlobalPosition() + ")]"; 
+		return "\t<" + other_door.ri_owner.id + " " + other_door.GetGlobalPosition() + ", " + this_door.ri_owner.id + " " + this_door.GetGlobalPosition() + ">"; 
 	}
 }

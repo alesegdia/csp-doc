@@ -16,6 +16,14 @@ public class MapGraphModel {
 	public List<RoomInstance> rooms;
 	public UpperMatrix2D<List<DoorPairEntry>> possibleLinksUpperMatrix = null;
 	public List<List<DoorPairEntry>> possibleLinksPerRoom = new ArrayList<List<DoorPairEntry>>();
+	
+	// para clonarse cada vez que se pida una nueva
+	private MapGraphInstance cleanInstance;
+	
+	// NO SE ESTÁ CLONANDO AHORA MISMO
+	public MapGraphInstance CreateCleanInstance() {
+		return cleanInstance.Clone();
+	}
 
 	// cada habitación tiene un ID que se usará para identificarla de forma única
 	// y usarla como índice
@@ -38,6 +46,16 @@ public class MapGraphModel {
 			possibleLinksPerRoom.get(dpe.other_door.ri_owner.id).add(dpe);
 			possibleLinksPerRoom.get(dpe.this_door.ri_owner.id).add(dpe);
 		}
+		
+		PrepareCleanInstance();
+	}
+	
+	public int NumRooms() {
+		return possibleLinksUpperMatrix.cols;
+	}
+	
+	private void PrepareCleanInstance() {
+		cleanInstance = new MapGraphInstance(this);
 	}
 
 	private void AppendLink(DoorPairEntry dpe) {
