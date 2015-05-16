@@ -62,7 +62,11 @@ public class RoomInstance {
 			num_doors--;
 		}
 	}
-	
+
+	public void GenerateAllDoors(RNG rng) {
+		GenerateRandomDoors(rng, this.prefab.potentialDoors.size());
+	}
+
 	/** Sets a door link to another room, selecting door by index at room door list
 	 * @param door_index door index
 	 * @param connected_to room connected to this door
@@ -71,7 +75,7 @@ public class RoomInstance {
 	{
 		doors.get(door_index).connected_room = connected_to;
 	}
-	
+
 	public TileMap CreateTileMapWithDoors( )
 	{
 		TileMap tm = new TileMap(this.prefab.map);
@@ -84,7 +88,7 @@ public class RoomInstance {
 				tm.Set(door.localPosition.y, door.localPosition.x, TileType.DOORH);
 			}
 		}
-		
+
 		return tm;
 	}
 

@@ -15,7 +15,7 @@ import com.alesegdia.jsearchgen.core.util.Vec2;
 
 /**
  * Class that will represent a solution as a list of rooms inside,
- * and a TileMap representing 
+ * and a TileMap representing
  *
  */
 public class GraphGridSolution implements IMapGenSolution {
@@ -29,12 +29,13 @@ public class GraphGridSolution implements IMapGenSolution {
 	public List<RoomInstance> remaining_rooms = new LinkedList<RoomInstance>();
 	public List<RoomInstance> added_rooms = new LinkedList<RoomInstance>();
 	public List<DoorPairEntry> added_dpes = new LinkedList<DoorPairEntry>();
-	
+	public List<DoorPairEntry> all_feasible_dpes = new LinkedList<DoorPairEntry>();
+
 	public GraphGridSolution( int rows, int cols )
 	{
 		tilemap = new TileMap(rows, cols, TileType.FREE);
 	}
-	
+
 	GraphGridSolution( GraphGridSolution other )
 	{
 		tilemap = new TileMap(other.tilemap);
@@ -61,7 +62,7 @@ public class GraphGridSolution implements IMapGenSolution {
 	public boolean IsComplete() {
 		return remaining_rooms.isEmpty();
 	}
-	
+
 
 	public boolean AttachRandomFeasibleRoom() {
 		// extract feasible doors for each room
@@ -69,9 +70,11 @@ public class GraphGridSolution implements IMapGenSolution {
 		for( Iterator<RoomInstance> it = remaining_rooms.iterator(); it.hasNext(); )
 		{
 			RoomInstance room = it.next();
-			feasible_doors.addAll(this.GetFeasibleDoorsForRoom(room));
+			List<DoorPairEntry> l = this.GetFeasibleDoorsForRoom(room);
+			feasible_doors.addAll(l);
+			all_feasible_dpes.addAll(l);
 		}
-		
+
 		if( !feasible_doors.isEmpty() )
 		{
 			int door_index = RNG.rng.nextInt(feasible_doors.size());
@@ -118,21 +121,22 @@ public class GraphGridSolution implements IMapGenSolution {
 		}
 		return feasible_entries;
 	}
-	
+
 	static boolean first = false;
-	private Vec2 CheckInsert(Door door_other, Door door_this, int dr, int dc, Door.Type doortype)
+	private Vec2 CheckInsert(Door door_other, Door door_this, int dr, int dc, Door.Type doortype, boolean apply)
 	{
 		if( door_other.type == door_this.type )
 		{
 			Vec2 this_global = door_this.GetGlobalPosition();
 			if( door_other.type == doortype )
 			{
-				if( this.tilemap.Get(this_global.y + dr, this_global.x + dc) == TileType.FREE )
+				if( !apply || this.tilemap.Get(this_global.y + dr, this_global.x + dc) == TileType.FREE )
 				{
 					Vec2 tmp = new Vec2(this_global.y + dr - door_other.localPosition.y, this_global.x + dc - door_other.localPosition.x);
-					if( !this.tilemap.CollideWith(door_other.ri_owner.prefab.map, tmp.x, tmp.y) )
+					if( !apply ) return tmp;
+					else if( !this.tilemap.CollideWith(door_other.ri_owner.prefab.map, tmp.x, tmp.y) )
 					{
-							TileMap tm = new TileMap(this.tilemap);
+						TileMap tm = new TileMap(this.tilemap);
 						tm.Apply(door_other.ri_owner.prefab.map, tmp.y, tmp.x);
 
 						return tmp;
@@ -142,18 +146,20 @@ public class GraphGridSolution implements IMapGenSolution {
 		}
 		return null;
 	}
-	
-	public Vec2 IsPossibleDoorCombination(Door door_other, Door door_this) {
-		Vec2 pos = null;
-		
-						  pos = CheckInsert(door_other, door_this,   1,   0,   Door.Type.HORIZONTAL);
-		if( pos == null ) pos = CheckInsert(door_other, door_this,  -1,   0,   Door.Type.HORIZONTAL);
-		if( pos == null ) pos = CheckInsert(door_other, door_this,   0,   1,   Door.Type.VERTICAL);
-		if( pos == null ) pos = CheckInsert(door_other, door_this,   0,  -1,   Door.Type.VERTICAL);
+
+	public Vec2 IsPossibleDoorCombination(Door door_other, Door door_this, boolean apply) {
+		Vec2 pos = null;  pos = CheckInsert(door_other, door_this,   1,   0,   Door.Type.HORIZONTAL,  apply);
+		if( pos == null ) pos = CheckInsert(door_other, door_this,  -1,   0,   Door.Type.HORIZONTAL,  apply);
+		if( pos == null ) pos = CheckInsert(door_other, door_this,   0,   1,   Door.Type.VERTICAL, 	  apply);
+		if( pos == null ) pos = CheckInsert(door_other, door_this,   0,  -1,   Door.Type.VERTICAL,    apply);
 
 		return pos;
 	}
-	
+
+	public Vec2 IsPossibleDoorCombination(Door door_other, Door door_this) {
+		return IsPossibleDoorCombination(door_other, door_this, true);
+	}
+
 	@Override
 	public void RenderCanvas() {
 		(new MapRenderer(new TileMap(this.CreateTileMapWithDoors()))).Show();

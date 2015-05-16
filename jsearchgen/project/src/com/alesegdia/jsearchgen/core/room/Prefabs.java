@@ -58,7 +58,8 @@ public final class Prefabs {
 		for( int i = 0; i < n; i++ )
 		{
 			RoomInstance ri = new RoomInstance(prefab);
-			ri.GenerateRandomDoors(RNG.rng, 10);
+			//ri.GenerateRandomDoors(RNG.rng, 10);
+			ri.GenerateAllDoors(RNG.rng);
 			retlist.add(ri);
 		}
 		return retlist;
