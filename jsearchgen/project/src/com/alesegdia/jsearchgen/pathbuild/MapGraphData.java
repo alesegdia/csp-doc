@@ -7,22 +7,22 @@ import java.util.List;
 import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 
-public class MapGraphInstance {
+public class MapGraphData {
 	
 	public class RoomPDEIterator implements Iterator {
 
 		private BitSet bs;
 		private int currentBit;
-		private MapGraphModel mgm;
+		private MapGraph mgm;
 		private int r2_index;
 		private int r1_index;
 		private boolean set;
 
-		public RoomPDEIterator( MapGraphModel mgm, BitSet bitSet, int r1_index, int r2_index ) {
+		public RoomPDEIterator( MapGraph mgm, BitSet bitSet, int r1_index, int r2_index ) {
 			this(mgm, bitSet, r1_index, r2_index, true);
 		}
 		
-		public RoomPDEIterator( MapGraphModel mgm, BitSet bitSet, int r1_index, int r2_index, boolean set ) {
+		public RoomPDEIterator( MapGraph mgm, BitSet bitSet, int r1_index, int r2_index, boolean set ) {
 			this.bs = bitSet;
 			this.mgm = mgm;
 			this.r1_index = r1_index;
@@ -57,10 +57,10 @@ public class MapGraphInstance {
 		return it;
 	}
 
-	public MapGraphModel mgm = null;
+	public MapGraph mgm = null;
 	public UpperMatrix2D<BitSet> activeLinks = null;
 
-	public MapGraphInstance( MapGraphModel mgm ) {
+	public MapGraphData( MapGraph mgm ) {
 		this.mgm = mgm;
 		int sz = mgm.NumRooms();
 		activeLinks = new UpperMatrix2D<BitSet>(sz, sz, null);
@@ -103,7 +103,7 @@ public class MapGraphInstance {
 				if( i != j ) {
 					if( this.mgm.possibleLinksUpperMatrix.GetUpper(i, j) != null ) {
 						System.out.print("Conexiones entre " + i + " y " + j + ": ");
-						MapGraphInstance.RoomPDEIterator it = ActiveRoomLinksIterator(i, j);
+						MapGraphData.RoomPDEIterator it = ActiveRoomLinksIterator(i, j);
 						while( it.hasNext() ) {
 							DoorPairEntry dpe = it.next();
 							System.out.print(dpe + ", ");
@@ -116,7 +116,7 @@ public class MapGraphInstance {
 
 	}
 
-	public MapGraphInstance Clone() {
+	public MapGraphData Clone() {
 		return this;
 	}
 

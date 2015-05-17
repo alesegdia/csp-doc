@@ -9,17 +9,17 @@ import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 import com.alesegdia.jsearchgen.proxy.IMapGenPathBuildProxy;
 
-public class MapGraphModel {
+public class MapGraph {
 
 	public List<RoomInstance> rooms;
 	public UpperMatrix2D<List<DoorPairEntry>> possibleLinksUpperMatrix = null;
 	public List<List<DoorPairEntry>> possibleLinksPerRoom = new ArrayList<List<DoorPairEntry>>();
 	
 	// para clonarse cada vez que se pida una nueva
-	private MapGraphInstance cleanInstance;
+	private MapGraphData cleanInstance;
 	
 	// NO SE ESTÁ CLONANDO AHORA MISMO
-	public MapGraphInstance CreateCleanInstance() {
+	public MapGraphData CreateCleanInstance() {
 		return cleanInstance.Clone();
 	}
 
@@ -53,7 +53,7 @@ public class MapGraphModel {
 	}
 	
 	private void PrepareCleanInstance() {
-		cleanInstance = new MapGraphInstance(this);
+		cleanInstance = new MapGraphData(this);
 	}
 
 	private void AppendLink(DoorPairEntry dpe) {

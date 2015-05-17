@@ -8,8 +8,8 @@ import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
 import com.alesegdia.jsearchgen.mapgen.IMapGenProblemModel;
 import com.alesegdia.jsearchgen.mapgen.IMapGenSolution;
 import com.alesegdia.jsearchgen.mapgen.RandomRoomSolver;
-import com.alesegdia.jsearchgen.pathbuild.MapGraphInstance;
-import com.alesegdia.jsearchgen.pathbuild.MapGraphModel;
+import com.alesegdia.jsearchgen.pathbuild.MapGraphData;
+import com.alesegdia.jsearchgen.pathbuild.MapGraph;
 import com.alesegdia.jsearchgen.proxy.GraphGridAllProxy;
 
 public class Test_Generator {
@@ -24,12 +24,12 @@ public class Test_Generator {
 		IMapGenProblemModel problem_model = new GraphGridProblemModel();
 		IMapGenSolution final_solution = generator.Generate(Prefabs.GenerateALot(), problem_model);
 
-		MapGraphModel mgm = new MapGraphModel();
+		MapGraph mgm = new MapGraph();
 		mgm.BuildFromGraphGridSolution(new GraphGridAllProxy((GraphGridSolution) final_solution));
 		mgm.Debug();
 		GraphGridSolutionRenderer ggsr = new GraphGridSolutionRenderer(((GraphGridSolution)final_solution));
 		ggsr.Show();
-		MapGraphInstance mgi = mgm.CreateCleanInstance();
+		MapGraphData mgi = mgm.CreateCleanInstance();
 		mgi.Debug();
 	}
 }
