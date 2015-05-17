@@ -1,5 +1,5 @@
 package com.alesegdia.jsearchgen.pathbuild;
 
-public class SearchPathSolver {
+public class SearchPathSolver implements IPathBuildSolver {
 
 }
