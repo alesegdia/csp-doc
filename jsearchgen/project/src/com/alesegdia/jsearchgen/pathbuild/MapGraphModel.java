@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.room.Door;
 import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
-import com.alesegdia.jsearchgen.core.util.Vec2;
 import com.alesegdia.jsearchgen.proxy.IMapGenPathBuildProxy;
 
 public class MapGraphModel {

@@ -3,11 +3,13 @@ package com.alesegdia.jsearchgen.test;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.map.MapRenderer;
+import com.alesegdia.jsearchgen.core.map.render.TileMapRenderer;
 import com.alesegdia.jsearchgen.core.room.Prefabs;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
+import com.alesegdia.jsearchgen.mapgen.GraphGridProblemModel;
 import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
+import com.alesegdia.jsearchgen.mapgen.IMapGenProblemModel;
 import com.alesegdia.jsearchgen.mapgen.IMapGenSolver;
 import com.alesegdia.jsearchgen.mapgen.IMapGenSolution;
 import com.alesegdia.jsearchgen.mapgen.RandomRoomSolver;
@@ -52,14 +54,15 @@ public class Test_GenDoorsAttachRoom {
 		initial_rooms.add(room3);
 		
 		IMapGenSolver prob = new RandomRoomSolver(0);
-		IMapGenSolution sol = prob.CreateFirstSolution(initial_rooms); // en 32,32
+		IMapGenProblemModel problem_model = new GraphGridProblemModel();
+		IMapGenSolution sol = problem_model.CreateFirstSolution(initial_rooms); // en 32,32
 		GraphGridSolution gese = ((GraphGridSolution)sol);
 		int lx, ly;
 		lx = 19;
 		ly = 25;
 		System.out.println(gese.tilemap.CollideWith(room1.prefab.GetTileMap(), ly, lx));
 		gese.tilemap.Apply(room1.prefab.GetTileMap(), ly, lx);
-		(new MapRenderer(((GraphGridSolution)sol).tilemap)).Show();
+		(new TileMapRenderer(((GraphGridSolution)sol).tilemap)).Show();
 
 		//gese.RenderCanvas();
 		//prob.InsertRandomFeasibleRoom(sol);

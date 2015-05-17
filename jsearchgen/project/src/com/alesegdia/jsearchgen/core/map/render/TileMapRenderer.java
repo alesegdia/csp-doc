@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.core.map;
+package com.alesegdia.jsearchgen.core.map.render;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -7,12 +7,15 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-public class MapRenderer extends JComponent {
+import com.alesegdia.jsearchgen.core.map.TileMap;
+import com.alesegdia.jsearchgen.core.map.TileType;
+
+public class TileMapRenderer extends JComponent {
 	
 	private TileMap map;
 	private Dimension dimension;
 	
-	public MapRenderer(TileMap map)
+	public TileMapRenderer(TileMap map)
 	{
 		this.dimension = new Dimension(map.cols * 10, map.rows * 10);
 		this.map = map;
@@ -28,11 +31,11 @@ public class MapRenderer extends JComponent {
 				switch( map.Get(j, i) )
 				{
 				case TileType.FREE:	c = Color.white; 		break;
-				case TileType.DOOR: c = Color.yellow; 		break;
-				case TileType.DOORL: c = Color.cyan; 		break;
-				case TileType.DOORH: c = Color.magenta;		break;
-				case TileType.USED: c = Color.lightGray; 	break;
-				case TileType.WALL: c = Color.green; 		break;
+				case TileType.DOOR: 	c = Color.yellow; 		break;
+				case TileType.DOORL: 	c = Color.cyan; 		break;
+				case TileType.DOORH: 	c = Color.magenta;		break;
+				case TileType.USED: 	c = Color.lightGray; 	break;
+				case TileType.WALL: 	c = Color.green; 		break;
 				}
 				g.setColor(c);
 				g.fillRect(i * 10, j * 10, 10, 10);

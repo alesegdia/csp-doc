@@ -4,9 +4,9 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.map.MapRenderer;
 import com.alesegdia.jsearchgen.core.map.TileMap;
 import com.alesegdia.jsearchgen.core.map.TileType;
+import com.alesegdia.jsearchgen.core.map.render.TileMapRenderer;
 import com.alesegdia.jsearchgen.core.room.Door;
 import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
@@ -123,7 +123,6 @@ public class GraphGridSolution implements IMapGenSolution {
 		return feasible_entries;
 	}
 
-	static boolean first = false;
 	private Vec2 CheckInsert(Door door_other, Door door_this, int dr, int dc, Door.Type doortype, boolean apply)
 	{
 		if( door_other.type == door_this.type )
@@ -163,7 +162,7 @@ public class GraphGridSolution implements IMapGenSolution {
 
 	@Override
 	public void RenderCanvas() {
-		(new MapRenderer(new TileMap(this.CreateTileMapWithDoors()))).Show();
+		(new TileMapRenderer(new TileMap(this.CreateTileMapWithDoors()))).Show();
 	}
 
 	public TileMap CreateTileMapWithDoors( )

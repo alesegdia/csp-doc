@@ -3,8 +3,8 @@ package com.alesegdia.jsearchgen.test;
 import java.util.Arrays;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.map.MapRenderer;
 import com.alesegdia.jsearchgen.core.map.TileMap;
+import com.alesegdia.jsearchgen.core.map.render.TileMapRenderer;
 import com.alesegdia.jsearchgen.core.room.Prefabs;
 
 public class Test_TileMap {
@@ -42,9 +42,9 @@ public class Test_TileMap {
 		// *****************************************
 		
 		// GRAPHICAL DEBUG *************************
-		MapRenderer mr = new MapRenderer(Prefabs.room0.GetTileMap());
+		TileMapRenderer mr = new TileMapRenderer(Prefabs.room0.GetTileMap());
 		mr.Show();
-		(new MapRenderer(mini)).Show();
+		(new TileMapRenderer(mini)).Show();
 		// *****************************************
 	}
 

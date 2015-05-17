@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.core.map;
+package com.alesegdia.jsearchgen.core.map.render;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -8,6 +8,8 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import com.alesegdia.jsearchgen.core.map.TileMap;
+import com.alesegdia.jsearchgen.core.map.TileType;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.mapgen.GraphGridSolution;
 
