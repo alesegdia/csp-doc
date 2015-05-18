@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.pathbuild;
+package com.alesegdia.jsearchgen.pathbuild.solution;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -45,6 +45,8 @@ public class MapGraph {
 			possibleLinksPerRoom.get(dpe.this_door.ri_owner.id).add(dpe);
 		}
 		
+		rooms = dpp.GetRooms();
+		
 		PrepareCleanInstance();
 	}
 	
@@ -90,6 +92,36 @@ public class MapGraph {
 			}
 			System.out.println();
 			i++;
+		}
+	}
+
+	Integer numPossibleConnections = null;
+	Integer numAllLinks = null;
+	public int NumPossibleRoomConnections() {
+		if( numPossibleConnections == null ) {
+			ComputePossibleConnections();
+		}
+		return numPossibleConnections.intValue();
+	}
+	
+	public int NumAllLinks() {
+		if( numPossibleConnections == null ) {
+			ComputePossibleConnections();
+		}
+		return numAllLinks.intValue();
+	}
+
+	private void ComputePossibleConnections() {
+		numPossibleConnections = 0;
+		numAllLinks = 0;
+		for( int i = 0; i < possibleLinksUpperMatrix.cols; i++ ) {
+			for( int j = 0; j < possibleLinksUpperMatrix.rows; j++ ) {
+				List<DoorPairEntry> l = possibleLinksUpperMatrix.Get(i, j);
+				if( l != null ) {
+					numPossibleConnections++;
+					numAllLinks += l.size();
+				}
+			}
 		}
 	}
 

@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.pathbuild;
+package com.alesegdia.jsearchgen.pathbuild.solution;
 
 import java.util.BitSet;
 import java.util.Iterator;

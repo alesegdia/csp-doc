@@ -1,10 +1,12 @@
-package com.alesegdia.jsearchgen.mapgen;
+package com.alesegdia.jsearchgen.mapgen.solver;
 
 import java.util.LinkedList;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
+import com.alesegdia.jsearchgen.mapgen.problem.IRandomProblemModel;
+import com.alesegdia.jsearchgen.mapgen.solution.IMapGenSolution;
 
 public class RandomRoomSolver implements IMapGenSolver{
 
@@ -16,7 +18,7 @@ public class RandomRoomSolver implements IMapGenSolver{
 	}
 
 	@Override
-	public IMapGenSolution Generate( List<RoomInstance> initial_room_list, IMapGenProblemModel problem_model )
+	public IMapGenSolution Generate( List<RoomInstance> initial_room_list, IRandomProblemModel problem_model )
 	{
 		IMapGenSolution partial_solution = problem_model.CreateFirstSolution(initial_room_list);
 

@@ -21,7 +21,7 @@ public class Door {
 	public Door connected_door;
 	public int roomIndex;				// index in room doors array
 	public Vec2 localPosition;	// relative position to room
-	int id;						// unique id
+	public int id;						// unique id
 	public Type type;
 	
 	public String toString()
