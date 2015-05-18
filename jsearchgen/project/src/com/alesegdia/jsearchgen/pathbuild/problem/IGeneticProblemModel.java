@@ -11,7 +11,6 @@ public interface IGeneticProblemModel {
 	public IPathBuildSolution Cross(IPathBuildSolution pbs1, IPathBuildSolution pbs2);
 	public IPathBuildSolution Mutate(IPathBuildSolution pbs);
 	public List<IPathBuildSolution> Selection(List<IPathBuildSolution> l);
-	IPathBuildSolution Solve(MapGraph mgd, IGeneticProblemModel gpm);
 	public List<IPathBuildSolution> CreateInitialPopulation(int i);
 	public IPathBuildSolution GetBest(List<IPathBuildSolution> currentPopulation); 
 

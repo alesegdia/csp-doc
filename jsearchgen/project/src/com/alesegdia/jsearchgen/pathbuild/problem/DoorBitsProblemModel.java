@@ -88,5 +88,17 @@ public class DoorBitsProblemModel implements IGeneticProblemModel {
 		return null;
 	}
 
+	@Override
+	public List<IPathBuildSolution> CreateInitialPopulation(int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public IPathBuildSolution GetBest(List<IPathBuildSolution> currentPopulation) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
