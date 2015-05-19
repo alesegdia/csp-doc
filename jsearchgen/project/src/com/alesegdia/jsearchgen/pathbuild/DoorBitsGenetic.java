@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.pathbuild.problem;
+package com.alesegdia.jsearchgen.pathbuild;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -6,8 +6,7 @@ import java.util.List;
 
 import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
-import com.alesegdia.jsearchgen.pathbuild.solution.IPathBuildSolution;
-import com.alesegdia.jsearchgen.pathbuild.solution.MapGraph;
+import com.alesegdia.jsearchgen.pathbuild.auxdata.MapGraph;
 
 class GroupData {
 	int room1_index;
@@ -20,15 +19,17 @@ class RoomData {
 	List<GroupData> groups = new ArrayList<GroupData>();
 }
 
-public class DoorBitsProblemModel implements IGeneticProblemModel {
+public class DoorBitsGenetic implements IGeneticModel {
 
 	GroupData groupsData[];
 	DoorPairEntry dpes[];
 	RoomData roomsData[];
 	
-	public DoorBitsProblemModel(MapGraph mg) {
+	public DoorBitsGenetic(MapGraph mg) {
 		Cache(mg);
 	}
+	
+	
 
 	private void Cache(MapGraph mg) {
 		groupsData = new GroupData[mg.NumPossibleRoomConnections()];

@@ -1,15 +1,13 @@
-package com.alesegdia.jsearchgen.pathbuild.solver;
+package com.alesegdia.jsearchgen.pathbuild;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.pathbuild.problem.IGeneticProblemModel;
-import com.alesegdia.jsearchgen.pathbuild.solution.IPathBuildSolution;
-import com.alesegdia.jsearchgen.pathbuild.solution.MapGraph;
+import com.alesegdia.jsearchgen.pathbuild.auxdata.MapGraph;
 
 public class GeneticSolver implements IPathBuildSolver {
 
-	private IGeneticProblemModel gpm;
+	private IGeneticModel gpm;
 
 	/**
 	 * Resuelve el problema de construir el camino dado un layout activando y desactivando puertas
@@ -17,7 +15,7 @@ public class GeneticSolver implements IPathBuildSolver {
 	 * @param sol solución provinente de un IMapGenSolver
 	 */
 	
-	public GeneticSolver( IGeneticProblemModel gpm ) {
+	public GeneticSolver( IGeneticModel gpm ) {
 		this.gpm = gpm;
 	}
 	

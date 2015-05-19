@@ -7,12 +7,12 @@ import com.alesegdia.jsearchgen.core.map.render.TileMapRenderer;
 import com.alesegdia.jsearchgen.core.room.Prefabs;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.mapgen.problem.GraphGridProblemModel;
-import com.alesegdia.jsearchgen.mapgen.problem.IRandomProblemModel;
-import com.alesegdia.jsearchgen.mapgen.solution.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.solution.IMapGenSolution;
-import com.alesegdia.jsearchgen.mapgen.solver.IMapGenSolver;
-import com.alesegdia.jsearchgen.mapgen.solver.RandomRoomSolver;
+import com.alesegdia.jsearchgen.mapgen.representation.GraphGridRandom;
+import com.alesegdia.jsearchgen.mapgen.representation.GraphGridSolution;
+import com.alesegdia.jsearchgen.mapgen.representation.IMapGenSolution;
+import com.alesegdia.jsearchgen.mapgen.representation.IMapGenSolver;
+import com.alesegdia.jsearchgen.mapgen.representation.IRandomModel;
+import com.alesegdia.jsearchgen.mapgen.representation.RandomSolver;
 
 public class Test_GenDoorsAttachRoom {
 	
@@ -53,8 +53,8 @@ public class Test_GenDoorsAttachRoom {
 		initial_rooms.add(room2);
 		initial_rooms.add(room3);
 		
-		IMapGenSolver prob = new RandomRoomSolver(0);
-		IRandomProblemModel problem_model = new GraphGridProblemModel();
+		IMapGenSolver prob = new RandomSolver(0);
+		IRandomModel problem_model = new GraphGridRandom();
 		IMapGenSolution sol = problem_model.CreateFirstSolution(initial_rooms); // en 32,32
 		GraphGridSolution gese = ((GraphGridSolution)sol);
 		int lx, ly;

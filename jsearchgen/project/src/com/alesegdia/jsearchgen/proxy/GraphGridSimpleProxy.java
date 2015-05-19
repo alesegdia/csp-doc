@@ -4,8 +4,8 @@ import java.util.List;
 
 import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
-import com.alesegdia.jsearchgen.mapgen.solution.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.solution.IMapGenSolution;
+import com.alesegdia.jsearchgen.mapgen.representation.GraphGridSolution;
+import com.alesegdia.jsearchgen.mapgen.representation.IMapGenSolution;
 
 public class GraphGridSimpleProxy implements IMapGenPathBuildProxy {
 

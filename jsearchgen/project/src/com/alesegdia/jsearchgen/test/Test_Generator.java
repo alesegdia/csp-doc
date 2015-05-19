@@ -3,26 +3,26 @@ package com.alesegdia.jsearchgen.test;
 import com.alesegdia.jsearchgen.core.map.render.GraphGridSolutionRenderer;
 import com.alesegdia.jsearchgen.core.room.Prefabs;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.mapgen.problem.GraphGridProblemModel;
-import com.alesegdia.jsearchgen.mapgen.problem.IRandomProblemModel;
-import com.alesegdia.jsearchgen.mapgen.solution.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.solution.IMapGenSolution;
-import com.alesegdia.jsearchgen.mapgen.solver.RandomRoomSolver;
-import com.alesegdia.jsearchgen.pathbuild.problem.DoorBitsProblemModel;
-import com.alesegdia.jsearchgen.pathbuild.solution.MapGraph;
-import com.alesegdia.jsearchgen.pathbuild.solution.MapGraphData;
+import com.alesegdia.jsearchgen.mapgen.representation.GraphGridRandom;
+import com.alesegdia.jsearchgen.mapgen.representation.GraphGridSolution;
+import com.alesegdia.jsearchgen.mapgen.representation.IMapGenSolution;
+import com.alesegdia.jsearchgen.mapgen.representation.IRandomModel;
+import com.alesegdia.jsearchgen.mapgen.representation.RandomSolver;
+import com.alesegdia.jsearchgen.pathbuild.DoorBitsGenetic;
+import com.alesegdia.jsearchgen.pathbuild.auxdata.MapGraph;
+import com.alesegdia.jsearchgen.pathbuild.auxdata.MapGraphData;
 import com.alesegdia.jsearchgen.proxy.GraphGridAllProxy;
 
 public class Test_Generator {
 
 	public static void main(String[] args) {
-		RandomRoomSolver generator;
-		generator = new RandomRoomSolver(0xDEADBEEF);
-		RNG.rng.setSeed(0x12345678);
-		RNG.rng.setSeed(0x38483453);
-		RNG.rng.setSeed(0x23847235);
-		RNG.rng.setSeed(0xFEDEFACE);
-		IRandomProblemModel problem_model = new GraphGridProblemModel();
+		RandomSolver generator;
+		generator = new RandomSolver(0xDEADBEEF);
+		//RNG.rng.setSeed(0x12345678);
+		//RNG.rng.setSeed(0x38483453);
+		//RNG.rng.setSeed(0x23847235);
+		//RNG.rng.setSeed(0xFEDEFACE);
+		IRandomModel problem_model = new GraphGridRandom();
 		IMapGenSolution final_solution = generator.Generate(Prefabs.GenerateALot(), problem_model);
 
 		MapGraph mgm = new MapGraph();
@@ -33,6 +33,6 @@ public class Test_Generator {
 		MapGraphData mgi = mgm.CreateCleanInstance();
 		mgi.Debug();
 		
-		DoorBitsProblemModel dbpm = new DoorBitsProblemModel(mgm);
+		DoorBitsGenetic dbpm = new DoorBitsGenetic(mgm);
 	}
 }

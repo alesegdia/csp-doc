@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.pathbuild.solution;
+package com.alesegdia.jsearchgen.pathbuild.auxdata;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -14,6 +14,7 @@ public class MapGraph {
 	public List<RoomInstance> rooms;
 	public UpperMatrix2D<List<DoorPairEntry>> possibleLinksUpperMatrix = null;
 	public List<List<DoorPairEntry>> possibleLinksPerRoom = new ArrayList<List<DoorPairEntry>>();
+	public UpperMatrix2D<Float> simplifiedConnectionMatrix;
 	
 	// para clonarse cada vez que se pida una nueva
 	private MapGraphData cleanInstance;
@@ -37,6 +38,7 @@ public class MapGraph {
 		System.out.println("END i: " + i);
 
 		possibleLinksUpperMatrix = new UpperMatrix2D<List<DoorPairEntry>>(i, i, null);
+		simplifiedConnectionMatrix = new UpperMatrix2D<Float>(i, i, -1.f);
 
 		List<DoorPairEntry> dpes = dpp.GetDoorPairList();
 		for( DoorPairEntry dpe : dpes ) {
@@ -48,6 +50,20 @@ public class MapGraph {
 		rooms = dpp.GetRooms();
 		
 		PrepareCleanInstance();
+	
+		for( i = 0; i < possibleLinksUpperMatrix.cols; i++ ) {
+			for( int j = 0; j < possibleLinksUpperMatrix.rows; j++ ) {
+				List<DoorPairEntry> l = possibleLinksUpperMatrix.Get(i, j);
+				if( l != null ) {
+					RoomInstance r1, r2;
+					r1 = rooms.get(i);
+					r2 = rooms.get(j);
+					simplifiedConnectionMatrix.Set(i, j, r1.globalPosition.distance(r2.globalPosition));
+				}
+			}
+			System.out.println();
+		}
+	
 	}
 	
 	public int NumRooms() {
@@ -93,6 +109,21 @@ public class MapGraph {
 			System.out.println();
 			i++;
 		}
+		
+		for( i = 0; i < simplifiedConnectionMatrix.cols; i++ ) {
+			for( int j = 0; j < simplifiedConnectionMatrix.rows; j++ ) {
+				Float f = simplifiedConnectionMatrix.Get(i, j);
+				if( f == -1 ) {
+					System.out.print("·\t");
+				} else {
+					System.out.print(f.intValue());
+					System.out.print("\t");
+				}
+			}
+			System.out.println();
+		}
+
+
 	}
 
 	Integer numPossibleConnections = null;

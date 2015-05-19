@@ -1,13 +1,11 @@
-package com.alesegdia.jsearchgen.mapgen.problem;
+package com.alesegdia.jsearchgen.mapgen.representation;
 
 import java.util.List;
 
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
-import com.alesegdia.jsearchgen.mapgen.solution.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.solution.IMapGenSolution;
 
-public class GraphGridProblemModel implements IRandomProblemModel {
+public class GraphGridRandom implements IRandomModel {
 
 	private static final int SOLUTION_WIDTH = 100;
 	private static final int SOLUTION_HEIGHT = 60;

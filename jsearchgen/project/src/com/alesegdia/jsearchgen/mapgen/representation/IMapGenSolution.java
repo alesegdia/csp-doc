@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.mapgen.solution;
+package com.alesegdia.jsearchgen.mapgen.representation;
 
 public interface IMapGenSolution {
 

@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.mapgen.solution;
+package com.alesegdia.jsearchgen.mapgen.representation;
 
 import java.util.Iterator;
 import java.util.LinkedList;

@@ -22,5 +22,9 @@ public class Vec2 {
 	public Vec2 Add(Vec2 globalPosition) {
 		return new Vec2( this.x + globalPosition.x, this.y + globalPosition.y );
 	}
+
+	public Float distance(Vec2 other) {
+		return (float) Math.sqrt( Math.pow(this.x - other.x,2) + Math.pow(this.y - other.y, 2) );
+	}
 	
 }
