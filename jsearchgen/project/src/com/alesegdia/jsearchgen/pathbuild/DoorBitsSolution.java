@@ -1,5 +1,5 @@
 package com.alesegdia.jsearchgen.pathbuild;
 
-public class DoorBitsSolution implements IPathBuildSolution {
-
+public class DoorBitsSolution implements IGeneticSolution {
+	
 }

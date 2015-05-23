@@ -5,13 +5,13 @@ import java.util.List;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 
-public class GraphGridRandom implements IRandomModel {
+public class GraphGridModel implements IRandomModel {
 
 	private static final int SOLUTION_WIDTH = 100;
 	private static final int SOLUTION_HEIGHT = 60;
 
 	@Override
-	public IMapGenSolution CreateFirstSolution(	List<RoomInstance> remaining_rooms, int width, int height) {
+	public IRandomSolution CreateFirstSolution(	List<RoomInstance> remaining_rooms, int width, int height) {
 		GraphGridSolution gs = new GraphGridSolution( height, width );
 		try {
 			int room_index = RNG.rng.nextInt(0, remaining_rooms.size()-1);
@@ -27,12 +27,12 @@ public class GraphGridRandom implements IRandomModel {
 	}
 
 	@Override
-	public IMapGenSolution CreateFirstSolution(	List<RoomInstance> remaining_rooms) {
+	public IRandomSolution CreateFirstSolution(	List<RoomInstance> remaining_rooms) {
 		return CreateFirstSolution(remaining_rooms, SOLUTION_WIDTH, SOLUTION_HEIGHT);
 	}
 
 	@Override
-	public boolean InsertRandomFeasibleRoom(IMapGenSolution partial_solution) {
+	public boolean InsertRandomFeasibleRoom(IRandomSolution partial_solution) {
 		GraphGridSolution gs = ((GraphGridSolution) partial_solution);
 		return gs.AttachRandomFeasibleRoom();
 	}

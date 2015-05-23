@@ -5,7 +5,7 @@ import java.util.List;
 import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.mapgen.representation.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.representation.IMapGenSolution;
+import com.alesegdia.jsearchgen.mapgen.representation.IRandomSolution;
 
 public class GraphGridSimpleProxy implements IMapGenPathBuildProxy {
 
@@ -26,7 +26,7 @@ public class GraphGridSimpleProxy implements IMapGenPathBuildProxy {
 	}
 
 	@Override
-	public IMapGenSolution GetSolution() {
+	public IRandomSolution GetSolution() {
 		return ggs;
 	}
 

@@ -6,8 +6,8 @@ import com.alesegdia.jsearchgen.core.room.RoomInstance;
 
 public interface IRandomModel {
 
-	public IMapGenSolution CreateFirstSolution(List<RoomInstance> remaining_rooms, int width, int height);
-	public IMapGenSolution CreateFirstSolution(List<RoomInstance> remaining_rooms);
-	public boolean InsertRandomFeasibleRoom(IMapGenSolution partial_solution);
+	public IRandomSolution CreateFirstSolution(List<RoomInstance> remaining_rooms, int width, int height);
+	public IRandomSolution CreateFirstSolution(List<RoomInstance> remaining_rooms);
+	public boolean InsertRandomFeasibleRoom(IRandomSolution partial_solution);
 	
 }

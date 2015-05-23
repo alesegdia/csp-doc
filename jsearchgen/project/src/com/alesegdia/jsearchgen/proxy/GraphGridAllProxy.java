@@ -10,7 +10,7 @@ import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.core.util.Vec2;
 import com.alesegdia.jsearchgen.mapgen.representation.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.representation.IMapGenSolution;
+import com.alesegdia.jsearchgen.mapgen.representation.IRandomSolution;
 
 public class GraphGridAllProxy implements IMapGenPathBuildProxy {
 
@@ -65,7 +65,7 @@ public class GraphGridAllProxy implements IMapGenPathBuildProxy {
 	}
 
 	@Override
-	public IMapGenSolution GetSolution() {
+	public IRandomSolution GetSolution() {
 		return ggs;
 	}
 

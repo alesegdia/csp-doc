@@ -1,6 +1,6 @@
 package com.alesegdia.jsearchgen.mapgen.representation;
 
-public interface IMapGenSolution {
+public interface IRandomSolution {
 
 	public void Render();
 	public boolean IsComplete();

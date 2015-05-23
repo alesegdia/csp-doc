@@ -3,9 +3,9 @@ package com.alesegdia.jsearchgen.pathbuild;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.pathbuild.auxdata.MapGraph;
+import com.alesegdia.jsearchgen.core.structure.MapGraph;
 
-public class GeneticSolver implements IPathBuildSolver {
+public class GeneticSolver extends APathBuildSolver<IGeneticSolution, IGeneticModel> {
 
 	private IGeneticModel gpm;
 
@@ -20,24 +20,24 @@ public class GeneticSolver implements IPathBuildSolver {
 	}
 	
 	@Override
-	public IPathBuildSolution Solve(MapGraph mg) {
+	public IGeneticSolution Solve(MapGraph mg, IGeneticModel problem_model) {
 		// población inicial
-		List<IPathBuildSolution> currentPopulation = gpm.CreateInitialPopulation(50);
+		List<IGeneticSolution> currentPopulation = gpm.CreateInitialPopulation(50);
 		int num_iter = 0;
-		IPathBuildSolution best = null;
+		IGeneticSolution best = null;
 		while(num_iter  > 1000000) {
 			
 			// selección de los mejores
-			List<IPathBuildSolution> selectionResult = gpm.Selection(currentPopulation);
+			List<IGeneticSolution> selectionResult = gpm.Selection(currentPopulation);
 			
 			// cruce de los mejores
-			List<IPathBuildSolution> newGeneration = new LinkedList<IPathBuildSolution>();
+			List<IGeneticSolution> newGeneration = new LinkedList<IGeneticSolution>();
 			for( int i = 0; i < selectionResult.size()-2; i+=2 ) {
-				IPathBuildSolution pbs1 = selectionResult.get(i);
-				IPathBuildSolution pbs2 = selectionResult.get(i+1);
+				IGeneticSolution pbs1 = selectionResult.get(i);
+				IGeneticSolution pbs2 = selectionResult.get(i+1);
 				// 10 hijos por pareja
 				for( int j = 0; j < 10; j++ ) {
-					IPathBuildSolution child = gpm.Cross(pbs1, pbs2);
+					IGeneticSolution child = gpm.Cross(pbs1, pbs2);
 					newGeneration.add(child);
 				}
 			}

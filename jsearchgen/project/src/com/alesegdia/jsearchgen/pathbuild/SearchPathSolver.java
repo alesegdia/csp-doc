@@ -1,8 +1,8 @@
 package com.alesegdia.jsearchgen.pathbuild;
 
-import com.alesegdia.jsearchgen.pathbuild.auxdata.MapGraph;
+import com.alesegdia.jsearchgen.core.structure.MapGraph;
 
-public class SearchPathSolver implements IPathBuildSolver {
+public class SearchPathSolver extends APathBuildSolver<ISearchSolution, ISearchModel> {
 
 	private ISearchModel spm;
 
@@ -11,9 +11,8 @@ public class SearchPathSolver implements IPathBuildSolver {
 	}
 	
 	@Override
-	public IPathBuildSolution Solve(MapGraph mgd) {
-		IPathBuildSolution pbs = spm.GetFirstSolution();
-		
+	public ISearchSolution Solve(MapGraph mgd, ISearchModel problem_model) {
+		IGeneticSolution pbs = spm.GetFirstSolution();
 		return null;
 	}
 

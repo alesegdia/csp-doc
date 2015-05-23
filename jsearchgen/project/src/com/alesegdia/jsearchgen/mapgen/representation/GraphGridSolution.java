@@ -18,7 +18,7 @@ import com.alesegdia.jsearchgen.core.util.Vec2;
  * and a TileMap representing
  *
  */
-public class GraphGridSolution implements IMapGenSolution {
+public class GraphGridSolution implements IRandomSolution {
 
 	/**
 	 * TileMap representing the entire map as a Matrix2D, with proper rooms placed

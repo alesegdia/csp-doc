@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.pathbuild.auxdata;
+package com.alesegdia.jsearchgen.core.structure;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
