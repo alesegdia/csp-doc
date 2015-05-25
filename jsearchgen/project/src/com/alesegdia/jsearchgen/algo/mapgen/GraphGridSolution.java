@@ -1,15 +1,15 @@
-package com.alesegdia.jsearchgen.mapgen.representation;
+package com.alesegdia.jsearchgen.algo.mapgen;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.alesegdia.jsearchgen.core.data.Door;
+import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
+import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.map.TileMap;
 import com.alesegdia.jsearchgen.core.map.TileType;
 import com.alesegdia.jsearchgen.core.map.render.TileMapRenderer;
-import com.alesegdia.jsearchgen.core.room.Door;
-import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
-import com.alesegdia.jsearchgen.core.room.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.core.util.Vec2;
 
@@ -18,7 +18,7 @@ import com.alesegdia.jsearchgen.core.util.Vec2;
  * and a TileMap representing
  *
  */
-public class GraphGridSolution implements IRandomSolution {
+public class GraphGridSolution implements IMapGenSolution {
 
 	/**
 	 * TileMap representing the entire map as a Matrix2D, with proper rooms placed
@@ -59,12 +59,7 @@ public class GraphGridSolution implements IRandomSolution {
 	}
 
 	@Override
-	public boolean IsComplete() {
-		return remaining_rooms.isEmpty();
-	}
-
-
-	public boolean AttachRandomFeasibleRoom() {
+	public boolean InsertRandomFeasibleRoom() {
 		// precompute if needed 
 		// extract feasible doors for each room
 		List<DoorPairEntry> feasible_door_pairs = new LinkedList<DoorPairEntry>();
@@ -189,6 +184,16 @@ public class GraphGridSolution implements IRandomSolution {
 		}
 
 		return tm;
+	}
+
+	@Override
+	public List<RoomInstance> GetRemainingRooms() {
+		return this.remaining_rooms;
+	}
+
+	@Override
+	public boolean IsComplete() {
+		return remaining_rooms.size() == 0;
 	}
 
 

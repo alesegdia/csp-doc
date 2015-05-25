@@ -1,10 +1,10 @@
-package com.alesegdia.jsearchgen.core.structure;
+package com.alesegdia.jsearchgen.algo.roomselect;
 
 import java.util.BitSet;
 import java.util.Iterator;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
+import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 
 public class MapGraphData {

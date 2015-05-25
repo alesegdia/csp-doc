@@ -1,11 +1,11 @@
-package com.alesegdia.jsearchgen.core.structure;
+package com.alesegdia.jsearchgen.algo.roomselect;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
-import com.alesegdia.jsearchgen.core.room.RoomInstance;
+import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
+import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 import com.alesegdia.jsearchgen.proxy.IMapGenPathBuildProxy;
 
@@ -22,6 +22,10 @@ public class MapGraph {
 	// NO SE ESTÁ CLONANDO AHORA MISMO
 	public MapGraphData CreateCleanInstance() {
 		return cleanInstance.Clone();
+	}
+	
+	public UpperMatrix2D<Float> CloneSimplifiedConnectionMatrix() {
+		return new UpperMatrix2D<Float>(simplifiedConnectionMatrix);
 	}
 
 	// cada habitación tiene un ID que se usará para identificarla de forma única
@@ -59,6 +63,10 @@ public class MapGraph {
 					r1 = rooms.get(i);
 					r2 = rooms.get(j);
 					simplifiedConnectionMatrix.Set(i, j, r1.globalPosition.distance(r2.globalPosition));
+				}
+				else
+				{
+					simplifiedConnectionMatrix.Set(i, j, Float.MAX_VALUE);
 				}
 			}
 			System.out.println();

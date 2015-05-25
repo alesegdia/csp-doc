@@ -2,10 +2,10 @@ package com.alesegdia.jsearchgen.proxy;
 
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
-import com.alesegdia.jsearchgen.core.room.RoomInstance;
-import com.alesegdia.jsearchgen.mapgen.representation.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.representation.IRandomSolution;
+import com.alesegdia.jsearchgen.algo.mapgen.GraphGridSolution;
+import com.alesegdia.jsearchgen.algo.mapgen.IMapGenSolution;
+import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
+import com.alesegdia.jsearchgen.core.data.RoomInstance;
 
 public class GraphGridSimpleProxy implements IMapGenPathBuildProxy {
 
@@ -26,7 +26,7 @@ public class GraphGridSimpleProxy implements IMapGenPathBuildProxy {
 	}
 
 	@Override
-	public IRandomSolution GetSolution() {
+	public IMapGenSolution GetSolution() {
 		return ggs;
 	}
 

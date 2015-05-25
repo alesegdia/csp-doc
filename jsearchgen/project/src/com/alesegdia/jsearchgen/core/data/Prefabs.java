@@ -1,10 +1,10 @@
-package com.alesegdia.jsearchgen.core.room;
+package com.alesegdia.jsearchgen.core.data;
 
 import java.util.LinkedList;
 import java.util.List;
 
+import com.alesegdia.jsearchgen.core.data.Door.Type;
 import com.alesegdia.jsearchgen.core.map.TileMap;
-import com.alesegdia.jsearchgen.core.room.Door.Type;
 import com.alesegdia.jsearchgen.core.util.RNG;
 
 public final class Prefabs {
@@ -47,8 +47,8 @@ public final class Prefabs {
 	public static List<RoomInstance> GenerateALot()
 	{
 		List<RoomInstance> ret = new LinkedList<RoomInstance>();
-		ret.addAll(GenerateSet(Prefabs.room1, 10));
-		ret.addAll(GenerateSet(Prefabs.room0, 10));
+		ret.addAll(GenerateSet(Prefabs.room1, 20));
+		ret.addAll(GenerateSet(Prefabs.room0, 20));
 		return ret;
 	}
 	

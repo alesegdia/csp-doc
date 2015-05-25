@@ -7,6 +7,10 @@ public class UpperMatrix2D<T> extends Matrix2D<T> {
 		super(rows, cols, def);
 	}
 
+	public UpperMatrix2D(UpperMatrix2D<T> simplifiedConnectionMatrix) {
+		super(simplifiedConnectionMatrix);
+	}
+
 	public T GetUpper( int row, int col ) {
 		if( row < col ) {
 			return super.Get(row, col);
@@ -26,7 +30,7 @@ public class UpperMatrix2D<T> extends Matrix2D<T> {
 	public void Debug() {
 		for( int i = 0; i < cols; i++ ) {
 			for( int j = 0; j < rows; j++ ) {
-				System.out.print(super.Get(i,j));
+				System.out.print(super.Get(i,j) + "\t");
 			}
 			System.out.println();
 		}

@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.core.room;
+package com.alesegdia.jsearchgen.core.data;
 
 import com.alesegdia.jsearchgen.core.util.Vec2;
 

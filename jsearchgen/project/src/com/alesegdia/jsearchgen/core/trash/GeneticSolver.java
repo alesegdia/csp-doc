@@ -1,9 +1,9 @@
-package com.alesegdia.jsearchgen.pathbuild;
+package com.alesegdia.jsearchgen.core.trash;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.structure.MapGraph;
+import com.alesegdia.jsearchgen.algo.roomselect.MapGraph;
 
 public class GeneticSolver extends APathBuildSolver<IGeneticSolution, IGeneticModel> {
 

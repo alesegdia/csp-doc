@@ -1,12 +1,15 @@
-package com.alesegdia.jsearchgen.pathbuild;
+package com.alesegdia.jsearchgen.algo.roomselect;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
-import com.alesegdia.jsearchgen.core.room.RoomInstance;
-import com.alesegdia.jsearchgen.core.structure.MapGraph;
+import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
+import com.alesegdia.jsearchgen.core.data.RoomInstance;
+import com.alesegdia.jsearchgen.core.trash.IGeneticModel;
+import com.alesegdia.jsearchgen.core.trash.IGeneticSolution;
+import com.alesegdia.jsearchgen.core.util.Matrix2D;
+import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 
 class GroupData {
 	int room1_index;
@@ -19,13 +22,15 @@ class RoomData {
 	List<GroupData> groups = new ArrayList<GroupData>();
 }
 
-public class DoorBitsModel implements IGeneticModel, ISearchModel {
+public class DoorBitsModel implements IFloydWarshallModel {
 
 	GroupData groupsData[];
 	DoorPairEntry dpes[];
 	RoomData roomsData[];
+	private MapGraph mg;
 	
 	public DoorBitsModel(MapGraph mg) {
+		this.mg = mg;
 		Cache(mg);
 	}
 
@@ -63,47 +68,13 @@ public class DoorBitsModel implements IGeneticModel, ISearchModel {
 	}
 
 	@Override
-	public IGeneticSolution Cross(IGeneticSolution pbs1,
-			IGeneticSolution pbs2) {
-		// TODO Auto-generated method stub
-		return null;
+	public int NumRooms() {
+		return mg.NumRooms();
 	}
 
 	@Override
-	public IGeneticSolution Mutate(IGeneticSolution pbs) {
-		// TODO Auto-generated method stub
-		return null;
+	public UpperMatrix2D<Float> CloneSCM() {
+		return mg.CloneSimplifiedConnectionMatrix();
 	}
 
-	@Override
-	public IGeneticSolution GenerateRandomSolution() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<IGeneticSolution> Selection(List<IGeneticSolution> l) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<IGeneticSolution> CreateInitialPopulation(int i) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IGeneticSolution GetBest(List<IGeneticSolution> currentPopulation) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public IGeneticSolution GetFirstSolution() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	
 }

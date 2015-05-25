@@ -8,10 +8,10 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
+import com.alesegdia.jsearchgen.algo.mapgen.GraphGridSolution;
+import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.map.TileMap;
 import com.alesegdia.jsearchgen.core.map.TileType;
-import com.alesegdia.jsearchgen.core.room.RoomInstance;
-import com.alesegdia.jsearchgen.mapgen.representation.GraphGridSolution;
 
 public class GraphGridSolutionRenderer extends JComponent {
 	

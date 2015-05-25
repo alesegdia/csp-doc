@@ -4,13 +4,13 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.alesegdia.jsearchgen.core.room.Door;
-import com.alesegdia.jsearchgen.core.room.DoorPairEntry;
-import com.alesegdia.jsearchgen.core.room.RoomInstance;
+import com.alesegdia.jsearchgen.algo.mapgen.GraphGridSolution;
+import com.alesegdia.jsearchgen.algo.mapgen.IMapGenSolution;
+import com.alesegdia.jsearchgen.core.data.Door;
+import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
+import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.core.util.Vec2;
-import com.alesegdia.jsearchgen.mapgen.representation.GraphGridSolution;
-import com.alesegdia.jsearchgen.mapgen.representation.IRandomSolution;
 
 public class GraphGridAllProxy implements IMapGenPathBuildProxy {
 
@@ -65,7 +65,7 @@ public class GraphGridAllProxy implements IMapGenPathBuildProxy {
 	}
 
 	@Override
-	public IRandomSolution GetSolution() {
+	public IMapGenSolution GetSolution() {
 		return ggs;
 	}
 
