@@ -1,5 +1,5 @@
 package com.alesegdia.jsearchgen.algo.roomselect;
 
-public interface IRoomSelectSolution {
+public interface IFloydWarshallSolution {
 
 }

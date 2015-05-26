@@ -1,13 +1,12 @@
-package com.alesegdia.jsearchgen.algo.roomselect;
+package com.alesegdia.jsearchgen.algo.pathopt;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.alesegdia.jsearchgen.algo.roomselect.MapGraphModel;
 import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
-import com.alesegdia.jsearchgen.core.trash.IGeneticModel;
-import com.alesegdia.jsearchgen.core.trash.IGeneticSolution;
 import com.alesegdia.jsearchgen.core.util.Matrix2D;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 
@@ -22,19 +21,19 @@ class RoomData {
 	List<GroupData> groups = new ArrayList<GroupData>();
 }
 
-public class DoorBitsModel implements IFloydWarshallModel {
+public class DoorBitsModel {
 
 	GroupData groupsData[];
 	DoorPairEntry dpes[];
 	RoomData roomsData[];
-	private MapGraph mg;
+	private MapGraphModel mg;
 	
-	public DoorBitsModel(MapGraph mg) {
+	public DoorBitsModel(MapGraphModel mg) {
 		this.mg = mg;
 		Cache(mg);
 	}
 
-	private void Cache(MapGraph mg) {
+	private void Cache(MapGraphModel mg) {
 		groupsData = new GroupData[mg.NumPossibleRoomConnections()];
 		dpes = new DoorPairEntry[mg.NumAllLinks()];
 		roomsData = new RoomData[mg.NumRooms()];
@@ -65,16 +64,6 @@ public class DoorBitsModel implements IFloydWarshallModel {
 				}
 			}
 		}
-	}
-
-	@Override
-	public int NumRooms() {
-		return mg.NumRooms();
-	}
-
-	@Override
-	public UpperMatrix2D<Float> CloneSCM() {
-		return mg.CloneSimplifiedConnectionMatrix();
 	}
 
 }

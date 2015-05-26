@@ -18,8 +18,10 @@ import com.alesegdia.jsearchgen.core.util.Vec2;
  * and a TileMap representing
  *
  */
-public class GraphGridSolution implements IMapGenSolution {
+public class GraphGridModel implements IRandomModel, IMapGenModel {
 
+	private static final int SOLUTION_WIDTH = 100;
+	private static final int SOLUTION_HEIGHT = 100;
 	/**
 	 * TileMap representing the entire map as a Matrix2D, with proper rooms placed
 	 */
@@ -31,16 +33,37 @@ public class GraphGridSolution implements IMapGenSolution {
 	public List<DoorPairEntry> added_dpes = new LinkedList<DoorPairEntry>();
 	public List<DoorPairEntry> all_feasible_dpes = new LinkedList<DoorPairEntry>();
 
-	public GraphGridSolution( int rows, int cols )
+	public GraphGridModel( int rows, int cols )
 	{
 		tilemap = new TileMap(rows, cols, TileType.FREE);
 	}
 
-	GraphGridSolution( GraphGridSolution other )
+	GraphGridModel( GraphGridModel other )
 	{
 		tilemap = new TileMap(other.tilemap);
 	}
 
+	public GraphGridModel(List<RoomInstance> remaining_rooms, int width, int height) {
+		this(height, width);
+		this.remaining_rooms = remaining_rooms;
+		try {
+			int room_index = RNG.rng.nextInt(0, remaining_rooms.size()-1);
+			RoomInstance selected = remaining_rooms.get(room_index);
+			remaining_rooms.remove(selected);
+			selected.globalPosition.Set(30, 10);
+			AttachRoom(selected, 30, 10);
+		} catch(IndexOutOfBoundsException e) {
+			System.err.println("remaining_rooms list empty!");
+		}
+		// TODO Auto-generated constructor stub
+	}
+
+	public GraphGridModel(List<RoomInstance> remaining_rooms) {
+		this(remaining_rooms, SOLUTION_WIDTH, SOLUTION_HEIGHT);
+	}
+
+	
+	
 	public void AttachRoom(RoomInstance room, int r, int c)
 	{
 		System.out.println("Attach at r:" + r + ", c:" + c);
@@ -51,7 +74,6 @@ public class GraphGridSolution implements IMapGenSolution {
 		added_rooms.add(room);
 	}
 
-	@Override
 	public void Render() {
 		tilemap.Render();
 		System.out.println("Opened doors: " + this.opened);
@@ -155,7 +177,6 @@ public class GraphGridSolution implements IMapGenSolution {
 		return IsPossibleDoorCombination(door_other, door_this, true);
 	}
 
-	@Override
 	public void RenderCanvas() {
 		(new TileMapRenderer(new TileMap(this.CreateTileMapWithDoors()))).Show();
 	}
@@ -194,6 +215,11 @@ public class GraphGridSolution implements IMapGenSolution {
 	@Override
 	public boolean IsComplete() {
 		return remaining_rooms.size() == 0;
+	}
+
+	@Override
+	public List<RoomInstance> GetRooms() {
+		return this.added_rooms;
 	}
 
 

@@ -1,10 +1,11 @@
 package com.alesegdia.jsearchgen.algo.roomselect;
 
-import com.alesegdia.jsearchgen.core.util.Matrix2D;
+import com.alesegdia.jsearchgen.algo.common.ISolver;
+import com.alesegdia.jsearchgen.algo.common.IResolutiveSolver;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 
 
-public class FloydWarshallSolver implements IRoomSelectSolver {
+public class FloydWarshallSolver implements IResolutiveSolver<IFloydWarshallSolution, IFloydWarshallModel> {
 
 	private IFloydWarshallModel problem_model;
 
@@ -15,7 +16,7 @@ public class FloydWarshallSolver implements IRoomSelectSolver {
 	UpperMatrix2D<Float> min_distances;
 	
 	@Override
-	public IRoomSelectSolution Solve() {
+	public void Solve() {
 		min_distances = this.problem_model.CloneSCM();
 		for( int i = 0; i < problem_model.NumRooms(); i++ ) {
 			min_distances.Set(i, i, 0.f);
@@ -44,7 +45,8 @@ public class FloydWarshallSolver implements IRoomSelectSolver {
 			}
 		}
 		System.out.println("MAS LEJANAS: " + biggest_r1 + ", " + biggest_r2 + " con " + biggest_value);
-		return null;
+		RoomSelectSolution rss = new RoomSelectSolution();
+		problem_model.SetSolution(biggest_r1, biggest_r2, biggest_value);
 	}
 
 }

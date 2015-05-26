@@ -3,32 +3,30 @@ package com.alesegdia.jsearchgen.algo.mapgen;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.alesegdia.jsearchgen.algo.common.ISolver;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 
-public class RandomSolver implements IMapGenSolver {
+public class RandomSolver implements ISolver {
 
 	List<RoomInstance> startRoomList = new LinkedList<RoomInstance>();
-	private IMapGenSolution firstSolution;
+	private IRandomModel randomModel;
 
-	public RandomSolver ( IMapGenSolution first_solution ) {
-		this.firstSolution = first_solution;
+	public RandomSolver ( IRandomModel first_solution ) {
+		this.randomModel = first_solution;
 	}
 
 	@Override
-	public IMapGenSolution Solve()
+	public void Solve()
 	{
-		IMapGenSolution partial_solution = firstSolution;
-		while( !partial_solution.IsComplete() )
+		while( !randomModel.IsComplete() )
 		{
-			if( !partial_solution.InsertRandomFeasibleRoom() )
+			if( !randomModel.InsertRandomFeasibleRoom() )
 			{
 				System.err.println("ERROR: can't build a complete solution from this partial solution and this list of remaining rooms: ");
 				break;
 			}
 		}
-
-		return partial_solution;
 	}
 
 }

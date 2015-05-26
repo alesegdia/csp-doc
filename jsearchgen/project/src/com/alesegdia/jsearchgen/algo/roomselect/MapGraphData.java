@@ -13,16 +13,16 @@ public class MapGraphData {
 
 		private BitSet bs;
 		private int currentBit;
-		private MapGraph mgm;
+		private MapGraphModel mgm;
 		private int r2_index;
 		private int r1_index;
 		private boolean set;
 
-		public RoomPDEIterator( MapGraph mgm, BitSet bitSet, int r1_index, int r2_index ) {
+		public RoomPDEIterator( MapGraphModel mgm, BitSet bitSet, int r1_index, int r2_index ) {
 			this(mgm, bitSet, r1_index, r2_index, true);
 		}
 		
-		public RoomPDEIterator( MapGraph mgm, BitSet bitSet, int r1_index, int r2_index, boolean set ) {
+		public RoomPDEIterator( MapGraphModel mgm, BitSet bitSet, int r1_index, int r2_index, boolean set ) {
 			this.bs = bitSet;
 			this.mgm = mgm;
 			this.r1_index = r1_index;
@@ -57,10 +57,10 @@ public class MapGraphData {
 		return it;
 	}
 
-	public MapGraph mgm = null;
+	public MapGraphModel mgm = null;
 	public UpperMatrix2D<BitSet> activeLinks = null;
 
-	public MapGraphData( MapGraph mgm ) {
+	public MapGraphData( MapGraphModel mgm ) {
 		this.mgm = mgm;
 		int sz = mgm.NumRooms();
 		activeLinks = new UpperMatrix2D<BitSet>(sz, sz, null);

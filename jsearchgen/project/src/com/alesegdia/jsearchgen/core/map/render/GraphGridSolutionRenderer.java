@@ -8,18 +8,18 @@ import java.awt.Graphics;
 import javax.swing.JComponent;
 import javax.swing.JFrame;
 
-import com.alesegdia.jsearchgen.algo.mapgen.GraphGridSolution;
+import com.alesegdia.jsearchgen.algo.mapgen.GraphGridModel;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.map.TileMap;
 import com.alesegdia.jsearchgen.core.map.TileType;
 
 public class GraphGridSolutionRenderer extends JComponent {
 	
-	private GraphGridSolution ggs;
+	private GraphGridModel ggs;
 	private TileMap map;
 	private Dimension dimension;
 	
-	public GraphGridSolutionRenderer(GraphGridSolution ggs)
+	public GraphGridSolutionRenderer(GraphGridModel ggs)
 	{
 		this.ggs = ggs;
 		this.map = ggs.CreateTileMapWithDoors();

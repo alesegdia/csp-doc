@@ -7,9 +7,9 @@ import java.util.List;
 import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
-import com.alesegdia.jsearchgen.proxy.IMapGenPathBuildProxy;
+import com.alesegdia.jsearchgen.proxy.IMapGenRoomSelectProxy;
 
-public class MapGraph {
+public class MapGraphModel implements IFloydWarshallModel {
 
 	public List<RoomInstance> rooms;
 	public UpperMatrix2D<List<DoorPairEntry>> possibleLinksUpperMatrix = null;
@@ -24,13 +24,14 @@ public class MapGraph {
 		return cleanInstance.Clone();
 	}
 	
-	public UpperMatrix2D<Float> CloneSimplifiedConnectionMatrix() {
+	@Override
+	public UpperMatrix2D<Float> CloneSCM() {
 		return new UpperMatrix2D<Float>(simplifiedConnectionMatrix);
 	}
 
 	// cada habitación tiene un ID que se usará para identificarla de forma única
 	// y usarla como índice
-	public void BuildFromGraphGridSolution(IMapGenPathBuildProxy dpp ) {
+	public MapGraphModel(IMapGenRoomSelectProxy dpp ) {
 
 		// Asignamos ID para cada habitación
 		int i = 0;
@@ -136,6 +137,8 @@ public class MapGraph {
 
 	Integer numPossibleConnections = null;
 	Integer numAllLinks = null;
+	private int goalRoom;
+	private int spawnRoom;
 	public int NumPossibleRoomConnections() {
 		if( numPossibleConnections == null ) {
 			ComputePossibleConnections();
@@ -162,6 +165,12 @@ public class MapGraph {
 				}
 			}
 		}
+	}
+
+	@Override
+	public void SetSolution(int biggest_r1, int biggest_r2, float biggest_value) {
+		spawnRoom = biggest_r1;
+		goalRoom = biggest_r2;
 	}
 
 }
