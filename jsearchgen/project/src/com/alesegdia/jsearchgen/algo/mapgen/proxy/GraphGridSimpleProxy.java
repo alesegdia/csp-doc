@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.proxy;
+package com.alesegdia.jsearchgen.algo.mapgen.proxy;
 
 import java.util.List;
 
@@ -7,7 +7,7 @@ import com.alesegdia.jsearchgen.algo.mapgen.IRandomModel;
 import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
 
-public class GraphGridSimpleProxy implements IMapGenRoomSelectProxy {
+public class GraphGridSimpleProxy implements IMapGenProxy {
 
 	GraphGridModel ggs;
 

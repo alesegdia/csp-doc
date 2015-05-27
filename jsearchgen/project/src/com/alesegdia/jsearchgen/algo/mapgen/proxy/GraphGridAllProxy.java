@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.proxy;
+package com.alesegdia.jsearchgen.algo.mapgen.proxy;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -13,7 +13,7 @@ import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.RNG;
 import com.alesegdia.jsearchgen.core.util.Vec2;
 
-public class GraphGridAllProxy implements IMapGenRoomSelectProxy {
+public class GraphGridAllProxy implements IMapGenProxy {
 
 	IMapGenModel ggs;
 

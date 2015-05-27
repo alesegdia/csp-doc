@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import com.alesegdia.jsearchgen.algo.mapgen.proxy.IMapGenProxy;
 import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
-import com.alesegdia.jsearchgen.proxy.IMapGenRoomSelectProxy;
 
-public class MapGraphModel implements IFloydWarshallModel {
+public class MapGraphModel {
 
 	public List<RoomInstance> rooms;
 	public UpperMatrix2D<List<DoorPairEntry>> possibleLinksUpperMatrix = null;
@@ -17,21 +17,20 @@ public class MapGraphModel implements IFloydWarshallModel {
 	public UpperMatrix2D<Float> simplifiedConnectionMatrix;
 	
 	// para clonarse cada vez que se pida una nueva
-	private MapGraphData cleanInstance;
+	private MapGraphInstance cleanInstance;
 	
 	// NO SE ESTÁ CLONANDO AHORA MISMO
-	public MapGraphData CreateCleanInstance() {
+	public MapGraphInstance CreateCleanInstance() {
 		return cleanInstance.Clone();
 	}
 	
-	@Override
 	public UpperMatrix2D<Float> CloneSCM() {
 		return new UpperMatrix2D<Float>(simplifiedConnectionMatrix);
 	}
 
 	// cada habitación tiene un ID que se usará para identificarla de forma única
 	// y usarla como índice
-	public MapGraphModel(IMapGenRoomSelectProxy dpp ) {
+	public MapGraphModel(IMapGenProxy dpp ) {
 
 		// Asignamos ID para cada habitación
 		int i = 0;
@@ -80,7 +79,7 @@ public class MapGraphModel implements IFloydWarshallModel {
 	}
 	
 	private void PrepareCleanInstance() {
-		cleanInstance = new MapGraphData(this);
+		cleanInstance = new MapGraphInstance(this);
 	}
 
 	private void AppendLink(DoorPairEntry dpe) {
@@ -125,7 +124,7 @@ public class MapGraphModel implements IFloydWarshallModel {
 				if( f == -1 ) {
 					System.out.print("·\t");
 				} else {
-					System.out.print(f.intValue());
+					System.out.print(f);
 					System.out.print("\t");
 				}
 			}
@@ -167,10 +166,12 @@ public class MapGraphModel implements IFloydWarshallModel {
 		}
 	}
 
-	@Override
-	public void SetSolution(int biggest_r1, int biggest_r2, float biggest_value) {
-		spawnRoom = biggest_r1;
-		goalRoom = biggest_r2;
+	public int GetSpawnRoom() {
+		return spawnRoom;
+	}
+
+	public int GetGoalRoom() {
+		return spawnRoom;
 	}
 
 }

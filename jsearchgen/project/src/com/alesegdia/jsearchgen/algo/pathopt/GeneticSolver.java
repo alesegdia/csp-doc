@@ -23,22 +23,29 @@ public class GeneticSolver implements ISolver {
 	@Override
 	public void Solve() {
 		// población inicial
-		List<IPathOptModel> currentPopulation = gpm.CreateInitialPopulation(50);
+		List<IGeneticSolution> currentPopulation = gpm.CreateInitialPopulation(50);
+		
 		int num_iter = 0;
-		IPathOptModel best = null;
+		IGeneticSolution best = null;
+		best = gpm.GetBest(currentPopulation);
+		for( IGeneticSolution gs : currentPopulation ) {
+			gs.Debug();
+			System.out.println(" cost: " + gs.GetCost());
+		}
+		/*
 		while(num_iter  > 1000000) {
 			
 			// selección de los mejores
-			List<IPathOptModel> selectionResult = gpm.Selection(currentPopulation);
+			List<IGeneticSolution> selectionResult = gpm.Selection(currentPopulation);
 			
 			// cruce de los mejores
-			List<IPathOptModel> newGeneration = new LinkedList<IPathOptModel>();
+			List<IGeneticSolution> newGeneration = new LinkedList<IGeneticSolution>();
 			for( int i = 0; i < selectionResult.size()-2; i+=2 ) {
-				IPathOptModel pbs1 = selectionResult.get(i);
-				IPathOptModel pbs2 = selectionResult.get(i+1);
+				IGeneticSolution pbs1 = selectionResult.get(i);
+				IGeneticSolution pbs2 = selectionResult.get(i+1);
 				// 10 hijos por pareja
 				for( int j = 0; j < 10; j++ ) {
-					IPathOptModel child = gpm.Cross(pbs1, pbs2);
+					IGeneticSolution child = gpm.Cross(pbs1, pbs2);
 					newGeneration.add(child);
 				}
 			}
@@ -52,6 +59,7 @@ public class GeneticSolver implements ISolver {
 			best = gpm.GetBest(currentPopulation);
 		}
 		gpm.SetBest(best);
+		*/
 	}
 
 }

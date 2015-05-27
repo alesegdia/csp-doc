@@ -7,7 +7,7 @@ import java.util.List;
 import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 
-public class MapGraphData {
+public class MapGraphInstance {
 	
 	public class RoomPDEIterator implements Iterator {
 
@@ -60,7 +60,7 @@ public class MapGraphData {
 	public MapGraphModel mgm = null;
 	public UpperMatrix2D<BitSet> activeLinks = null;
 
-	public MapGraphData( MapGraphModel mgm ) {
+	public MapGraphInstance( MapGraphModel mgm ) {
 		this.mgm = mgm;
 		int sz = mgm.NumRooms();
 		activeLinks = new UpperMatrix2D<BitSet>(sz, sz, null);
@@ -103,7 +103,7 @@ public class MapGraphData {
 				if( i != j ) {
 					if( this.mgm.possibleLinksUpperMatrix.GetUpper(i, j) != null ) {
 						System.out.print("Conexiones entre " + i + " y " + j + ": ");
-						MapGraphData.RoomPDEIterator it = ActiveRoomLinksIterator(i, j);
+						MapGraphInstance.RoomPDEIterator it = ActiveRoomLinksIterator(i, j);
 						while( it.hasNext() ) {
 							DoorPairEntry dpe = it.next();
 							System.out.print(dpe + ", ");
@@ -116,7 +116,7 @@ public class MapGraphData {
 
 	}
 
-	public MapGraphData Clone() {
+	public MapGraphInstance Clone() {
 		return this;
 	}
 

@@ -66,7 +66,7 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 	
 	public void AttachRoom(RoomInstance room, int r, int c)
 	{
-		System.out.println("Attach at r:" + r + ", c:" + c);
+		//System.out.println("Attach at r:" + r + ", c:" + c);
 		this.tilemap.Apply(room.prefab.map, r, c);
 		room.globalPosition.x = c;
 		room.globalPosition.y = r;
