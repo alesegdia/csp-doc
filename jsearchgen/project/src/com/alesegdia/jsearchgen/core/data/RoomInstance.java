@@ -66,15 +66,6 @@ public class RoomInstance {
 		GenerateRandomDoors(rng, this.prefab.potentialDoors.size());
 	}
 
-	/** Sets a door link to another room, selecting door by index at room door list
-	 * @param door_index door index
-	 * @param connected_to room connected to this door
-	 */
-	public void ConnectDoorByIndex( int door_index, RoomInstance connected_to )
-	{
-		doors.get(door_index).connected_room = connected_to;
-	}
-
 	public TileMap CreateTileMapWithDoors( )
 	{
 		TileMap tm = new TileMap(this.prefab.map);

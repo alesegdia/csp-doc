@@ -8,6 +8,8 @@ import com.alesegdia.jsearchgen.core.util.Vec2;
 
 public interface IMapGenModel {
 
+	List<RoomInstance> GetRemainingRooms();
+
 	Vec2 IsPossibleDoorCombination(Door inner_door, Door outer_door, boolean b);
 	List<RoomInstance> GetRooms();
 

@@ -1,4 +1,4 @@
-package com.alesegdia.jsearchgen.algo.pathopt;
+package com.alesegdia.jsearchgen.trash;
 
 public interface IGeneticSolution {
 
