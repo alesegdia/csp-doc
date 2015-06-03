@@ -32,6 +32,7 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 	public List<RoomInstance> added_rooms = new LinkedList<RoomInstance>();
 	public List<DoorPairEntry> added_dpes = new LinkedList<DoorPairEntry>();
 	public List<DoorPairEntry> all_feasible_dpes = new LinkedList<DoorPairEntry>();
+	public RoomInstance initialRoom;
 
 	public GraphGridModel( int rows, int cols )
 	{
@@ -52,6 +53,7 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 			remaining_rooms.remove(selected);
 			selected.globalPosition.Set(30, 10);
 			AttachRoom(selected, 30, 10);
+			this.initialRoom = selected;
 		} catch(IndexOutOfBoundsException e) {
 			System.err.println("remaining_rooms list empty!");
 		}
@@ -80,6 +82,8 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 		System.out.println("Closed doors: " + this.closed);
 	}
 
+	public List<DoorPairEntry> buildPath = new LinkedList<DoorPairEntry>();
+	
 	@Override
 	public boolean InsertRandomFeasibleRoom() {
 		// precompute if needed 
@@ -103,9 +107,26 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 			this.tilemap.Set(door.GetGlobalPosition().y, door.GetGlobalPosition().x, 2);
 			this.remaining_rooms.remove(door.ri_owner);
 			this.added_dpes.add(fde);
+			this.buildPath.add(fde);
 			return true;
 		}
 		else return false;
+	}
+	
+	public void BuildFromPath(List<DoorPairEntry> buildPath, RoomInstance initial) {
+		
+		remaining_rooms.remove(initial);
+		initial.globalPosition.Set(30, 10);
+		AttachRoom(initial, 30, 10);
+
+		for( DoorPairEntry dpe : buildPath ) {
+			this.AttachRoom(dpe.other_door.ri_owner, dpe.relativeToSolutionMap.x, dpe.relativeToSolutionMap.y);
+			this.Connect(dpe.other_door, dpe.this_door);
+			this.tilemap.Set(dpe.other_door.GetGlobalPosition().y, dpe.other_door.GetGlobalPosition().x, 2);
+			this.remaining_rooms.remove(dpe.other_door.ri_owner);
+			this.added_dpes.add(dpe);
+			this.buildPath.add(dpe);
+		}
 	}
 
 	private void Connect(Door other_door, Door this_door) {
