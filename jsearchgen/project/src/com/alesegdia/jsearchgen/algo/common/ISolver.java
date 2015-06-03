@@ -5,6 +5,6 @@ import com.alesegdia.jsearchgen.algo.mapgen.IRandomModel;
 
 public interface ISolver {
 
-	public void Solve();
+	public void Solve() throws Exception;
 
 }
