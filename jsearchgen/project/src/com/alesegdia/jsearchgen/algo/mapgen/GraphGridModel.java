@@ -44,28 +44,33 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 		tilemap = new TileMap(other.tilemap);
 	}
 
-	public GraphGridModel(List<RoomInstance> remaining_rooms, int width, int height) {
+	static int a = 0;
+	public GraphGridModel(List<RoomInstance> remaining_rooms, int width, int height, boolean insert_first) {
 		this(height, width);
 		this.remaining_rooms = remaining_rooms;
-		try {
-			int room_index = RNG.rng.nextInt(0, remaining_rooms.size()-1);
-			RoomInstance selected = remaining_rooms.get(room_index);
-			remaining_rooms.remove(selected);
-			selected.globalPosition.Set(30, 10);
-			AttachRoom(selected, 30, 10);
-			this.initialRoom = selected;
-		} catch(IndexOutOfBoundsException e) {
-			System.err.println("remaining_rooms list empty!");
+		if( insert_first ) {
+			try {
+				int room_index = RNG.rng.nextInt(0, remaining_rooms.size()-1);
+				RoomInstance selected = remaining_rooms.get(room_index);
+				remaining_rooms.remove(selected);
+				selected.globalPosition.Set(30, 10);
+				AttachRoom(selected, 30, 10);
+				this.initialRoom = selected;
+			} catch(IndexOutOfBoundsException e) {
+				System.err.println("remaining_rooms list empty!");
+			}
 		}
 		// TODO Auto-generated constructor stub
 	}
 
-	public GraphGridModel(List<RoomInstance> remaining_rooms) {
-		this(remaining_rooms, SOLUTION_WIDTH, SOLUTION_HEIGHT);
+	public GraphGridModel(List<RoomInstance> remaining_rooms, boolean insert_first) {
+		this(remaining_rooms, SOLUTION_WIDTH, SOLUTION_HEIGHT, insert_first);
 	}
 
-	
-	
+	public GraphGridModel(List<RoomInstance> remaining_rooms) {
+		this(remaining_rooms, SOLUTION_WIDTH, SOLUTION_HEIGHT, true);
+	}
+
 	public void AttachRoom(RoomInstance room, int r, int c)
 	{
 		//System.out.println("Attach at r:" + r + ", c:" + c);
@@ -107,7 +112,8 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 			this.tilemap.Set(door.GetGlobalPosition().y, door.GetGlobalPosition().x, 2);
 			this.remaining_rooms.remove(door.ri_owner);
 			this.added_dpes.add(fde);
-			this.buildPath.add(fde);
+			
+			if( ++a < 10 ) this.buildPath.add(fde);
 			return true;
 		}
 		else return false;
