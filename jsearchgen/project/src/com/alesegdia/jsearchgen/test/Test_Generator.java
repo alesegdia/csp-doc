@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.algo.mapgen.GraphGridModel;
-import com.alesegdia.jsearchgen.algo.mapgen.IRandomModel;
 import com.alesegdia.jsearchgen.algo.mapgen.RandomSolver;
 import com.alesegdia.jsearchgen.algo.mapgen.proxy.GraphGridAllProxy;
 import com.alesegdia.jsearchgen.algo.roomselect.FloydWarshallSolver;
@@ -29,14 +28,26 @@ public class Test_Generator {
 		List<RoomInstance> selected_list = Prefabs.GenerateALot();
 		List<RoomInstance> clone = new LinkedList<RoomInstance>();
 		clone.addAll(selected_list);
-		GraphGridModel ggm = new GraphGridModel(selected_list);
+		GraphGridModel ggm = null;
+		try {
+			ggm = new GraphGridModel(selected_list);
+		} catch (Exception e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		RandomSolver generator = new RandomSolver(ggm);
 		long t1 = System.nanoTime();
 		generator.Solve();
 		long t2 = System.nanoTime();
 		System.out.println("time to solve: " + (t2 - t1));
 		
-		GraphGridModel ggm2 = new GraphGridModel(clone, false);
+		GraphGridModel ggm2 = null;
+		try {
+			ggm2 = new GraphGridModel(clone, false);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		t1 = System.nanoTime();
 		ggm2.BuildFromPath(ggm.buildPath, ggm.initialRoom);
 		t2 = System.nanoTime();

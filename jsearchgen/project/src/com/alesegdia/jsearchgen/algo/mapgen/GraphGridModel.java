@@ -18,7 +18,13 @@ import com.alesegdia.jsearchgen.core.util.Vec2;
  * and a TileMap representing
  *
  */
-public class GraphGridModel implements IRandomModel, IMapGenModel {
+public class GraphGridModel {
+	
+	public enum State {
+		UNINITIALISED,		// antes de introducir siquiera una habitación
+		UNFINISHED,		// aún no se han introducido todas las habitaciones
+		FINISHED 			// ya se introdujeron todas las habitaciones
+	}
 
 	private static final int SOLUTION_WIDTH = 100;
 	private static final int SOLUTION_HEIGHT = 100;
@@ -33,6 +39,7 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 	public List<DoorPairEntry> added_dpes = new LinkedList<DoorPairEntry>();
 	public List<DoorPairEntry> all_feasible_dpes = new LinkedList<DoorPairEntry>();
 	public RoomInstance initialRoom;
+	public State state = State.UNINITIALISED;
 
 	public GraphGridModel( int rows, int cols )
 	{
@@ -45,34 +52,39 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 	}
 
 	static int a = 0;
-	public GraphGridModel(List<RoomInstance> remaining_rooms, int width, int height, boolean insert_first) {
+	public GraphGridModel(List<RoomInstance> remaining_rooms, int width, int height, boolean insert_first) throws Exception {
 		this(height, width);
 		this.remaining_rooms = remaining_rooms;
 		if( insert_first ) {
 			try {
+				// insertamos la primera elegida de forma aleatoria
 				int room_index = RNG.rng.nextInt(0, remaining_rooms.size()-1);
 				RoomInstance selected = remaining_rooms.get(room_index);
-				remaining_rooms.remove(selected);
-				selected.globalPosition.Set(30, 10);
-				AttachRoom(selected, 30, 10);
-				this.initialRoom = selected;
+				InsertFirstRoom(selected);
+
 			} catch(IndexOutOfBoundsException e) {
 				System.err.println("remaining_rooms list empty!");
 			}
 		}
-		// TODO Auto-generated constructor stub
 	}
 
-	public GraphGridModel(List<RoomInstance> remaining_rooms, boolean insert_first) {
+	private void InsertFirstRoom(RoomInstance selected) throws Exception {
+		selected.globalPosition.Set(30, 10);
+		AttachRoom(selected, 30, 10);
+		this.initialRoom = selected;
+	}
+
+	public GraphGridModel(List<RoomInstance> remaining_rooms, boolean insert_first) throws Exception {
 		this(remaining_rooms, SOLUTION_WIDTH, SOLUTION_HEIGHT, insert_first);
 	}
 
-	public GraphGridModel(List<RoomInstance> remaining_rooms) {
+	public GraphGridModel(List<RoomInstance> remaining_rooms) throws Exception {
 		this(remaining_rooms, SOLUTION_WIDTH, SOLUTION_HEIGHT, true);
 	}
 
 	public void AttachRoom(RoomInstance room, int r, int c)
 	{
+		remaining_rooms.remove(room);
 		//System.out.println("Attach at r:" + r + ", c:" + c);
 		this.tilemap.Apply(room.prefab.map, r, c);
 		room.globalPosition.x = c;
@@ -89,7 +101,6 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 
 	public List<DoorPairEntry> buildPath = new LinkedList<DoorPairEntry>();
 	
-	@Override
 	public boolean InsertRandomFeasibleRoom() {
 		// precompute if needed 
 		// extract feasible doors for each room
@@ -129,7 +140,6 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 			this.AttachRoom(dpe.other_door.ri_owner, dpe.relativeToSolutionMap.x, dpe.relativeToSolutionMap.y);
 			this.Connect(dpe.other_door, dpe.this_door);
 			this.tilemap.Set(dpe.other_door.GetGlobalPosition().y, dpe.other_door.GetGlobalPosition().x, 2);
-			this.remaining_rooms.remove(dpe.other_door.ri_owner);
 			this.added_dpes.add(dpe);
 			this.buildPath.add(dpe);
 		}
@@ -234,17 +244,14 @@ public class GraphGridModel implements IRandomModel, IMapGenModel {
 		return tm;
 	}
 
-	@Override
 	public List<RoomInstance> GetRemainingRooms() {
 		return this.remaining_rooms;
 	}
 
-	@Override
 	public boolean IsComplete() {
 		return remaining_rooms.size() == 0;
 	}
 
-	@Override
 	public List<RoomInstance> GetRooms() {
 		return this.added_rooms;
 	}

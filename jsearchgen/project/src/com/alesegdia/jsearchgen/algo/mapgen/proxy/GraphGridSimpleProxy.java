@@ -3,7 +3,6 @@ package com.alesegdia.jsearchgen.algo.mapgen.proxy;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.algo.mapgen.GraphGridModel;
-import com.alesegdia.jsearchgen.algo.mapgen.IRandomModel;
 import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
 

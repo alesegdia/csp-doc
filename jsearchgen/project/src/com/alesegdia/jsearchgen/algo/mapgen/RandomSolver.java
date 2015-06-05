@@ -10,9 +10,9 @@ import com.alesegdia.jsearchgen.core.util.RNG;
 public class RandomSolver implements ISolver {
 
 	List<RoomInstance> startRoomList = new LinkedList<RoomInstance>();
-	private IRandomModel randomModel;
+	private GraphGridModel randomModel;
 
-	public RandomSolver ( IRandomModel first_solution ) {
+	public RandomSolver ( GraphGridModel first_solution ) {
 		this.randomModel = first_solution;
 	}
 

@@ -4,7 +4,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.algo.mapgen.GraphGridModel;
-import com.alesegdia.jsearchgen.algo.mapgen.IRandomModel;
 import com.alesegdia.jsearchgen.algo.mapgen.RandomSolver;
 import com.alesegdia.jsearchgen.core.data.Prefabs;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
@@ -50,7 +49,13 @@ public class Test_GenDoorsAttachRoom {
 		initial_rooms.add(room2);
 		initial_rooms.add(room3);
 		
-		IRandomModel sol = new GraphGridModel(initial_rooms); // en 32,32
+		GraphGridModel sol = null;
+		try {
+			sol = new GraphGridModel(initial_rooms);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} // en 32,32
 		GraphGridModel gese = ((GraphGridModel)sol);
 		int lx, ly;
 		lx = 19;

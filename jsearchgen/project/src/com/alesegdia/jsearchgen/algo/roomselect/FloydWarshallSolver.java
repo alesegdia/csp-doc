@@ -4,7 +4,7 @@ import com.alesegdia.jsearchgen.algo.common.ISolver;
 import com.alesegdia.jsearchgen.core.util.UpperMatrix2D;
 
 
-public class FloydWarshallSolver implements IFloydWarshallSolver {
+public class FloydWarshallSolver {
 
 
 	public FloydWarshallSolver() {
@@ -15,7 +15,6 @@ public class FloydWarshallSolver implements IFloydWarshallSolver {
 	private int goal_room;
 	private float distance;
 	
-	@Override
 	public void Solve(UpperMatrix2D<Float> matrix) {
 		min_distances = matrix;
 		for( int i = 0; i < matrix.cols; i++ ) {
@@ -50,17 +49,14 @@ public class FloydWarshallSolver implements IFloydWarshallSolver {
 		System.out.println("MAS LEJANAS: " + biggest_r1 + ", " + biggest_r2 + " con " + biggest_value);
 	}
 
-	@Override
 	public int GetSpawnRoom() {
 		return spawn_room;
 	}
 
-	@Override
 	public int GetGoalRoom() {
 		return goal_room;
 	}
 
-	@Override
 	public float GetDistance() {
 		return distance;
 	}

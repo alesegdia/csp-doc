@@ -5,8 +5,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.alesegdia.jsearchgen.algo.mapgen.GraphGridModel;
-import com.alesegdia.jsearchgen.algo.mapgen.IMapGenModel;
-import com.alesegdia.jsearchgen.algo.mapgen.IRandomModel;
 import com.alesegdia.jsearchgen.core.data.Door;
 import com.alesegdia.jsearchgen.core.data.DoorPairEntry;
 import com.alesegdia.jsearchgen.core.data.RoomInstance;
@@ -15,9 +13,9 @@ import com.alesegdia.jsearchgen.core.util.Vec2;
 
 public class GraphGridAllProxy implements IMapGenProxy {
 
-	IMapGenModel ggs;
+	GraphGridModel ggs;
 
-	public GraphGridAllProxy( IMapGenModel ggs ) {
+	public GraphGridAllProxy( GraphGridModel ggs ) {
 		this.ggs = ggs;
 	}
 
